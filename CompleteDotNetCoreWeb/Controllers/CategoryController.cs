@@ -22,7 +22,8 @@ namespace CompleteDotNetCoreWeb.Controllers
         // GET: /<controller>/
         public IActionResult Index()
         {
-            IEnumerable<Category> objectCategoryList = _db.Categories.ToList();
+            IEnumerable<Category> objectCategoryList = _db.Categories;
+            //Console.WriteLine(objectCategoryList);
             return View(objectCategoryList);
         }
     }

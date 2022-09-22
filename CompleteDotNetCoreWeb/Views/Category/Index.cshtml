@@ -1,8 +1,37 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
+
+@model IEnumerable<Category>
+
 @{
     ViewData["Title"] = "Index";
 }
 
 <h1>Index</h1>
+
+<table class="table table-bordered table-striped" width="100%">
+    <thead>
+        <tr>
+            <th>
+                Category Name
+            </th>
+            <th>
+                Display Order
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Category obj in Model)
+        {
+            <tr>
+                <td width="50%">
+                    @obj.Name
+                </td>
+                <td width="30%">
+                    @obj.DisplayOrder
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
