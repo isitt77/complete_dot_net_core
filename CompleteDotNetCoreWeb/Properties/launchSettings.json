@@ -10,7 +10,6 @@
   "profiles": {
     "CompleteDotNetCoreWeb": {
       "commandName": "Project",
-      "launchBrowser": true,
       "applicationUrl": "https://localhost:7103;http://localhost:5135",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
