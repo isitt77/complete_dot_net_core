@@ -1,0 +1,21 @@
+﻿@model Category
+@{
+    ViewData["Title"] = "Create";
+}
+
+<form method="post" class="form-group">
+    <div class="border p-3 mt-5">
+        <div class="row pb-2">
+            <h2 class="text-info">Create Category</h2>
+            <hr />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Name" class="form-label"></label>
+            <input asp-for="Name" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label asp-for="DisplayOrder" class="form-label"></label>
+            <input asp-for="DisplayOrder" class="form-control" />
+        </div>
+    </div>
+</form>
