@@ -26,6 +26,12 @@ namespace CompleteDotNetCoreWeb.Controllers
             //Console.WriteLine(objectCategoryList);
             return View(objectCategoryList);
         }
+
+        // GET: 
+        public IActionResult Create()
+        {
+            return View();
+        }
     }
 }
 
