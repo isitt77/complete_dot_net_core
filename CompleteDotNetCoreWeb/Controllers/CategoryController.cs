@@ -38,6 +38,11 @@ namespace CompleteDotNetCoreWeb.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(Category obj)
         {
+            if (obj.Name == obj.DisplayOrder.ToString())
+            {
+                ModelState.AddModelError("CustomError", "DisplayOrder cannot match Name.");
+            }
+
             Console.WriteLine("isValidModelState: " + ModelState.IsValid);
             if (ModelState.IsValid)
             {
