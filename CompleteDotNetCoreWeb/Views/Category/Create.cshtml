@@ -24,3 +24,10 @@
         <a asp-controller="Category" asp-action="Index" class="btn btn-secondary mt-3">Back to Category List</a>
     </div>
 </form>
+
+@section Scripts {
+    @{
+        // Runs client side validation so server isn't accessed.
+        <partial name="_ValidationScriptsPartial" />
+    }
+}
