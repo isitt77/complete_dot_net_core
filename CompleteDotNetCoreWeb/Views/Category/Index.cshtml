@@ -22,7 +22,7 @@
     <br />
     <table class="table table-bordered table-striped" width="100%">
         <thead>
-            <tr>
+            <tr class="table-primary">
                 <th>
                     Category Name
                 </th>
@@ -35,7 +35,7 @@
         <tbody>
             @foreach (Category obj in Model)
             {
-                <tr>
+                <tr class="table-dark">
                     <td width="50%">
                         @obj.Name
                     </td>
