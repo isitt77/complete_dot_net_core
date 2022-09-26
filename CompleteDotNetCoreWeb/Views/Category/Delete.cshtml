@@ -1,0 +1,30 @@
+﻿@model Category
+
+
+<form method="post" class="form-group" asp-action="Delete">
+    @*<input asp-for="Id" hidden />*@
+    <div class="border p-3 mt-5">
+        <div class="row pb-2">
+            <h2 class="text-info">Delete Category</h2>
+            <hr />
+        </div>
+        <div asp-validation-summary="All" class="text-warning"></div>
+        <div class="mb-3">
+            <label asp-for="Name" class="form-label"></label>
+            <input asp-for="Name" class="form-control" disabled />
+        </div>
+        <div class="mb-3">
+            <label asp-for="DisplayOrder" class="form-label"></label>
+            <input asp-for="DisplayOrder" class="form-control" disabled />
+        </div>
+        <button type="submit" class="btn btn-success mt-3 me-3">Delete</button>
+        <a asp-controller="Category" asp-action="Index" class="btn btn-secondary mt-3">Back to Category List</a>
+    </div>
+</form>
+
+@section Scripts {
+    @{
+        // Runs client side validation so server isn't accessed.
+        <partial name="_ValidationScriptsPartial" />
+    }
+}
