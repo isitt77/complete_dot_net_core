@@ -82,7 +82,7 @@ namespace CompleteDotNetCoreWeb.Controllers
             Console.WriteLine("isValidModelState: " + ModelState.IsValid);
             if (ModelState.IsValid)
             {
-                _db.Categories.Add(obj);
+                _db.Categories.Update(obj);
                 _db.SaveChanges();
                 return RedirectToAction("Index");
             }
