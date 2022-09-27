@@ -19,7 +19,7 @@ namespace CompleteDotNetCoreWeb.Controllers
             _db = db;
         }
 
-        // GET: /<controller>/
+        // GET: Index
         public IActionResult Index()
         {
             IEnumerable<Category> objectCategoryList = _db.Categories;
@@ -27,13 +27,13 @@ namespace CompleteDotNetCoreWeb.Controllers
             return View(objectCategoryList);
         }
 
-        // GET: 
+        // GET: Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // Post:
+        // Post: Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Create(Category obj)
@@ -48,12 +48,13 @@ namespace CompleteDotNetCoreWeb.Controllers
             {
                 _db.Categories.Add(obj);
                 _db.SaveChanges();
+                TempData["success"] = "You've successfully created a category.";
                 return RedirectToAction("Index");
             }
             return View(obj);
         }
 
-        // GET: 
+        // GET: Edit
         public IActionResult Edit(int? id)
         {
             if (id == null || id == 0)
@@ -69,7 +70,7 @@ namespace CompleteDotNetCoreWeb.Controllers
             return View(categoryFromDb);
         }
 
-        // Post:
+        // Post: Edit
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Edit(Category obj)
@@ -84,12 +85,13 @@ namespace CompleteDotNetCoreWeb.Controllers
             {
                 _db.Categories.Update(obj);
                 _db.SaveChanges();
+                TempData["success"] = "You've successfully edited a category.";
                 return RedirectToAction("Index");
             }
             return View(obj);
         }
 
-        // GET: 
+        // GET: Delete
         public IActionResult Delete(int? id)
         {
             if (id == null || id == 0)
@@ -105,7 +107,7 @@ namespace CompleteDotNetCoreWeb.Controllers
             return View(categoryFromDb);
         }
 
-        // Post:
+        // Post: Delete
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Delete(Category obj)
@@ -117,6 +119,7 @@ namespace CompleteDotNetCoreWeb.Controllers
 
             _db.Categories.Remove(obj);
             _db.SaveChanges();
+            TempData["success"] = "You've successfully deleted a category.";
             return RedirectToAction("Index");
         }
     }
