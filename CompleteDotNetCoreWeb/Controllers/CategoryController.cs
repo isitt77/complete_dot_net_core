@@ -115,14 +115,9 @@ namespace CompleteDotNetCoreWeb.Controllers
                 return NotFound();
             }
 
-            //Console.WriteLine("isValidModelState: " + ModelState.IsValid);
-            //if (ModelState.IsValid)
-            //{
             _db.Categories.Remove(obj);
             _db.SaveChanges();
             return RedirectToAction("Index");
-            //}
-            //return View(obj);
         }
     }
 }
