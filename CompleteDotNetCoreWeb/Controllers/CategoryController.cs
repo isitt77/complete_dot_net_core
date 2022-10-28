@@ -42,7 +42,7 @@ namespace CompleteDotNetCoreWeb.Controllers
             {
                 ModelState.AddModelError("CustomError", "DisplayOrder cannot match Name.");
             }
-
+            // ModelState is only hit when there are no client side validations.
             Console.WriteLine("isValidModelState: " + ModelState.IsValid);
             if (ModelState.IsValid)
             {
