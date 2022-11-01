@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompleteDotNetCoreWeb", "Co
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompleteDotNetCore.DataAccess", "CompleteDotNetCore.DataAccess\CompleteDotNetCore.DataAccess.csproj", "{63E89B15-2D32-4263-B266-9D4C01984DB0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompleteDotNetCore.Models", "CompleteDotNetCore.Models\CompleteDotNetCore.Models.csproj", "{1B09A724-AF59-4B00-BF64-217182A2FADB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{63E89B15-2D32-4263-B266-9D4C01984DB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{63E89B15-2D32-4263-B266-9D4C01984DB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{63E89B15-2D32-4263-B266-9D4C01984DB0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B09A724-AF59-4B00-BF64-217182A2FADB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B09A724-AF59-4B00-BF64-217182A2FADB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B09A724-AF59-4B00-BF64-217182A2FADB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B09A724-AF59-4B00-BF64-217182A2FADB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
