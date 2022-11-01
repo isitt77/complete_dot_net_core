@@ -6,6 +6,9 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>..\CompleteDotNetCore\bin\Debug</OutputPath>
+  </PropertyGroup>
   <ItemGroup>
     <None Remove="Data\" />
     <None Remove="Microsoft.EntityFrameworkCore" />
