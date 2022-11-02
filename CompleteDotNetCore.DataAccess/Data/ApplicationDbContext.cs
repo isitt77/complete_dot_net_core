@@ -1,8 +1,8 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
-using CompleteDotNetCoreWeb.Models;
+using CompleteDotNetCore.Models;
 
-namespace CompleteDotNetCoreWeb.Data
+namespace CompleteDotNetCore.DataAccess
 {
     public class ApplicationDbContext : DbContext
     {
