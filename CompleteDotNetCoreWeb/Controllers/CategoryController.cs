@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using CompleteDotNetCore.DataAccess;
-using CompleteDotNetCore.Models;
+using CompleteDotNetCoreWeb.Data;
+using CompleteDotNetCoreWeb.Models;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
-namespace CompleteDotNetCore.Controllers
+namespace CompleteDotNetCoreWeb.Controllers
 {
     public class CategoryController : Controller
     {

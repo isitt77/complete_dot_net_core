@@ -1,4 +1,4 @@
-﻿using CompleteDotNetCore.DataAccess;
+﻿using CompleteDotNetCoreWeb.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 
