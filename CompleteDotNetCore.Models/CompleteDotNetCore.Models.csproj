@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+<<<<<<< HEAD
     <None Remove="Microsoft.EntityFrameworkCore" />
   </ItemGroup>
   <ItemGroup>
@@ -15,5 +16,11 @@
   <ItemGroup>
     <ProjectReference Include="..\CompleteDotNetCore.Utility\CompleteDotNetCore.Utility.csproj" />
     <ProjectReference Include="..\CompleteDotNetCoreWeb\CompleteDotNetCoreWeb.csproj" />
+=======
+    <None Remove="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\" />
+>>>>>>> parent of 49e4926 (Change namespace of models files to CompleteDotNetCore.Models.)
   </ItemGroup>
 </Project>

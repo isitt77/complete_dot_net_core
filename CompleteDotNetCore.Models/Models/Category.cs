@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace CompleteDotNetCore.Models
+namespace CompleteDotNetCoreWeb.Models
 {
     public class Category
     {
