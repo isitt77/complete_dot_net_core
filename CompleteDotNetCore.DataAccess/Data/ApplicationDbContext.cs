@@ -1,6 +1,6 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
-using CompleteDotNetCoreWeb.Models;
+using CompleteDotNetCore.Models;
 
 namespace CompleteDotNetCore.DataAccess
 {
