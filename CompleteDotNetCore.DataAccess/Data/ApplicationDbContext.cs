@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using CompleteDotNetCoreWeb.Models;
 
-namespace CompleteDotNetCoreWeb.Data
+namespace CompleteDotNetCore.DataAccess
 {
     public class ApplicationDbContext : DbContext
     {
