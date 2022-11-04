@@ -4,7 +4,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace CompleteDotNetCoreWeb.Data.Migrations
+namespace CompleteDotNetCore.DataAccess.Migrations
 {
     public partial class AddCategoryToDatabase : Migration
     {
