@@ -6,7 +6,7 @@ namespace CompleteDotNetCore.DataAccess.Repository.IRepository
     public interface IRepository<T> where T : class
     {
         // Find()
-        T GetFirstOrDefault(Expression<Func<T, bool>> filter);
+        T? GetFirstOrDefault(Expression<Func<T, bool>> filter);
 
         // GET classes
         IEnumerable<T> GetAll();
