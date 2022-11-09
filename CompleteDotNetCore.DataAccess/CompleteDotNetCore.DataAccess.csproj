@@ -1,33 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
-
-  <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <None Remove="Data\" />
-    <None Remove="Microsoft.EntityFrameworkCore" />
-    <None Remove="Microsoft.EntityFrameworkCore.Design" />
-    <None Remove="Npgsql.EntityFrameworkCore.PostgreSQL" />
-    <None Remove="Repository\" />
-    <None Remove="Repository\IRepository\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Data\" />
-    <Folder Include="Repository\" />
-    <Folder Include="Repository\IRepository\" />
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.0" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.0">
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
-    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="6.0.7" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\CompleteDotNetCore.Models\CompleteDotNetCore.Models.csproj" />
-  </ItemGroup>
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+	<ItemGroup>
+		<None Remove="Data\" />
+		<None Remove="Microsoft.EntityFrameworkCore" />
+		<None Remove="Microsoft.EntityFrameworkCore.Design" />
+		<None Remove="Npgsql.EntityFrameworkCore.PostgreSQL" />
+		<None Remove="Repository\" />
+		<None Remove="Repository\IRepository\" />
+	</ItemGroup>
+	<ItemGroup>
+		<Folder Include="Data\" />
+		<Folder Include="Repository\" />
+		<Folder Include="Repository\IRepository\" />
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.10" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.10">
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+			<PrivateAssets>all</PrivateAssets>
+		</PackageReference>
+		<PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="6.0.7" />
+	</ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\CompleteDotNetCore.Models\CompleteDotNetCore.Models.csproj" />
+	</ItemGroup>
 </Project>
