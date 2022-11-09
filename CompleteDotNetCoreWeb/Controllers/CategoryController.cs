@@ -23,7 +23,7 @@ namespace CompleteDotNetCoreWeb.Controllers
         // GET: Index
         public IActionResult Index()
         {
-            IEnumerable<Category> objectCategoryList = _db.Categories;
+            IEnumerable<Category> objectCategoryList = _db.GetAll();
             //Console.WriteLine(objectCategoryList);
             return View(objectCategoryList);
         }
@@ -47,8 +47,8 @@ namespace CompleteDotNetCoreWeb.Controllers
             Console.WriteLine("isValidModelState: " + ModelState.IsValid);
             if (ModelState.IsValid)
             {
-                _db.Categories.Add(obj);
-                _db.SaveChanges();
+                _db.Add(obj);
+                _db.Save();
                 TempData["success"] = "You've successfully created a category.";
                 return RedirectToAction("Index");
             }
@@ -62,7 +62,8 @@ namespace CompleteDotNetCoreWeb.Controllers
             {
                 return NotFound();
             }
-            var categoryFromDb = _db.Categories.Find(id);
+            //var categoryFromDb = _db.Categories.Find(id);
+            Category? categoryFromDb = _db.GetFirstOrDefault(u => u.Name == "id");
 
             if (categoryFromDb == null)
             {
@@ -84,8 +85,8 @@ namespace CompleteDotNetCoreWeb.Controllers
             Console.WriteLine("isValidModelState: " + ModelState.IsValid);
             if (ModelState.IsValid)
             {
-                _db.Categories.Update(obj);
-                _db.SaveChanges();
+                _db.Update(obj);
+                _db.Save();
                 TempData["success"] = "You've successfully edited a category.";
                 return RedirectToAction("Index");
             }
@@ -99,7 +100,8 @@ namespace CompleteDotNetCoreWeb.Controllers
             {
                 return NotFound();
             }
-            var categoryFromDb = _db.Categories.Find(id);
+            //var categoryFromDb = _db.Categories.Find(id);
+            Category? categoryFromDb = _db.GetFirstOrDefault(u => u.Name == "id");
 
             if (categoryFromDb == null)
             {
@@ -118,8 +120,8 @@ namespace CompleteDotNetCoreWeb.Controllers
                 return NotFound();
             }
 
-            _db.Categories.Remove(obj);
-            _db.SaveChanges();
+            _db.Remove(obj);
+            _db.Save();
             TempData["success"] = "You've successfully deleted a category.";
             return RedirectToAction("Index");
         }
