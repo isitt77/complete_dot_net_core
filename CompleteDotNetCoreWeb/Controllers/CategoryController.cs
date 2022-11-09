@@ -63,7 +63,7 @@ namespace CompleteDotNetCoreWeb.Controllers
                 return NotFound();
             }
             //var categoryFromDb = _db.Categories.Find(id);
-            Category? categoryFromDb = _db.GetFirstOrDefault(u => u.Name == "id");
+            Category? categoryFromDb = _db.GetFirstOrDefault(u => u.Id == id);
 
             if (categoryFromDb == null)
             {
@@ -101,7 +101,7 @@ namespace CompleteDotNetCoreWeb.Controllers
                 return NotFound();
             }
             //var categoryFromDb = _db.Categories.Find(id);
-            Category? categoryFromDb = _db.GetFirstOrDefault(u => u.Name == "id");
+            Category? categoryFromDb = _db.GetFirstOrDefault(u => u.Id == id);
 
             if (categoryFromDb == null)
             {
