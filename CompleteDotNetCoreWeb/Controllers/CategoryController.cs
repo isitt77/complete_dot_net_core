@@ -13,17 +13,17 @@ namespace CompleteDotNetCoreWeb.Controllers
 {
     public class CategoryController : Controller
     {
-        private readonly ICategoryRepository _db;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public CategoryController(ICategoryRepository db)
+        public CategoryController(IUnitOfWork unitOfWork)
         {
-            _db = db;
+            _unitOfWork = unitOfWork;
         }
 
         // GET: Index
         public IActionResult Index()
         {
-            IEnumerable<Category> objectCategoryList = _db.GetAll();
+            IEnumerable<Category> objectCategoryList = _unitOfWork.Category.GetAll();
             //Console.WriteLine(objectCategoryList);
             return View(objectCategoryList);
         }
@@ -47,8 +47,8 @@ namespace CompleteDotNetCoreWeb.Controllers
             Console.WriteLine("isValidModelState: " + ModelState.IsValid);
             if (ModelState.IsValid)
             {
-                _db.Add(obj);
-                _db.Save();
+                _unitOfWork.Category.Add(obj);
+                _unitOfWork.Save();
                 TempData["success"] = "You've successfully created a category.";
                 return RedirectToAction("Index");
             }
@@ -63,7 +63,7 @@ namespace CompleteDotNetCoreWeb.Controllers
                 return NotFound();
             }
             //var categoryFromDb = _db.Categories.Find(id);
-            Category? categoryFromDb = _db.GetFirstOrDefault(u => u.Id == id);
+            Category? categoryFromDb = _unitOfWork.Category.GetFirstOrDefault(u => u.Id == id);
 
             if (categoryFromDb == null)
             {
@@ -85,8 +85,8 @@ namespace CompleteDotNetCoreWeb.Controllers
             Console.WriteLine("isValidModelState: " + ModelState.IsValid);
             if (ModelState.IsValid)
             {
-                _db.Update(obj);
-                _db.Save();
+                _unitOfWork.Category.Update(obj);
+                _unitOfWork.Save();
                 TempData["success"] = "You've successfully edited a category.";
                 return RedirectToAction("Index");
             }
@@ -101,7 +101,7 @@ namespace CompleteDotNetCoreWeb.Controllers
                 return NotFound();
             }
             //var categoryFromDb = _db.Categories.Find(id);
-            Category? categoryFromDb = _db.GetFirstOrDefault(u => u.Id == id);
+            Category? categoryFromDb = _unitOfWork.Category.GetFirstOrDefault(u => u.Id == id);
 
             if (categoryFromDb == null)
             {
@@ -120,8 +120,8 @@ namespace CompleteDotNetCoreWeb.Controllers
                 return NotFound();
             }
 
-            _db.Remove(obj);
-            _db.Save();
+            _unitOfWork.Category.Remove(obj);
+            _unitOfWork.Save();
             TempData["success"] = "You've successfully deleted a category.";
             return RedirectToAction("Index");
         }
