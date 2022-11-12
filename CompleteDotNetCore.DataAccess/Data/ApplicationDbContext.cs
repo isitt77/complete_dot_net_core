@@ -11,6 +11,9 @@ namespace CompleteDotNetCore.DataAccess
         }
         // Creates the Category table
         public DbSet<Category> Categories { get; set; }
+
+        // Creates the CoverType table
+        public DbSet<CoverType> CoverTypes { get; set; }
     }
 }
 
