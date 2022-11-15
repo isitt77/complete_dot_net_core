@@ -13,6 +13,9 @@
 		<None Remove="Microsoft.EntityFrameworkCore.SqlServer" />
 		<None Remove="Npgsql.EntityFrameworkCore.PostgreSQL" />
 		<None Remove="Microsoft.EntityFrameworkCore.Design" />
+		<None Remove="Areas\" />
+		<None Remove="Areas\Admin\" />
+		<None Remove="Areas\Customer\" />
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.0" />
@@ -31,5 +34,10 @@
 			<GlobalPropertiesToRemove>
 			</GlobalPropertiesToRemove>
 		</ProjectReference>
+	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="Areas\" />
+	  <Folder Include="Areas\Admin\" />
+	  <Folder Include="Areas\Customer\" />
 	</ItemGroup>
 </Project>
