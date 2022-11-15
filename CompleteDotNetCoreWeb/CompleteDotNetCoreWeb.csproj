@@ -16,6 +16,10 @@
 		<None Remove="Areas\" />
 		<None Remove="Areas\Admin\" />
 		<None Remove="Areas\Customer\" />
+		<None Remove="Areas\Admin\Controllers\" />
+		<None Remove="Areas\Customer\Controllers\" />
+		<None Remove="Areas\Admin\Views\" />
+		<None Remove="Areas\Customer\Views\" />
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.0" />
@@ -39,5 +43,9 @@
 	  <Folder Include="Areas\" />
 	  <Folder Include="Areas\Admin\" />
 	  <Folder Include="Areas\Customer\" />
+	  <Folder Include="Areas\Admin\Controllers\" />
+	  <Folder Include="Areas\Customer\Controllers\" />
+	  <Folder Include="Areas\Admin\Views\" />
+	  <Folder Include="Areas\Customer\Views\" />
 	</ItemGroup>
 </Project>
