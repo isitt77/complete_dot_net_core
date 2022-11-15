@@ -22,6 +22,8 @@
 		<None Remove="Areas\Customer\Views\" />
 		<None Remove="Areas\Admin\Views\Category\" />
 		<None Remove="Areas\Customer\Views\Home\" />
+		<None Remove="Microsoft.VisualStudio.Web.CodeGeneration.Design" />
+		<None Remove="Areas\Admin\Views\CoverType\" />
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.0" />
@@ -30,6 +32,7 @@
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 			<PrivateAssets>all</PrivateAssets>
 		</PackageReference>
+		<PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="7.0.0" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\CompleteDotNetCore.DataAccess\CompleteDotNetCore.DataAccess.csproj">
@@ -51,5 +54,6 @@
 	  <Folder Include="Areas\Customer\Views\" />
 	  <Folder Include="Areas\Admin\Views\Category\" />
 	  <Folder Include="Areas\Customer\Views\Home\" />
+	  <Folder Include="Areas\Admin\Views\CoverType\" />
 	</ItemGroup>
 </Project>
