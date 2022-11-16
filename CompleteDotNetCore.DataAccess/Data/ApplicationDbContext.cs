@@ -14,6 +14,9 @@ namespace CompleteDotNetCore.DataAccess
 
         // Creates the CoverType table
         public DbSet<CoverType> CoverTypes { get; set; }
+
+        // Creates the Product table
+        public DbSet<Product> Products { get; set; }
     }
 }
 
