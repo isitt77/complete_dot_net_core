@@ -2,8 +2,6 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 
-@model IEnumerable<Product>
-
 @{
     ViewData["Title"] = "Index";
 }
@@ -23,27 +21,13 @@
     <table class="table table-bordered table-striped" width="100%">
         <thead>
             <tr class="table-primary">
-                <th>
-                    Product Name
-                </th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>ISBN</th>
+                <th>Price</th>
+                <th>Category</th>
                 <th></th>
             </tr>
         </thead>
-        <tbody>
-            @foreach (Product obj in Model)
-            {
-                <tr class="table-dark">
-                    <td width="80%">
-                        @obj.Title
-                    </td>
-                    <td class="btn-group w-50%" role="button">
-                        <a class="btn btn-warning" asp-controller="Product" asp-action="Edit" asp-route-id="@obj.Id"><i class="bi bi-pencil"></i> &nbsp; Edit</a>
-                    </td>
-                    <td class="btn-group w-50%" role="button">
-                        <a class="btn btn-danger" asp-controller="Product" asp-action="Delete" asp-route-id="@obj.Id"><i class="bi bi-trash"></i> &nbsp; Delete</a>
-                    </td>
-                </tr>
-            }
-        </tbody>
     </table>
 </div>
