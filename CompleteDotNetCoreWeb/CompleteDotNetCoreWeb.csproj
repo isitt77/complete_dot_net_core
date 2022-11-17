@@ -24,6 +24,7 @@
 		<None Remove="Areas\Customer\Views\Home\" />
 		<None Remove="Microsoft.VisualStudio.Web.CodeGeneration.Design" />
 		<None Remove="Areas\Admin\Views\CoverType\" />
+		<None Remove="Areas\Admin\Views\Product\" />
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.0" />
@@ -55,5 +56,6 @@
 	  <Folder Include="Areas\Admin\Views\Category\" />
 	  <Folder Include="Areas\Customer\Views\Home\" />
 	  <Folder Include="Areas\Admin\Views\CoverType\" />
+	  <Folder Include="Areas\Admin\Views\Product\" />
 	</ItemGroup>
 </Project>
