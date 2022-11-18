@@ -44,10 +44,12 @@ namespace CompleteDotNetCore.Models
 
         // Foreign Keys (No annotation needed because "Id" is in name.)
         [Required]
+        [DisplayName("Category Id")]
         public int CategoryId { get; set; }
         public Category? Category { get; set; }
 
         [Required]
+        [DisplayName("Cover Type Id")]
         public int CoverTypeId { get; set; }
         public CoverType? CoverType { get; set; }
     }

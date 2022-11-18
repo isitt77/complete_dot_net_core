@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using CompleteDotNetCore.DataAccess.Repository.IRepository;
 using CompleteDotNetCore.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace CompleteDotNetCoreWeb.Areas.Admin.Controllers
 {
@@ -30,9 +31,24 @@ namespace CompleteDotNetCoreWeb.Areas.Admin.Controllers
         public IActionResult Upsert(int? id)
         {
             Product product = new();
+            IEnumerable<SelectListItem> CategoryList =
+                _unitOfWork.Category.GetAll().Select(
+                u => new SelectListItem
+                {
+                    Text = u.Name,
+                    Value = u.Id.ToString()
+                });
+            IEnumerable<SelectListItem> CoverTypeList =
+                _unitOfWork.CoverType.GetAll().Select(
+                u => new SelectListItem
+                {
+                    Text = u.Name,
+                    Value = u.Id.ToString()
+                });
             if (id == null || id == 0)
             {
                 // Create Product
+                ViewBag.CategoryList = CategoryList;
                 return View(product);
             }
             else
