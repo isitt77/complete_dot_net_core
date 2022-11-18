@@ -24,5 +24,46 @@ namespace CompleteDotNetCoreWeb.Areas.Admin.Controllers
                 _unitOfWork.Product.GetAll();
             return View(objProductList);
         }
+
+
+        // GET: Upsert
+        public IActionResult Upsert(int? id)
+        {
+            Product product = new();
+            if (id == null || id == 0)
+            {
+                // Create Product
+                return View(product);
+            }
+            else
+            {
+
+            }
+            //var coverTypeFromDb = _db.Product.Find(id);
+            //Product? productFromDb = _unitOfWork.Product.GetFirstOrDefault(u => u.Id == id);
+
+            //if (productFromDb == null)
+            //{
+            //    return NotFound();
+            //}
+            return View();
+        }
+
+
+        // Post: Upsert
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Upsert(Product obj)
+        {
+            Console.WriteLine("isValidModelState: " + ModelState.IsValid);
+            if (ModelState.IsValid)
+            {
+                _unitOfWork.Product.Update(obj);
+                _unitOfWork.Save();
+                TempData["success"] = "You've successfully edited a product.";
+                return RedirectToAction("Index");
+            }
+            return View(obj);
+        }
     }
 }
