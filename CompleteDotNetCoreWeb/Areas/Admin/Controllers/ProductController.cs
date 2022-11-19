@@ -49,6 +49,7 @@ namespace CompleteDotNetCoreWeb.Areas.Admin.Controllers
             {
                 // Create Product
                 ViewBag.CategoryList = CategoryList;
+                ViewData["CoverTypeList"] = CoverTypeList;
                 return View(product);
             }
             else
