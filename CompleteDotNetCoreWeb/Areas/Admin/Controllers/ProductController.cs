@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using CompleteDotNetCore.DataAccess.Repository.IRepository;
 using CompleteDotNetCore.Models;
+using CompleteDotNetCore.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
@@ -30,27 +31,44 @@ namespace CompleteDotNetCoreWeb.Areas.Admin.Controllers
         // GET: Upsert
         public IActionResult Upsert(int? id)
         {
-            Product product = new();
-            IEnumerable<SelectListItem> CategoryList =
-                _unitOfWork.Category.GetAll().Select(
-                u => new SelectListItem
+            ProductViewModel productViewModel = new()
+            {
+                product = new(),
+                CategoryList = _unitOfWork.Category.GetAll().Select(
+                i => new SelectListItem
                 {
-                    Text = u.Name,
-                    Value = u.Id.ToString()
-                });
-            IEnumerable<SelectListItem> CoverTypeList =
-                _unitOfWork.CoverType.GetAll().Select(
-                u => new SelectListItem
+                    Text = i.Name,
+                    Value = i.Id.ToString()
+                }),
+                CoverTypeList = _unitOfWork.CoverType.GetAll().Select(
+                i => new SelectListItem
                 {
-                    Text = u.Name,
-                    Value = u.Id.ToString()
-                });
+                    Text = i.Name,
+                    Value = i.Id.ToString()
+                })
+            };
+
+            //Product product = new();
+            //IEnumerable<SelectListItem> CategoryList =
+            //    _unitOfWork.Category.GetAll().Select(
+            //    u => new SelectListItem
+            //    {
+            //        Text = u.Name,
+            //        Value = u.Id.ToString()
+            //    });
+            //IEnumerable<SelectListItem> CoverTypeList =
+            //    _unitOfWork.CoverType.GetAll().Select(
+            //    u => new SelectListItem
+            //    {
+            //        Text = u.Name,
+            //        Value = u.Id.ToString()
+            //    });
             if (id == null || id == 0)
             {
                 // Create Product
-                ViewBag.CategoryList = CategoryList;
-                ViewData["CoverTypeList"] = CoverTypeList;
-                return View(product);
+                //ViewBag.CategoryList = CategoryList;
+                //ViewData["CoverTypeList"] = CoverTypeList;
+                return View(productViewModel);
             }
             else
             {
