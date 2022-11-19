@@ -1,4 +1,5 @@
-﻿@model Product
+﻿@*@model Product*@
+@model CompleteDotNetCore.Models.ViewModels.ProductViewModel
 
 <form method="post" class="form-group" asp-action="Upsert">
     <div class="border p-3 mt-5">
@@ -8,63 +9,63 @@
         </div>
         <div asp-validation-summary="All" class="text-warning"></div>
         <div class="mb-3">
-            <label asp-for="Title" class="form-label"></label>
-            <input asp-for="Title" class="form-control" />
-            <span asp-validation-for="Title" class="text-warning"></span>
+            <label asp-for="Product.Title" class="form-label"></label>
+            <input asp-for="Product.Title" class="form-control" />
+            <span asp-validation-for="Product.Title" class="text-warning"></span>
         </div>
         <div class="mb-3">
-            <label asp-for="Author" class="form-label"></label>
-            <input asp-for="Author" class="form-control" />
-            <span asp-validation-for="Author" class="text-warning"></span>
+            <label asp-for="Product.Author" class="form-label"></label>
+            <input asp-for="Product.Author" class="form-control" />
+            <span asp-validation-for="Product.Author" class="text-warning"></span>
         </div>
         <div class="mb-3">
-            <label asp-for="ISBN" class="form-label"></label>
-            <input asp-for="ISBN" class="form-control" />
-            <span asp-validation-for="ISBN" class="text-warning"></span>
+            <label asp-for="Product.ISBN" class="form-label"></label>
+            <input asp-for="Product.ISBN" class="form-control" />
+            <span asp-validation-for="Product.ISBN" class="text-warning"></span>
         </div>
         <div class="mb-3">
-            <label asp-for="ListPrice" class="form-label"></label>
-            <input asp-for="ListPrice" class="form-control" />
-            <span asp-validation-for="ListPrice" class="text-warning"></span>
+            <label asp-for="Product.ListPrice" class="form-label"></label>
+            <input asp-for="Product.ListPrice" class="form-control" />
+            <span asp-validation-for="Product.ListPrice" class="text-warning"></span>
         </div>
         <div class="mb-3">
-            <label asp-for="Price" class="form-label"></label>
-            <input asp-for="Price" class="form-control" />
-            <span asp-validation-for="Price" class="text-warning"></span>
+            <label asp-for="Product.Price" class="form-label"></label>
+            <input asp-for="Product.Price" class="form-control" />
+            <span asp-validation-for="Product.Price" class="text-warning"></span>
         </div>
         <div class="mb-3">
-            <label asp-for="Price50" class="form-label"></label>
-            <input asp-for="Price50" class="form-control" />
-            <span asp-validation-for="Price50" class="text-warning"></span>
+            <label asp-for="Product.Price50" class="form-label"></label>
+            <input asp-for="Product.Price50" class="form-control" />
+            <span asp-validation-for="Product.Price50" class="text-warning"></span>
         </div>
         <div class="mb-3">
-            <label asp-for="Price100" class="form-label"></label>
-            <input asp-for="Price100" class="form-control" />
-            <span asp-validation-for="Price100" class="text-warning"></span>
+            <label asp-for="Product.Price100" class="form-label"></label>
+            <input asp-for="Product.Price100" class="form-control" />
+            <span asp-validation-for="Product.Price100" class="text-warning"></span>
         </div>
         <div class="mb-3">
-            <label asp-for="IamgeUrl" class="form-label"></label>
-            <input asp-for="IamgeUrl" class="form-control" />
-            <span asp-validation-for="IamgeUrl" class="text-warning"></span>
+            <label asp-for="Product.IamgeUrl" class="form-label"></label>
+            <input asp-for="Product.IamgeUrl" class="form-control" />
+            <span asp-validation-for="Product.IamgeUrl" class="text-warning"></span>
         </div>
         <div class="mb-3">
-            <label asp-for="Description" class="form-label"></label>
-            <textarea asp-for="Description" rows="3" class="form-control"></textarea>
-            <span asp-validation-for="Description" class="text-warning"></span>
+            <label asp-for="Product.Description" class="form-label"></label>
+            <textarea asp-for="Product.Description" rows="3" class="form-control"></textarea>
+            <span asp-validation-for="Product.Description" class="text-warning"></span>
         </div>
         <div class="mb-3">
-            <label asp-for="CategoryId" class="form-label"></label>
-            <select asp-for="CategoryId" asp-items="ViewBag.CategoryList" class="form-select">
+            <label asp-for="Product.CategoryId" class="form-label"></label>
+            <select asp-for="Product.CategoryId" asp-items="@Model.CategoryList" class="form-select">
                 <option disabled selected> -- Select Category --</option>
             </select>
-            <span asp-validation-for="CategoryId" class="text-warning"></span>
+            <span asp-validation-for="Product.CategoryId" class="text-warning"></span>
         </div>
         <div class="mb-3">
-            <label asp-for="CoverTypeId" class="form-label"></label>
-            <select asp-for="CoverTypeId" asp-items="@(ViewData["CoverTypeList"] as IEnumerable<SelectListItem>)" class="form-select">
+            <label asp-for="Product.CoverTypeId" class="form-label"></label>
+            <select asp-for="Product.CoverTypeId" asp-items="@Model.CoverTypeList" class="form-select">
                 <option disabled selected> -- Select CoverType --</option>
             </select>
-            <span asp-validation-for="CoverTypeId" class="text-warning"></span>
+            <span asp-validation-for="Product.CoverTypeId" class="text-warning"></span>
         </div>
         <button type="submit" class="btn btn-warning mt-3 me-3">Update</button>
         <a asp-controller="Product" asp-action="Index" class="btn btn-secondary mt-3">Back to Product List</a>

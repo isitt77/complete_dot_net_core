@@ -33,7 +33,7 @@ namespace CompleteDotNetCoreWeb.Areas.Admin.Controllers
         {
             ProductViewModel productViewModel = new()
             {
-                product = new(),
+                Product = new(),
                 CategoryList = _unitOfWork.Category.GetAll().Select(
                 i => new SelectListItem
                 {
