@@ -40,6 +40,7 @@ namespace CompleteDotNetCore.Models
         [Range(1, 1000)]
         public double Price100 { get; set; }
 
+        [DisplayName("Iamge Url")]
         public string IamgeUrl { get; set; } = "";
 
         // Foreign Keys (No annotation needed because "Id" is in name.)

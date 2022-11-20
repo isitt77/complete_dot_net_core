@@ -3,69 +3,71 @@
 
 <form method="post" class="form-group" asp-action="Upsert" enctype="multipart/form-data">
     <div class="border p-3 mt-5">
-        <div class="row pb-2">
-            <h2 class="text-info">Edit Product</h2>
-            <hr />
-        </div>
-        <div asp-validation-summary="All" class="text-warning"></div>
-        <div class="mb-3">
-            <label asp-for="Product.Title" class="form-label"></label>
-            <input asp-for="Product.Title" class="form-control" />
-            <span asp-validation-for="Product.Title" class="text-warning"></span>
-        </div>
-        <div class="mb-3">
-            <label asp-for="Product.Author" class="form-label"></label>
-            <input asp-for="Product.Author" class="form-control" />
-            <span asp-validation-for="Product.Author" class="text-warning"></span>
-        </div>
-        <div class="mb-3">
-            <label asp-for="Product.ISBN" class="form-label"></label>
-            <input asp-for="Product.ISBN" class="form-control" />
-            <span asp-validation-for="Product.ISBN" class="text-warning"></span>
-        </div>
-        <div class="mb-3">
-            <label asp-for="Product.IamgeUrl" class="form-label"></label>
-            <input asp-for="Product.IamgeUrl" type="file" class="form-control" />
-            @*<span asp-validation-for="Product.IamgeUrl" class="text-warning"></span>*@
-        </div>
-        <div class="mb-3">
-            <label asp-for="Product.Description" class="form-label"></label>
-            <textarea asp-for="Product.Description" rows="3" class="form-control"></textarea>
-            <span asp-validation-for="Product.Description" class="text-warning"></span>
-        </div>
-        <div class="mb-3">
-            <label asp-for="Product.ListPrice" class="form-label"></label>
-            <input asp-for="Product.ListPrice" class="form-control" />
-            <span asp-validation-for="Product.ListPrice" class="text-warning"></span>
-        </div>
-        <div class="mb-3">
-            <label asp-for="Product.Price" class="form-label"></label>
-            <input asp-for="Product.Price" class="form-control" />
-            <span asp-validation-for="Product.Price" class="text-warning"></span>
-        </div>
-        <div class="mb-3">
-            <label asp-for="Product.Price50" class="form-label"></label>
-            <input asp-for="Product.Price50" class="form-control" />
-            <span asp-validation-for="Product.Price50" class="text-warning"></span>
-        </div>
-        <div class="mb-3">
-            <label asp-for="Product.Price100" class="form-label"></label>
-            <input asp-for="Product.Price100" class="form-control" />
-            <span asp-validation-for="Product.Price100" class="text-warning"></span>
-        </div>
-        <div class="mb-3">
-            <label asp-for="Product.CategoryId" class="form-label"></label>
-            <select asp-for="Product.CategoryId" asp-items="@Model.CategoryList" class="form-select">
-                <option disabled selected> -- Select Category --</option>
-            </select>
-            <span asp-validation-for="Product.CategoryId" class="text-warning"></span>
-        </div>
-        <div class="mb-3">
-            <label asp-for="Product.CoverTypeId" class="form-label"></label>
-            <select asp-for="Product.CoverTypeId" asp-items="@Model.CoverTypeList" class="form-select">
-                <option disabled selected> -- Select CoverType --</option>
-            </select>
-            <span asp-validation-for="Product.CoverTypeId" class="text-warning"></span>
+        <div class="row">
+            <div class="row pb-2">
+                <h2 class="text-info">Edit Product</h2>
+                <hr />
+            </div>
+            <div asp-validation-summary="All" class="text-warning"></div>
+            <div class="mb-3">
+                <label asp-for="Product.Title" class="form-label"></label>
+                <input asp-for="Product.Title" class="form-control" />
+                <span asp-validation-for="Product.Title" class="text-warning"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Product.Author" class="form-label"></label>
+                <input asp-for="Product.Author" class="form-control" />
+                <span asp-validation-for="Product.Author" class="text-warning"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Product.Description" class="form-label"></label>
+                <textarea asp-for="Product.Description" rows="3" class="form-control"></textarea>
+                <span asp-validation-for="Product.Description" class="text-warning"></span>
+            </div>
+            <div class="mb-3 col-6">
+                <label asp-for="Product.IamgeUrl" class="form-label"></label>
+                <input asp-for="Product.IamgeUrl" type="file" class="form-control" />
+                <span asp-validation-for="Product.IamgeUrl" class="text-warning"></span>
+            </div>
+            <div class="mb-3 col-6">
+                <label asp-for="Product.ISBN" class="form-label"></label>
+                <input asp-for="Product.ISBN" class="form-control" />
+                <span asp-validation-for="Product.ISBN" class="text-warning"></span>
+            </div>
+            <div class="mb-3 col-6">
+                <label asp-for="Product.ListPrice" class="form-label"></label>
+                <input asp-for="Product.ListPrice" class="form-control" />
+                <span asp-validation-for="Product.ListPrice" class="text-warning"></span>
+            </div>
+            <div class="mb-3 col-6">
+                <label asp-for="Product.Price" class="form-label"></label>
+                <input asp-for="Product.Price" class="form-control" />
+                <span asp-validation-for="Product.Price" class="text-warning"></span>
+            </div>
+            <div class="mb-3 col-6">
+                <label asp-for="Product.Price50" class="form-label"></label>
+                <input asp-for="Product.Price50" class="form-control" />
+                <span asp-validation-for="Product.Price50" class="text-warning"></span>
+            </div>
+            <div class="mb-3 col-6">
+                <label asp-for="Product.Price100" class="form-label"></label>
+                <input asp-for="Product.Price100" class="form-control" />
+                <span asp-validation-for="Product.Price100" class="text-warning"></span>
+            </div>
+            <div class="mb-3 col-6">
+                <label asp-for="Product.CategoryId" class="form-label"></label>
+                <select asp-for="Product.CategoryId" asp-items="@Model.CategoryList" class="form-select">
+                    <option disabled selected> -- Select Category --</option>
+                </select>
+                <span asp-validation-for="Product.CategoryId" class="text-warning"></span>
+            </div>
+            <div class="mb-3 col-6">
+                <label asp-for="Product.CoverTypeId" class="form-label"></label>
+                <select asp-for="Product.CoverTypeId" asp-items="@Model.CoverTypeList" class="form-select">
+                    <option disabled selected> -- Select CoverType --</option>
+                </select>
+                <span asp-validation-for="Product.CoverTypeId" class="text-warning"></span>
+            </div>
         </div>
         <button type="submit" class="btn btn-warning mt-3 me-3">Update</button>
         <a asp-controller="Product" asp-action="Index" class="btn btn-secondary mt-3">Back to Product List</a>
