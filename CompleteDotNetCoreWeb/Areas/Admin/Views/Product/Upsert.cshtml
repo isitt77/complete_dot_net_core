@@ -5,7 +5,7 @@
     <div class="border p-3 mt-5">
         <div class="row">
             <div class="row pb-2">
-                <h2 class="text-info">Edit Product</h2>
+                <h2 class="text-info">@(Model.Product.Id!=0?"Update":"Create") Product</h2>
                 <hr />
             </div>
             @*<div asp-validation-summary="All" class="text-warning"></div>*@
@@ -26,7 +26,7 @@
             </div>
             <div class="mb-3 col-6">
                 <label asp-for="Product.IamgeUrl" class="form-label"></label>
-                <input asp-for="Product.IamgeUrl" type="file" class="form-control" />
+                <input asp-for="Product.IamgeUrl" type="file" id="uploadBox" class="form-control" />
                 <span asp-validation-for="Product.IamgeUrl" class="text-warning"></span>
             </div>
             <div class="mb-3 col-6">
@@ -69,8 +69,17 @@
                 <span asp-validation-for="Product.CoverTypeId" class="text-warning"></span>
             </div>
         </div>
-        <button type="submit" class="btn btn-warning mt-3 me-3">Update</button>
-        <a asp-controller="Product" asp-action="Index" class="btn btn-secondary mt-3">Back to Product List</a>
+        @if (Model.Product.Id != 0)
+        {
+            <button type="submit" class="btn btn-warning mt-3 me-3">Update</button>
+            <a asp-controller="Product" asp-action="Index" class="btn btn-secondary mt-3">Back to Product List</a>
+        }
+        else
+        {
+            <button type="submit" onclick="return ValidateInput()" class="btn btn-warning mt-3 me-3">Create</button>
+            <a asp-controller="Product" asp-action="Index" class="btn btn-secondary mt-3">Back to Product List</a>
+        }
+
     </div>
 </form>
 
@@ -79,4 +88,15 @@
         // Runs client side validation so server isn't accessed.
         <partial name="_ValidationScriptsPartial" />
     }
+    <script>function ValidateInput() {
+            if (document.getElementById("uploadBox").value == "") {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Umm...',
+                    text: 'Please upload an image!'
+                })
+                return false;
+            }
+            return true;
+        }</script>
 }
