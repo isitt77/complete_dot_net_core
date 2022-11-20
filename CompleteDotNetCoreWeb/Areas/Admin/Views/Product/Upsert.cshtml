@@ -1,7 +1,7 @@
 ﻿@*@model Product*@
 @model CompleteDotNetCore.Models.ViewModels.ProductViewModel
 
-<form method="post" class="form-group" asp-action="Upsert">
+<form method="post" class="form-group" asp-action="Upsert" enctype="multipart/form-data">
     <div class="border p-3 mt-5">
         <div class="row pb-2">
             <h2 class="text-info">Edit Product</h2>
@@ -24,6 +24,16 @@
             <span asp-validation-for="Product.ISBN" class="text-warning"></span>
         </div>
         <div class="mb-3">
+            <label asp-for="Product.IamgeUrl" class="form-label"></label>
+            <input asp-for="Product.IamgeUrl" type="file" class="form-control" />
+            @*<span asp-validation-for="Product.IamgeUrl" class="text-warning"></span>*@
+        </div>
+        <div class="mb-3">
+            <label asp-for="Product.Description" class="form-label"></label>
+            <textarea asp-for="Product.Description" rows="3" class="form-control"></textarea>
+            <span asp-validation-for="Product.Description" class="text-warning"></span>
+        </div>
+        <div class="mb-3">
             <label asp-for="Product.ListPrice" class="form-label"></label>
             <input asp-for="Product.ListPrice" class="form-control" />
             <span asp-validation-for="Product.ListPrice" class="text-warning"></span>
@@ -42,16 +52,6 @@
             <label asp-for="Product.Price100" class="form-label"></label>
             <input asp-for="Product.Price100" class="form-control" />
             <span asp-validation-for="Product.Price100" class="text-warning"></span>
-        </div>
-        <div class="mb-3">
-            <label asp-for="Product.IamgeUrl" class="form-label"></label>
-            <input asp-for="Product.IamgeUrl" class="form-control" />
-            <span asp-validation-for="Product.IamgeUrl" class="text-warning"></span>
-        </div>
-        <div class="mb-3">
-            <label asp-for="Product.Description" class="form-label"></label>
-            <textarea asp-for="Product.Description" rows="3" class="form-control"></textarea>
-            <span asp-validation-for="Product.Description" class="text-warning"></span>
         </div>
         <div class="mb-3">
             <label asp-for="Product.CategoryId" class="form-label"></label>

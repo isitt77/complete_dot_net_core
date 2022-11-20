@@ -88,12 +88,12 @@ namespace CompleteDotNetCoreWeb.Areas.Admin.Controllers
         // Post: Upsert
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Upsert(Product obj)
+        public IActionResult Upsert(ProductViewModel obj, IFormFile file)
         {
             Console.WriteLine("isValidModelState: " + ModelState.IsValid);
             if (ModelState.IsValid)
             {
-                _unitOfWork.Product.Update(obj);
+                //_unitOfWork.Product.Update(obj);
                 _unitOfWork.Save();
                 TempData["success"] = "You've successfully edited a product.";
                 return RedirectToAction("Index");
