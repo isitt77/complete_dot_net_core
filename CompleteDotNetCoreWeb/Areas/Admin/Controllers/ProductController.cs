@@ -25,9 +25,10 @@ namespace CompleteDotNetCoreWeb.Areas.Admin.Controllers
 
         public IActionResult Index()
         {
-            IEnumerable<Product> objProductList =
-                _unitOfWork.Product.GetAll();
-            return View(objProductList);
+            //IEnumerable<Product> objProductList =
+            //    _unitOfWork.Product.GetAll();
+            //return View(objProductList);
+            return View();
         }
 
 
@@ -122,5 +123,15 @@ namespace CompleteDotNetCoreWeb.Areas.Admin.Controllers
             }
             return View(obj);
         }
+
+        #region API CALLS
+        [HttpGet]
+        public IActionResult GetAll()
+        {
+            IEnumerable<Product> productList =
+                _unitOfWork.Product.GetAll();
+            return Json(new { data = productList });
+        }
+        #endregion
     }
 }
