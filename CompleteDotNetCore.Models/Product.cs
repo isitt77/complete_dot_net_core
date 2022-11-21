@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 
 namespace CompleteDotNetCore.Models
 {
@@ -41,17 +42,20 @@ namespace CompleteDotNetCore.Models
         public double Price100 { get; set; }
 
         [DisplayName("Iamge Url")]
+        [ValidateNever]
         public string IamgeUrl { get; set; } = "";
 
         // Foreign Keys (No annotation needed because "Id" is in name.)
         [Required]
         [DisplayName("Category Id")]
         public int CategoryId { get; set; }
+        [ValidateNever]
         public Category? Category { get; set; }
 
         [Required]
         [DisplayName("Cover Type Id")]
         public int CoverTypeId { get; set; }
+        [ValidateNever]
         public CoverType? CoverType { get; set; }
     }
 }
