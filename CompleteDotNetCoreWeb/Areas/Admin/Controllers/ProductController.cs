@@ -13,10 +13,13 @@ namespace CompleteDotNetCoreWeb.Areas.Admin.Controllers
     public class ProductController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public ProductController(IUnitOfWork unitOfWork)
+        public ProductController(IUnitOfWork unitOfWork,
+            IWebHostEnvironment webHostEnvironment)
         {
             _unitOfWork = unitOfWork;
+            _webHostEnvironment = webHostEnvironment;
         }
 
 
@@ -72,7 +75,7 @@ namespace CompleteDotNetCoreWeb.Areas.Admin.Controllers
             }
             else
             {
-
+                // Update Product
             }
             //var coverTypeFromDb = _db.Product.Find(id);
             //Product? productFromDb = _unitOfWork.Product.GetFirstOrDefault(u => u.Id == id);
@@ -88,14 +91,33 @@ namespace CompleteDotNetCoreWeb.Areas.Admin.Controllers
         // Post: Upsert
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Upsert(ProductViewModel obj, IFormFile file)
+        public IActionResult Upsert(ProductViewModel obj, IFormFile? file)
         {
             Console.WriteLine("isValidModelState: " + ModelState.IsValid);
             if (ModelState.IsValid)
             {
-                //_unitOfWork.Product.Update(obj);
+                string wwwRootPath = _webHostEnvironment.WebRootPath;
+
+                if (file != null)
+                {
+                    string fileName = Guid.NewGuid().ToString();
+                    string uploads = Path.Combine(wwwRootPath,
+                        @"images\products");
+                    string extension = Path.GetExtension(file.FileName);
+
+                    using (FileStream fileStreams = new FileStream(
+                        Path.Combine(uploads, fileName + extension),
+                        FileMode.Create))
+                    {
+                        file.CopyTo(fileStreams);
+                    }
+                    obj.Product.IamgeUrl = @"images\products\" +
+                        fileName + extension;
+                }
+
+                _unitOfWork.Product.Add(obj.Product);
                 _unitOfWork.Save();
-                TempData["success"] = "You've successfully edited a product.";
+                TempData["success"] = "You've successfully added a product.";
                 return RedirectToAction("Index");
             }
             return View(obj);
