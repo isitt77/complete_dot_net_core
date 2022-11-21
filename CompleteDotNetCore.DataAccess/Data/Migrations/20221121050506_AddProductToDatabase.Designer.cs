@@ -9,10 +9,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace CompleteDotNetCore.DataAccess.Migrations
+namespace CompleteDotNetCore.DataAccess.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221116072828_AddProductToDatabase")]
+    [Migration("20221121050506_AddProductToDatabase")]
     partial class AddProductToDatabase
     {
         /// <inheritdoc />
