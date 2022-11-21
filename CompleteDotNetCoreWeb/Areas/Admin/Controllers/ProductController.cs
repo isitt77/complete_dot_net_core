@@ -102,7 +102,7 @@ namespace CompleteDotNetCoreWeb.Areas.Admin.Controllers
                 {
                     string fileName = Guid.NewGuid().ToString();
                     string uploads = Path.Combine(wwwRootPath,
-                        @"images\products");
+                        @"images/products");
                     string extension = Path.GetExtension(file.FileName);
 
                     using (FileStream fileStreams = new FileStream(
@@ -111,7 +111,7 @@ namespace CompleteDotNetCoreWeb.Areas.Admin.Controllers
                     {
                         file.CopyTo(fileStreams);
                     }
-                    obj.Product.IamgeUrl = @"images\products\" +
+                    obj.Product.IamgeUrl = @"images/products/" +
                         fileName + extension;
                 }
 
