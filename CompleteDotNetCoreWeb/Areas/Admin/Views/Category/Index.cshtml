@@ -44,10 +44,16 @@
                         @obj.DisplayOrder
                     </td>
                     <td class="btn-group w-50%" role="button">
-                        <a class="btn btn-warning" asp-controller="Category" asp-action="Edit" asp-route-id="@obj.Id"><i class="bi bi-pencil"></i> &nbsp; Edit</a>
+                        <a class="btn btn-warning" asp-controller="Category"
+                           asp-action="Edit" asp-route-id="@obj.Id">
+                            <i class="bi bi-pencil"></i> &nbsp; Edit
+                        </a>
                     </td>
                     <td class="btn-group w-50%" role="button">
-                        <a class="btn btn-danger" asp-controller="Category" asp-action="Delete" asp-route-id="@obj.Id"><i class="bi bi-trash"></i> &nbsp; Delete</a>
+                        <a class="btn btn-danger" asp-controller="Category"
+                           asp-action="Delete" asp-route-id="@obj.Id">
+                            <i class="bi bi-trash"></i> &nbsp; Delete
+                        </a>
                     </td>
                 </tr>
             }
