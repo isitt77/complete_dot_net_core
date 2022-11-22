@@ -6,10 +6,11 @@ namespace CompleteDotNetCore.DataAccess.Repository.IRepository
     public interface IRepository<T> where T : class
     {
         // Find()
-        T? GetFirstOrDefault(Expression<Func<T, bool>> filter);
+        T? GetFirstOrDefault(Expression<Func<T, bool>> filter,
+            string? includeProperties = null);
 
         // GET classes
-        IEnumerable<T> GetAll();
+        IEnumerable<T> GetAll(string? includeProperties = null);
 
         // Add()
         void Add(T entity);

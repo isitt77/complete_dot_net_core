@@ -129,7 +129,7 @@ namespace CompleteDotNetCoreWeb.Areas.Admin.Controllers
         public IActionResult GetAll()
         {
             IEnumerable<Product> productList =
-                _unitOfWork.Product.GetAll();
+                _unitOfWork.Product.GetAll(includeProperties: "Category,CoverType");
             return Json(new { data = productList });
         }
         #endregion
