@@ -5,7 +5,7 @@ $(document).ready(function () {
 });
 
 function loadDataTable() {
-    dataTable = $('#dataTable').DataTable({
+    dataTable = $("#dataTable").DataTable({
 
         "ajax": {
             "url": "/Admin/Product/GetAll"
