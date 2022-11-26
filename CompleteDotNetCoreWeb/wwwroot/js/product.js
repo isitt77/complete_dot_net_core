@@ -16,35 +16,39 @@ function loadDataTable() {
         },
         "columns":
             [
-                { "data": "title", "width": "15%" },
-                { "data": "author", "width": "15%" },
-                { "data": "isbn", "width": "15%" },
-                { "data": "price", "width": "15%" },
-                { "data": "category.name", "width": "15%" },
-                { "data": "coverType.name", "width": "15%" },
+                { "data": "title" },
+                { "data": "author" },
+                { "data": "isbn" },
+                { "data": "price" },
+                { "data": "category.name" },
+                { "data": "coverType.name" },
                 {
                     "data": "id",
                     "render": function (data) {
                         console.log(data);
+                        //return `
+                        //    <div class="w-75 btn-group" role="group">
+                        //        <a href="/Admin/Product/Upsert?id=${data}"
+                        //            class="btn btn-warning mx-2"> <i class="bi bi-pencil"></i> Edit</a>
+                        //         <a class="btn btn-danger mx-2"> <i class="bi bi-trash-fill"></i> Delete</a>
+                        //</div>`
                         return `
-                            <div class="w-75 btn-group" role="group">
-                                <a href="/Admin/Product/Upsert?id=${data}"
-                                    class="btn btn-warning mx-2"> <i class="bi bi-pencil"></i> Edit</a>
-                                 <a class="btn btn-danger mx-2"> <i class="bi bi-trash-fill"></i> Delete</a>
-                        </div>`
-                        //   return `<td class="btn-group w-50%">
-                        //   <a class="btn btn-warning"
-                        //       href="/Admin/Product/Upsert?id=${data}">
-                        //   <i class="bi bi-pencil"></i> &nbsp; Edit</a>
-                        //</td>
-                        //<td class="btn-group w-50%" role="button">
-                        //    <a class="btn btn-danger"
-                        //        href="/Admin/Product/Delete?id=${data}">
-                        //     <i class="bi bi-trash"></i> &nbsp; Delete</a>
-                        //</td>
-                        //`
-                    },
-                    "width": "15%"
+                        <div class="row justify-content-around">
+                        <td>
+                           <a class="btn btn-warning col-md-3 col-lg-4 col-xl-5"
+                               href="/Admin/Product/Upsert?id=${data}">
+                           <i class="bi bi-pencil"></i> <span class="d-none
+                                d-xl-inline">&nbsp; Edit</span></a>
+                        </td>
+                         <td>
+                            <a class="btn btn-danger col-md-3 col-lg-4 col-xl-5"
+                                href="/Admin/Product/Delete?id=${data}">
+                             <i class="bi bi-trash"></i> <span class="d-none
+                                d-xl-inline">&nbsp; Delete</span></a>
+                        </td>
+                         </div>
+                        `
+                    }
                 }
             ]
     });
