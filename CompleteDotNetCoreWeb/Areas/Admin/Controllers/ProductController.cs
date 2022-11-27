@@ -52,40 +52,18 @@ namespace CompleteDotNetCoreWeb.Areas.Admin.Controllers
                 })
             };
 
-            //Product product = new();
-            //IEnumerable<SelectListItem> CategoryList =
-            //    _unitOfWork.Category.GetAll().Select(
-            //    u => new SelectListItem
-            //    {
-            //        Text = u.Name,
-            //        Value = u.Id.ToString()
-            //    });
-            //IEnumerable<SelectListItem> CoverTypeList =
-            //    _unitOfWork.CoverType.GetAll().Select(
-            //    u => new SelectListItem
-            //    {
-            //        Text = u.Name,
-            //        Value = u.Id.ToString()
-            //    });
             if (id == null || id == 0)
             {
                 // Create Product
-                //ViewBag.CategoryList = CategoryList;
-                //ViewData["CoverTypeList"] = CoverTypeList;
                 return View(productViewModel);
             }
             else
             {
                 // Update Product
+                productViewModel.Product = _unitOfWork.Product
+                    .GetFirstOrDefault(u => u.Id == id);
+                return View(productViewModel);
             }
-            //var coverTypeFromDb = _db.Product.Find(id);
-            //Product? productFromDb = _unitOfWork.Product.GetFirstOrDefault(u => u.Id == id);
-
-            //if (productFromDb == null)
-            //{
-            //    return NotFound();
-            //}
-            return View(productViewModel);
         }
 
 
