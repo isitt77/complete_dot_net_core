@@ -29,10 +29,11 @@ namespace CompleteDotNetCore.Models
 
         [Required]
         [Range(1, 1000)]
+        [DisplayName("Price (1-50)")]
         public double Price { get; set; }
 
         [Required]
-        [DisplayName("Price (50+)")]
+        [DisplayName("Price (50-100)")]
         [Range(1, 1000)]
         public double Price50 { get; set; }
 
