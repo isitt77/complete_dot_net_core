@@ -85,7 +85,7 @@ namespace CompleteDotNetCoreWeb.Areas.Admin.Controllers
             //{
             //    return NotFound();
             //}
-            return View();
+            return View(productViewModel);
         }
 
 
