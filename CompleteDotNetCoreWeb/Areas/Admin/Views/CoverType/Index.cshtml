@@ -27,27 +27,29 @@
                 <th>
                     Cover Type Name
                 </th>
-                @*<th>
-                        Display Order
-                    </th>*@
-                <th></th>
+                <th width="24%"></th>
             </tr>
         </thead>
         <tbody>
             @foreach (CoverType obj in Model)
             {
-                <tr class="table-dark">
-                    <td width="80%">
+                <tr>
+                    <td>
                         @obj.Name
                     </td>
-                    @*<td width="30%">
-                            @obj.DisplayOrder
-                        </td>*@
-                    <td class="btn-group w-50%" role="button">
-                        <a class="btn btn-warning" asp-controller="CoverType" asp-action="Edit" asp-route-id="@obj.Id"><i class="bi bi-pencil"></i> &nbsp; Edit</a>
-                    </td>
-                    <td class="btn-group w-50%" role="button">
-                        <a class="btn btn-danger" asp-controller="CoverType" asp-action="Delete" asp-route-id="@obj.Id"><i class="bi bi-trash"></i> &nbsp; Delete</a>
+                    <td class="d-flex justify-content-center">
+                        <a class="btn btn-warning mx-2"
+                           asp-controller="CoverType" asp-action="Edit"
+                           asp-route-id="@obj.Id">
+                            <i class="bi bi-pencil"></i><span class="d-none
+                                d-xl-inline"> &nbsp; Edit</span>
+                        </a>
+                        <a class="btn btn-danger mx-2"
+                           asp-controller="CoverType" asp-action="Delete"
+                           asp-route-id="@obj.Id">
+                            <i class="bi bi-trash"></i><span class="d-none
+                                d-xl-inline"> &nbsp; Delete</span>
+                        </a>
                     </td>
                 </tr>
             }
