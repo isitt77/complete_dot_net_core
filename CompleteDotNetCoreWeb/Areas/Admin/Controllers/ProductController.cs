@@ -84,13 +84,23 @@ namespace CompleteDotNetCoreWeb.Areas.Admin.Controllers
                         @"images/products");
                     string extension = Path.GetExtension(file.FileName);
 
+                    if (obj.Product.IamgeUrl != null)
+                    {
+                        string oldImagePath = Path.Combine(wwwRootPath,
+                            obj.Product.IamgeUrl.TrimStart('/'));
+                        if (System.IO.File.Exists(oldImagePath))
+                        {
+                            System.IO.File.Delete(oldImagePath);
+                        }
+                    }
+
                     using (FileStream fileStreams = new FileStream(
                         Path.Combine(uploads, fileName + extension),
                         FileMode.Create))
                     {
                         file.CopyTo(fileStreams);
                     }
-                    obj.Product.IamgeUrl = @"images/products/" +
+                    obj.Product.IamgeUrl = @"/images/products/" +
                         fileName + extension;
                 }
 
