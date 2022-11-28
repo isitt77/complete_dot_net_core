@@ -2,6 +2,8 @@
 @model CompleteDotNetCore.Models.ViewModels.ProductViewModel
 
 <form method="post" class="form-group" asp-action="Upsert" enctype="multipart/form-data">
+    <input asp-for="Product.Id" hidden />
+    <input asp-for="Product.IamgeUrl" hidden />
     <div class="border p-3 mt-5">
         <div class="row">
             <div class="row pb-2">
