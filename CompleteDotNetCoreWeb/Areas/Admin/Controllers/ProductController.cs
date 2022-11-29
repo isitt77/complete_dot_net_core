@@ -129,7 +129,7 @@ namespace CompleteDotNetCoreWeb.Areas.Admin.Controllers
         }
 
         // Post: Delete
-        [HttpPost]
+        [HttpDelete]
         [ValidateAntiForgeryToken]
         public IActionResult Delete(Product obj)
         {
