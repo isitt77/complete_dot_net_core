@@ -127,6 +127,37 @@ namespace CompleteDotNetCoreWeb.Areas.Admin.Controllers
                 _unitOfWork.Product.GetAll(includeProperties: "Category,CoverType");
             return Json(new { data = productList });
         }
+
+        // Post: Delete
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Delete(Product obj)
+        {
+            if (obj == null)
+            {
+                return Json(new
+                {
+                    success = false,
+                    message = "Object not found."
+                });
+            }
+
+            string oldImagePath = Path.Combine(_webHostEnvironment.WebRootPath,
+                            obj.IamgeUrl.TrimStart('/'));
+            if (System.IO.File.Exists(oldImagePath))
+            {
+                System.IO.File.Delete(oldImagePath);
+            }
+
+            _unitOfWork.Product.Remove(obj);
+            _unitOfWork.Save();
+            return Json(new
+            {
+                success = true,
+                message = "You've successfully deleted a product."
+            });
+        }
+
         #endregion
     }
 }
