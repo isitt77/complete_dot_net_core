@@ -130,7 +130,6 @@ namespace CompleteDotNetCoreWeb.Areas.Admin.Controllers
 
         // Post: Delete
         [HttpDelete]
-        [ValidateAntiForgeryToken]
         public IActionResult Delete(Product obj)
         {
             if (obj == null)
