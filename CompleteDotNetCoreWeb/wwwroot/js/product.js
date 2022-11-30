@@ -25,7 +25,7 @@ function loadDataTable() {
                 {
                     "data": "id",
                     "render": function (data) {
-                        console.log(data);
+                        //console.log(data);
                         return `
                         <td>
                            <a class="btn btn-warning mx-2"

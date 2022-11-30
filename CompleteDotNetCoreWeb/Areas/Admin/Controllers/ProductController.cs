@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Threading.Tasks;
 using CompleteDotNetCore.DataAccess.Repository.IRepository;
 using CompleteDotNetCore.Models;
@@ -90,6 +91,8 @@ namespace CompleteDotNetCoreWeb.Areas.Admin.Controllers
                             obj.Product.IamgeUrl.TrimStart('/'));
                         if (System.IO.File.Exists(oldImagePath))
                         {
+                            Console.WriteLine("oldImagePath: " +
+                                oldImagePath);
                             System.IO.File.Delete(oldImagePath);
                         }
                     }
@@ -102,6 +105,11 @@ namespace CompleteDotNetCoreWeb.Areas.Admin.Controllers
                     }
                     obj.Product.IamgeUrl = @"/images/products/" +
                         fileName + extension;
+                    Console.WriteLine(
+                            "fileName: " + fileName + "\n" +
+                            "uploads: " + uploads + "\n" +
+                            "extension: " + extension
+                        );
                 }
                 if (obj.Product.Id == 0)
                 {
@@ -132,6 +140,10 @@ namespace CompleteDotNetCoreWeb.Areas.Admin.Controllers
         [HttpDelete]
         public IActionResult Delete(Product obj)
         {
+            Console.WriteLine("isImageUrl: " + obj.IamgeUrl != null);
+            Console.WriteLine("ImageUrl Type: " + obj.IamgeUrl.GetType());
+            Console.WriteLine("ImageUrl: " + obj.IamgeUrl.ToString());
+
             if (obj == null)
             {
                 return Json(new
@@ -141,15 +153,17 @@ namespace CompleteDotNetCoreWeb.Areas.Admin.Controllers
                 });
             }
 
-            string oldImagePath = Path.Combine(_webHostEnvironment.WebRootPath,
-                            obj.IamgeUrl.TrimStart('/'));
-            if (System.IO.File.Exists(oldImagePath))
+            string imagePathToDelete = Path.Combine(_webHostEnvironment.WebRootPath,
+                            obj.IamgeUrl);
+
+            Console.WriteLine("Deleting image: " + imagePathToDelete);
+            if (System.IO.File.Exists(imagePathToDelete))
             {
-                System.IO.File.Delete(oldImagePath);
+                //System.IO.File.Delete(oldImagePath);
             }
 
-            _unitOfWork.Product.Remove(obj);
-            _unitOfWork.Save();
+            //_unitOfWork.Product.Remove(obj);
+            //_unitOfWork.Save();
             return Json(new
             {
                 success = true,
