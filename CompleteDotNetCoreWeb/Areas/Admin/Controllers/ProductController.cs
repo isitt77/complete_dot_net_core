@@ -138,11 +138,9 @@ namespace CompleteDotNetCoreWeb.Areas.Admin.Controllers
 
         // Post: Delete
         [HttpDelete]
-        public IActionResult Delete(Product obj)
+        public IActionResult Delete(int id)
         {
-            Console.WriteLine("isImageUrl: " + obj.IamgeUrl != null);
-            Console.WriteLine("ImageUrl Type: " + obj.IamgeUrl.GetType());
-            Console.WriteLine("ImageUrl: " + obj.IamgeUrl.ToString());
+            Product obj = _unitOfWork.Product.GetFirstOrDefault(u => u.Id == id);
 
             if (obj == null)
             {
@@ -154,16 +152,16 @@ namespace CompleteDotNetCoreWeb.Areas.Admin.Controllers
             }
 
             string imagePathToDelete = Path.Combine(_webHostEnvironment.WebRootPath,
-                            obj.IamgeUrl);
+                            obj.IamgeUrl.TrimStart('/'));
 
-            Console.WriteLine("Deleting image: " + imagePathToDelete);
             if (System.IO.File.Exists(imagePathToDelete))
             {
-                //System.IO.File.Delete(oldImagePath);
+                Console.WriteLine("Deleting image: " + imagePathToDelete);
+                System.IO.File.Delete(imagePathToDelete);
             }
 
-            //_unitOfWork.Product.Remove(obj);
-            //_unitOfWork.Save();
+            _unitOfWork.Product.Remove(obj);
+            _unitOfWork.Save();
             return Json(new
             {
                 success = true,
