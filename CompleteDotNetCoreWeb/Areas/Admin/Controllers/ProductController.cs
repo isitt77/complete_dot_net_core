@@ -91,7 +91,7 @@ namespace CompleteDotNetCoreWeb.Areas.Admin.Controllers
                             obj.Product.IamgeUrl.TrimStart('/'));
                         if (System.IO.File.Exists(oldImagePath))
                         {
-                            Console.WriteLine("oldImagePath: " +
+                            Console.WriteLine("Replacing image: " +
                                 oldImagePath);
                             System.IO.File.Delete(oldImagePath);
                         }
@@ -105,11 +105,11 @@ namespace CompleteDotNetCoreWeb.Areas.Admin.Controllers
                     }
                     obj.Product.IamgeUrl = @"/images/products/" +
                         fileName + extension;
-                    Console.WriteLine(
-                            "fileName: " + fileName + "\n" +
-                            "uploads: " + uploads + "\n" +
-                            "extension: " + extension
-                        );
+                    //Console.WriteLine(
+                    //        "fileName: " + fileName + "\n" +
+                    //        "uploads: " + uploads + "\n" +
+                    //        "extension: " + extension
+                    //    );
                 }
                 if (obj.Product.Id == 0)
                 {
