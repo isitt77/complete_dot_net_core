@@ -19,7 +19,10 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-        return View();
+        IEnumerable<Product> objProductList =
+            _unitOfWork.Product.GetAll(includeProperties:
+            "Category,CoverType");
+        return View(objProductList);
     }
 
     public IActionResult Privacy()
