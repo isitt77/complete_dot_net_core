@@ -1,16 +1,46 @@
 ﻿@model IEnumerable<Product>
 
-<div class="row pb-3">
+<div class="row mt-3">
     @foreach (Product product in Model)
     {
         <div class="col-lg-3 col-md-6">
             <div class="row p-2">
                 <div class=" col-12 p-1">
-                    <div class="card bg-light">
+                    <div class="card bg-dark">
                         <img src="@product.IamgeUrl"
-                             class="card-img-top rounded"
+                             class="card-img-top rounded m-2"
                              aria-label="Placeholder: No Image"
                              style="max-width: 50%;" />
+                        <div class="card-body">
+                            <div class="pl-1">
+                                <p class="card-title h5">
+                                    @product.Title
+                                </p>
+                                <p class="card-title text-light">
+                                    @product.Author
+                                </p>
+                            </div>
+                            <div class="pl-1">
+                                <p>
+                                    List Price:&nbsp;
+                                    <strike>
+                                        <b>
+                                            $@product.Price.ToString("0.00")
+                                        </b>
+                                    </strike>
+                                </p>
+                                <p>
+                                    As low as:&nbsp;
+                                    <b>
+                                        $@product.Price100.ToString("0.00")
+                                    </b>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <a asp-action="Details" class="btn btn-info form-control"
+                           asp-route-id="@product.Id">Details</a>
                     </div>
                 </div>
             </div>
