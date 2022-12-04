@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using CompleteDotNetCore.Models;
 using CompleteDotNetCore.DataAccess.Repository.IRepository;
+using CompleteDotNetCore.Models.ViewModels;
 
 namespace CompleteDotNetCoreWeb.Controllers;
 
@@ -27,9 +28,14 @@ public class HomeController : Controller
 
     public IActionResult Details(int? id)
     {
-        Product? product = _unitOfWork.Product.GetFirstOrDefault(
-            u => u.Id == id, includeProperties: "Category,CoverType");
-        return View(product);
+        ShoppingCartViewModel shoppingCartObj = new()
+        {
+            Count = 1,
+            Product = _unitOfWork.Product.GetFirstOrDefault(
+            u => u.Id == id, includeProperties: "Category,CoverType")
+        };
+
+        return View(shoppingCartObj);
     }
 
     public IActionResult Privacy()
