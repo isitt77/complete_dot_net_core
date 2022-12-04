@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using CompleteDotNetCore.Models;
 using CompleteDotNetCore.DataAccess.Repository.IRepository;
-using CompleteDotNetCore.Models.ViewModels;
+
 
 namespace CompleteDotNetCoreWeb.Controllers;
 
@@ -28,7 +28,7 @@ public class HomeController : Controller
 
     public IActionResult Details(int? id)
     {
-        ShoppingCartViewModel shoppingCartObj = new()
+        ShoppingCart shoppingCartObj = new()
         {
             Count = 1,
             Product = _unitOfWork.Product.GetFirstOrDefault(

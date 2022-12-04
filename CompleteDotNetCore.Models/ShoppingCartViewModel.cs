@@ -1,9 +1,9 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace CompleteDotNetCore.Models.ViewModels
+namespace CompleteDotNetCore.Models
 {
-    public class ShoppingCartViewModel
+    public class ShoppingCart
     {
         public Product? Product { get; set; }
         [Range(1, 1000, ErrorMessage =
