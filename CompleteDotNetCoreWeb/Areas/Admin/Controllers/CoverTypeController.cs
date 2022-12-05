@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CompleteDotNetCoreWeb.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     public class CoverTypeController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
