@@ -9,6 +9,7 @@
 	  <None Remove="ViewModels\" />
 	  <None Remove="Microsoft.AspNetCore.Mvc.ViewFeatures" />
 	  <None Remove="Microsoft.AspNetCore.Identity.EntityFrameworkCore" />
+	  <None Remove="Microsoft.VisualStudio.Web.CodeGeneration.Design" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Folder Include="ViewModels\" />
@@ -16,5 +17,6 @@
 	<ItemGroup>
 	  <PackageReference Include="Microsoft.AspNetCore.Mvc.ViewFeatures" Version="2.2.0" />
 	  <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.0" />
+	  <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="7.0.0" />
 	</ItemGroup>
 </Project>
