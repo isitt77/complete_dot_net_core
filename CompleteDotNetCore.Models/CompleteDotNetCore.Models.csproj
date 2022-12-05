@@ -8,11 +8,13 @@
 	<ItemGroup>
 	  <None Remove="ViewModels\" />
 	  <None Remove="Microsoft.AspNetCore.Mvc.ViewFeatures" />
+	  <None Remove="Microsoft.AspNetCore.Identity.EntityFrameworkCore" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Folder Include="ViewModels\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <PackageReference Include="Microsoft.AspNetCore.Mvc.ViewFeatures" Version="2.2.0" />
+	  <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.0" />
 	</ItemGroup>
 </Project>

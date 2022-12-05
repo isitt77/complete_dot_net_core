@@ -12,6 +12,7 @@
 		<None Remove="Npgsql.EntityFrameworkCore.PostgreSQL" />
 		<None Remove="Repository\" />
 		<None Remove="Repository\IRepository\" />
+		<None Remove="Microsoft.AspNetCore.Identity.EntityFrameworkCore" />
 	</ItemGroup>
 	<ItemGroup>
 		<Folder Include="Data\" />
@@ -25,6 +26,7 @@
 			<PrivateAssets>all</PrivateAssets>
 		</PackageReference>
 		<PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.0" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\CompleteDotNetCore.Models\CompleteDotNetCore.Models.csproj" />

@@ -25,6 +25,7 @@
 		<None Remove="Microsoft.VisualStudio.Web.CodeGeneration.Design" />
 		<None Remove="Areas\Admin\Views\CoverType\" />
 		<None Remove="Areas\Admin\Views\Product\" />
+		<None Remove="Microsoft.AspNetCore.Identity.EntityFrameworkCore" />
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.0" />
@@ -34,6 +35,7 @@
 			<PrivateAssets>all</PrivateAssets>
 		</PackageReference>
 		<PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="7.0.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.0" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\CompleteDotNetCore.DataAccess\CompleteDotNetCore.DataAccess.csproj">
