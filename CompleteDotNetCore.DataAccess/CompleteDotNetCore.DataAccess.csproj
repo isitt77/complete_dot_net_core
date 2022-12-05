@@ -14,6 +14,8 @@
 		<None Remove="Repository\IRepository\" />
 		<None Remove="Microsoft.AspNetCore.Identity.EntityFrameworkCore" />
 		<None Remove="Microsoft.VisualStudio.Web.CodeGeneration.Design" />
+		<None Remove="Microsoft.AspNetCore.Identity.UI" />
+		<None Remove="Microsoft.EntityFrameworkCore.SqlServer" />
 	</ItemGroup>
 	<ItemGroup>
 		<Folder Include="Data\" />
@@ -29,6 +31,8 @@
 		<PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.0" />
 		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.0" />
 		<PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="7.0.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="7.0.0" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.0" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\CompleteDotNetCore.Models\CompleteDotNetCore.Models.csproj" />
