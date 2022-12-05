@@ -10,11 +10,14 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container. <-- Dependency injection
 builder.Services.AddControllersWithViews();
+
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 options.UseNpgsql(builder.Configuration
 .GetConnectionString("PostgresConnection")));
+
 builder.Services.AddIdentityCore<IdentityUser>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
+
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 var app = builder.Build();
