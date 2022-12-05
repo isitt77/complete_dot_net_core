@@ -11,7 +11,6 @@ var connectionString = builder.Configuration.GetConnectionString("ApplicationDbC
 
 // Add services to the container. <-- Dependency injection
 builder.Services.AddControllersWithViews();
-
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 options.UseNpgsql(builder.Configuration
 .GetConnectionString("PostgresConnection")));
@@ -21,6 +20,7 @@ builder.Services.AddDefaultIdentity<IdentityUser>()
 
 //builder.Services.AddIdentityCore<IdentityUser>()
 //    .AddEntityFrameworkStores<ApplicationDbContext>();
+
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
