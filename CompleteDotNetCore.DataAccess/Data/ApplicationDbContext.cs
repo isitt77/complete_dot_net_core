@@ -23,6 +23,9 @@ namespace CompleteDotNetCore.DataAccess
         // Creates the ApplicationUser table
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
 
+        // Creates the Company table
+        public DbSet<Company> Companies { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
