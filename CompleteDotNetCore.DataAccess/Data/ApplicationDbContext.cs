@@ -20,6 +20,9 @@ namespace CompleteDotNetCore.DataAccess
         // Creates the Product table
         public DbSet<Product> Products { get; set; }
 
+        // Creates the ApplicationUser table
+        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
