@@ -66,6 +66,7 @@ namespace CompleteDotNetCoreWeb.Areas.Admin.Controllers
         }
 
         #region API CALLS
+        // Get Company List
         [HttpGet]
         public IActionResult GetAll()
         {
@@ -74,7 +75,7 @@ namespace CompleteDotNetCoreWeb.Areas.Admin.Controllers
             return Json(new { data = companyList });
         }
 
-        // Post: Delete
+        // Post: Delete Company
         [HttpDelete]
         public IActionResult Delete(int id)
         {

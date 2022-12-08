@@ -1,0 +1,68 @@
+﻿@model Company
+
+<form method="post" class="form-group" asp-action="Upsert" enctype="multipart/form-data">
+    <input asp-for="Id" hidden />
+    <div class="border p-3 mt-5">
+        <div class="row">
+            <div class="col-10">
+                <div class="row">
+                    <div class="col-12 pb-2">
+                        <h2 class="text-info">@(Model.Id!=0?"Update":"Create") Company</h2>
+                        <hr />
+                    </div>
+                    @*<div asp-validation-summary="All" class="text-warning"></div>*@
+                    <div class="mb-3">
+                        <label asp-for="Name" class="form-label"></label>
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-warning"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="Address" class="form-label"></label>
+                        <input asp-for="Address" class="form-control" />
+                        <span asp-validation-for="Address" class="text-warning"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="City" class="form-label"></label>
+                <textarea asp-for="City" rows="3" class="form-control"></textarea>
+                <span asp-validation-for="City" class="text-warning"></span>
+            </div>
+            <div class="mb-3 col-6">
+                <label asp-for="State" class="form-label"></label>
+                <input asp-for="State" class="form-control" />
+                <span asp-validation-for="State" class="text-warning"></span>
+            </div>
+            <div class="mb-3 col-6">
+                <label asp-for="ZipCode" class="form-label"></label>
+                <input asp-for="ZipCode" class="form-control" />
+                <span asp-validation-for="ZipCode" class="text-warning"></span>
+            </div>
+            <div class="mb-3 col-6">
+                <label asp-for="PhoneNumber" class="form-label"></label>
+                <input asp-for="PhoneNumber" class="form-control" />
+                <span asp-validation-for="PhoneNumber" class="text-warning"></span>
+            </div>
+        </div>
+        @if (Model.Id != 0)
+        {
+            <button type="submit" class="btn btn-warning mt-3 me-3">Update</button>
+            <a asp-controller="Company" asp-action="Index" class="btn btn-secondary mt-3">Back to Company List</a>
+        }
+        else
+        {
+            <button type="submit" class="btn btn-warning mt-3 me-3">Create</button>
+            <a asp-controller="Company" asp-action="Index" class="btn btn-secondary mt-3">Back to Company List</a>
+        }
+
+    </div>
+</form>
+
+@section Scripts {
+    @{
+        // Runs client side validation so server isn't accessed.
+        <partial name="_ValidationScriptsPartial" />
+    }
+
+}

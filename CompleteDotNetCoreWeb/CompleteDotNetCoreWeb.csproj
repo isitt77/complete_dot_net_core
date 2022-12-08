@@ -28,6 +28,7 @@
 		<None Remove="Microsoft.AspNetCore.Identity.EntityFrameworkCore" />
 		<None Remove="Microsoft.AspNetCore.Identity.UI" />
 		<None Remove="Microsoft.Extensions.Identity.Stores" />
+		<None Remove="Areas\Admin\Views\Company\" />
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.0" />
@@ -66,6 +67,7 @@
 	  <Folder Include="Areas\Admin\Views\Product\" />
 	  <Folder Include="wwwroot\images\" />
 	  <Folder Include="wwwroot\images\products\" />
+	  <Folder Include="Areas\Admin\Views\Company\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Content Remove="wwwroot\images\" />
