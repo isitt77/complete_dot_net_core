@@ -6,7 +6,7 @@ namespace CompleteDotNetCore.DataAccess.Repository.IRepository
         ICategoryRepository Category { get; }
         ICoverTypeRepository CoverType { get; }
         IProductRepository Product { get; }
-        IProductRepository Company { get; }
+        ICompanyRepository Company { get; }
         void Save();
     }
 }

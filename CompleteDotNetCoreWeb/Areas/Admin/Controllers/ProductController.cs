@@ -133,7 +133,8 @@ namespace CompleteDotNetCoreWeb.Areas.Admin.Controllers
         public IActionResult GetAll()
         {
             IEnumerable<Product> productList =
-                _unitOfWork.Product.GetAll(includeProperties: "Category,CoverType");
+                _unitOfWork.Product.GetAll(includeProperties:
+                "Category,CoverType");
             return Json(new { data = productList });
         }
 
@@ -141,7 +142,8 @@ namespace CompleteDotNetCoreWeb.Areas.Admin.Controllers
         [HttpDelete]
         public IActionResult Delete(int id)
         {
-            Product obj = _unitOfWork.Product.GetFirstOrDefault(u => u.Id == id);
+            Product obj = _unitOfWork.Product.GetFirstOrDefault(
+                u => u.Id == id);
 
             if (obj == null)
             {
