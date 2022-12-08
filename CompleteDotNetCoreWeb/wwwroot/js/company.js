@@ -5,14 +5,14 @@ $(document).ready(function () {
 });
 
 function loadDataTable() {
-    dataTable = $("#dataTable").DataTable({
+    dataTable = $("#dataTable2").DataTable({
         columnDefs: [{
             "defaultContent": "",
             "targets": "_all"
         }],
 
         "ajax": {
-            "url": "/Admin/Product/GetAll"
+            "url": "/Admin/Company/GetAll"
         },
         "columns":
             [
