@@ -10,6 +10,7 @@ using System.Text;
 using System.Text.Encodings.Web;
 using System.Threading;
 using System.Threading.Tasks;
+using CompleteDotNetCore.Utility;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -18,6 +19,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
+
 
 namespace CompleteDotNetCoreWeb.Areas.Identity.Pages.Account
 {
@@ -105,7 +107,13 @@ namespace CompleteDotNetCoreWeb.Areas.Identity.Pages.Account
 
         public async Task OnGetAsync(string returnUrl = null)
         {
-            await _roleManager.CreateAsync(new IdentityRole("Admin"));
+            // Instructor's alternative to await...
+            //_roleManager.CreateAsync(new IdentityRole(SD.RoleAdmin))
+            //    .GetAwaiter().GetResult();
+            await _roleManager.CreateAsync(new IdentityRole(SD.RoleAdmin));
+            await _roleManager.CreateAsync(new IdentityRole(SD.RoleEmployee));
+            await _roleManager.CreateAsync(new IdentityRole(SD.RoleUserComp));
+            await _roleManager.CreateAsync(new IdentityRole(SD.RoleUserIndv));
             ReturnUrl = returnUrl;
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
         }

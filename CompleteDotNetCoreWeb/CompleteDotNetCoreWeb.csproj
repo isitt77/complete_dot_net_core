@@ -52,6 +52,9 @@
 			<GlobalPropertiesToRemove>
 			</GlobalPropertiesToRemove>
 		</ProjectReference>
+		<ProjectReference Include="..\CompleteDotNetCore.Utility\CompleteDotNetCore.Utility.csproj">
+		  <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
+		</ProjectReference>
 	</ItemGroup>
 	<ItemGroup>
 	  <Folder Include="Areas\" />
