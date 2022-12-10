@@ -105,12 +105,14 @@ namespace CompleteDotNetCoreWeb.Areas.Identity.Pages.Account
             public string ConfirmPassword { get; set; }
 
             [Required]
-            public string Name { get; set; } = "";
-            public string Address { get; set; } = "";
-            public string City { get; set; } = "";
-            public string State { get; set; } = "";
+            public string Name { get; set; }
+            public string Address { get; set; }
+            public string City { get; set; }
+            public string State { get; set; }
             [DisplayName("Zip Code")]
-            public string ZipCode { get; set; } = "";
+            public string ZipCode { get; set; }
+            [DisplayName("Phone Number")]
+            public string PhoneNumber { get; set; }
         }
 
 
