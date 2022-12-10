@@ -1,7 +1,9 @@
 using CompleteDotNetCore.DataAccess;
 using CompleteDotNetCore.DataAccess.Repository;
 using CompleteDotNetCore.DataAccess.Repository.IRepository;
+using CompleteDotNetCore.Utility;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.DependencyInjection;
@@ -18,8 +20,10 @@ options.UseNpgsql(builder.Configuration
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()
     .AddDefaultTokenProviders()
     .AddEntityFrameworkStores<ApplicationDbContext>();
+builder.Services.AddSingleton<IEmailSender, EmailSender>();
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddRazorPages();
 
 var app = builder.Build();
 
