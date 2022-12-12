@@ -2,7 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using CompleteDotNetCore.Models;
 using CompleteDotNetCore.DataAccess.Repository.IRepository;
-
+using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 
 namespace CompleteDotNetCoreWeb.Controllers;
 
@@ -27,16 +28,32 @@ public class HomeController : Controller
         return View(objProductList);
     }
 
-    public IActionResult Details(int? id)
+    public IActionResult Details(int id)
     {
         ShoppingCart shoppingCartObj = new()
         {
             Count = 1,
+            ProductId = id,
             Product = _unitOfWork.Product.GetFirstOrDefault(
             u => u.Id == id, includeProperties: "Category,CoverType")
         };
 
         return View(shoppingCartObj);
+    }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    [Authorize]
+    public IActionResult Details(ShoppingCart shoppingCart)
+    {
+        ClaimsIdentity claimsIdentity = (ClaimsIdentity)User.Identity;
+        Claim claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
+        shoppingCart.ApplicationUserId = claim.Value;
+
+        _unitOfWork.ShoppingCart.Add(shoppingCart);
+        _unitOfWork.Save();
+
+        return RedirectToAction("Index");
     }
 
     public IActionResult Privacy()
