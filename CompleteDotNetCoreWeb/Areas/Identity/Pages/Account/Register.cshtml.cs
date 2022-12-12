@@ -179,6 +179,11 @@ namespace CompleteDotNetCoreWeb.Areas.Identity.Pages.Account
                 user.ZipCode = Input.ZipCode;
                 user.PhoneNumber = Input.PhoneNumber;
 
+                if (Input.Role == SD.RoleUserComp)
+                {
+                    user.CompanyId = Input.CompanyId;
+                }
+
                 var result = await _userManager.CreateAsync(user, Input.Password);
 
                 if (result.Succeeded)
