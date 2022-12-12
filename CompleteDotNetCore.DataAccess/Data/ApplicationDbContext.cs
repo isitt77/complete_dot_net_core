@@ -26,6 +26,9 @@ namespace CompleteDotNetCore.DataAccess
         // Creates the Company table
         public DbSet<Company> Companies { get; set; }
 
+        // Creates the ShoppingCart table
+        public DbSet<ShoppingCart> ShoppingCarts { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
