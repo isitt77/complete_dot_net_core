@@ -57,13 +57,13 @@ public class HomeController : Controller
         if (cartFromDb == null)
         {
             _unitOfWork.ShoppingCart.Add(shoppingCart);
-            Console.WriteLine("If cart null: " + shoppingCart.Count);
+            Console.WriteLine("If - cart null: " + shoppingCart.Count);
         }
         else
         {
             _unitOfWork.ShoppingCart.IncrementCount(cartFromDb,
                 shoppingCart.Count);
-            Console.WriteLine("If cart not null: " + shoppingCart.Count);
+            Console.WriteLine("Else - cart not null: " + shoppingCart.Count);
         }
 
         //_unitOfWork.ShoppingCart.Add(shoppingCart);
