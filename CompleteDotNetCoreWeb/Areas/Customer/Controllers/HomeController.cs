@@ -28,14 +28,14 @@ public class HomeController : Controller
         return View(objProductList);
     }
 
-    public IActionResult Details(int id)
+    public IActionResult Details(int productId)
     {
         ShoppingCart shoppingCartObj = new()
         {
             Count = 1,
-            ProductId = id,
+            ProductId = productId,
             Product = _unitOfWork.Product.GetFirstOrDefault(
-            u => u.Id == id, includeProperties: "Category,CoverType")
+            u => u.Id == productId, includeProperties: "Category,CoverType")
         };
 
         return View(shoppingCartObj);
@@ -50,10 +50,14 @@ public class HomeController : Controller
         Claim claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
         shoppingCart.ApplicationUserId = claim.Value;
 
-        _unitOfWork.ShoppingCart.Add(shoppingCart);
-        _unitOfWork.Save();
+        Console.WriteLine("ShoppingCart Id: " + shoppingCart.Id);
+        Console.WriteLine("ProductId: " + shoppingCart.ProductId);
+        //Console.WriteLine("user: " + shoppingCart.ApplicationUserId);
 
-        return RedirectToAction("Index");
+        //_unitOfWork.ShoppingCart.Add(shoppingCart);
+        //_unitOfWork.Save();
+
+        return RedirectToAction(nameof(Index));
     }
 
     public IActionResult Privacy()
