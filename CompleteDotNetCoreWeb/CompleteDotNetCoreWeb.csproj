@@ -29,6 +29,7 @@
 		<None Remove="Microsoft.AspNetCore.Identity.UI" />
 		<None Remove="Microsoft.Extensions.Identity.Stores" />
 		<None Remove="Areas\Admin\Views\Company\" />
+		<None Remove="Areas\Customer\Views\Cart\" />
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.1" />
@@ -71,6 +72,7 @@
 	  <Folder Include="wwwroot\images\" />
 	  <Folder Include="wwwroot\images\products\" />
 	  <Folder Include="Areas\Admin\Views\Company\" />
+	  <Folder Include="Areas\Customer\Views\Cart\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Content Remove="wwwroot\images\" />
