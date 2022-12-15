@@ -10,7 +10,8 @@ namespace CompleteDotNetCore.DataAccess.Repository.IRepository
             string? includeProperties = null);
 
         // GET classes
-        IEnumerable<T> GetAll(string? includeProperties = null);
+        IEnumerable<T> GetAll(Expression<Func<T, bool>> filter,
+            string? includeProperties = null);
 
         // Add()
         void Add(T entity);

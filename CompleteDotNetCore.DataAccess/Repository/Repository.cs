@@ -24,9 +24,11 @@ namespace CompleteDotNetCore.DataAccess.Repository
             dbSet.Add(entity);
         }
 
-        public IEnumerable<T> GetAll(string? includeProperties = null)
+        public IEnumerable<T> GetAll(Expression<Func<T, bool>> filter,
+            string? includeProperties = null)
         {
             IQueryable<T> query = dbSet;
+            query = query.Where(filter);
             if (includeProperties != null)
             {   // Lets us pass in as many Include properties as we need.
                 foreach (string includeProperty in includeProperties
