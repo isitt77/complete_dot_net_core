@@ -20,6 +20,8 @@ namespace CompleteDotNetCoreWeb.Areas.Customer.Controllers
 
         public ShoppingCartViewModel ShoppingCartViewModel { get; set; }
 
+        public int OrderTotal { get; set; }
+
         public CartController(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
@@ -38,7 +40,30 @@ namespace CompleteDotNetCoreWeb.Areas.Customer.Controllers
                     u => u.ApplicationUserId == claim.Value,
                     includeProperties: "Product")
             };
+            foreach (ShoppingCart cart in ShoppingCartViewModel.CartList)
+            {
+                cart.Price = GetPriceBasedOnQuantity(cart.Count,
+                    cart.Product.Price, cart.Product.Price50,
+                    cart.Product.Price100);
+            }
             return View(ShoppingCartViewModel);
+        }
+
+        private double GetPriceBasedOnQuantity(double quantity,
+            double price, double price50, double price100)
+        {
+            if (quantity <= 50)
+            {
+                return price;
+            }
+            else if (quantity < 100)
+            {
+                return price50;
+            }
+            else
+            {
+                return price100;
+            }
         }
     }
 }

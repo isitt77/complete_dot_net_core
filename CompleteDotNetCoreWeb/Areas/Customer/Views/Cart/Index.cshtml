@@ -19,7 +19,7 @@
             </div>
 
             <div class="card-body">
-                @foreach (var item in Model.CartList)
+                @foreach (ShoppingCart item in Model.CartList)
                 {
                     <div class="row">
                         <div class="d-none d-lg-block col-lg-1 text-center py-2">
@@ -33,32 +33,32 @@
                             <div class="col-4 text-md-right pt-4">
                                 <h6>
                                     <strong>
-                                        @item.Product.Price.ToString("c")
-                                    <span class="text-muted">&nbsp;&nbsp;x&nbsp;</span>
-                                    @item.Count
-                                </strong>
-                            </h6>
-                        </div>
-                        <div class="col-6 col-sm-4 col-lg-6 pt-2">
-                            <div class="w-75 btn-group" role="group">
-                                <a class="btn btn-outline-info">
-                                    <i class="bi bi-plus-square"></i>
-                                </a> &nbsp;
-                                <a class="btn btn-outline-light">
-                                    <i class="bi bi-dash-square"></i>
+                                        @item.Price.ToString("c")
+                                        <span class="text-muted">&nbsp;&nbsp;x&nbsp;</span>
+                                        @item.Count
+                                    </strong>
+                                </h6>
+                            </div>
+                            <div class="col-6 col-sm-4 col-lg-6 pt-2">
+                                <div class="w-75 btn-group" role="group">
+                                    <a class="btn btn-outline-info">
+                                        <i class="bi bi-plus-square"></i>
+                                    </a> &nbsp;
+                                    <a class="btn btn-outline-light">
+                                        <i class="bi bi-dash-square"></i>
+                                    </a>
+                                </div>
+
+                            </div>
+                            <div class="col-2 col-sm-4 col-lg-2 text-right pt-2">
+                                <a class="btn btn-danger">
+                                    <i class="bi bi-trash-fill"></i>
                                 </a>
                             </div>
-
-                        </div>
-                        <div class="col-2 col-sm-4 col-lg-2 text-right pt-2">
-                            <a class="btn btn-danger">
-                                <i class="bi bi-trash-fill"></i>
-                            </a>
                         </div>
                     </div>
-                </div>
-                <hr />
-            }
+                    <hr />
+                }
                 <div class="row">
                     <div class="col-12 col-md-6 offset-md-6 col-lg-4 offset-lg-8 pr-4">
                         <ul class="list-group">
