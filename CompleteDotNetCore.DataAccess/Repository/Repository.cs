@@ -28,7 +28,10 @@ namespace CompleteDotNetCore.DataAccess.Repository
             string? includeProperties = null)
         {
             IQueryable<T> query = dbSet;
-            query = query.Where(filter);
+            if (filter != null)
+            {
+                query = query.Where(filter);
+            }
             if (includeProperties != null)
             {   // Lets us pass in as many Include properties as we need.
                 foreach (string includeProperty in includeProperties
