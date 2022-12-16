@@ -24,7 +24,7 @@ namespace CompleteDotNetCore.DataAccess.Repository
             dbSet.Add(entity);
         }
 
-        public IEnumerable<T> GetAll(Expression<Func<T, bool>> filter,
+        public IEnumerable<T> GetAll(Expression<Func<T, bool>>? filter = null,
             string? includeProperties = null)
         {
             IQueryable<T> query = dbSet;
