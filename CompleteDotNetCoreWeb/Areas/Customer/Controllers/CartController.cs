@@ -52,6 +52,31 @@ namespace CompleteDotNetCoreWeb.Areas.Customer.Controllers
             return View(ShoppingCartViewModel);
         }
 
+        // GET: Summary View
+        public IActionResult Summary()
+        {
+            //ClaimsIdentity claimsIdentity = (ClaimsIdentity)User.Identity;
+            //Claim claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
+
+            //ShoppingCartViewModel = new ShoppingCartViewModel()
+            //{
+            //    CartList = _unitOfWork.ShoppingCart.GetAll(
+            //        u => u.ApplicationUserId == claim.Value,
+            //        includeProperties: "Product")
+            //};
+            //foreach (ShoppingCart cart in ShoppingCartViewModel.CartList)
+            //{
+            //    cart.Price = GetPriceBasedOnQuantity(cart.Count,
+            //        cart.Product.Price, cart.Product.Price50,
+            //        cart.Product.Price100);
+
+            //    ShoppingCartViewModel.CartTotalPrice += (cart.Price *
+            //        cart.Count);
+            //}
+            //return View(ShoppingCartViewModel);
+            return View();
+        }
+
         public IActionResult AddItem(int cartId)
         {
             ShoppingCart? cart = _unitOfWork.ShoppingCart.GetFirstOrDefault(
