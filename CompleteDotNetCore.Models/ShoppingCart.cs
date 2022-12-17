@@ -26,6 +26,7 @@ namespace CompleteDotNetCore.Models
 
         [NotMapped]
         public double Price { get; set; }
+
     }
 }
 
