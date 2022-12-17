@@ -52,6 +52,40 @@ namespace CompleteDotNetCoreWeb.Areas.Customer.Controllers
             return View(ShoppingCartViewModel);
         }
 
+        public IActionResult AddItem(int cartId)
+        {
+            ShoppingCart? cart = _unitOfWork.ShoppingCart.GetFirstOrDefault(
+                u => u.Id == cartId);
+            _unitOfWork.ShoppingCart.IncrementCount(cart, 1);
+            _unitOfWork.Save();
+            return RedirectToAction(nameof(Index));
+        }
+
+        public IActionResult SubtractItem(int cartId)
+        {
+            ShoppingCart? cart = _unitOfWork.ShoppingCart.GetFirstOrDefault(
+                u => u.Id == cartId);
+            if (cart.Count <= 1)
+            {
+                _unitOfWork.ShoppingCart.Remove(cart);
+            }
+            else
+            {
+                _unitOfWork.ShoppingCart.DecrementCount(cart, 1);
+            }
+            _unitOfWork.Save();
+            return RedirectToAction(nameof(Index));
+        }
+
+        public IActionResult RemoveItem(int cartId)
+        {
+            ShoppingCart? cart = _unitOfWork.ShoppingCart.GetFirstOrDefault(
+                u => u.Id == cartId);
+            _unitOfWork.ShoppingCart.Remove(cart);
+            _unitOfWork.Save();
+            return RedirectToAction(nameof(Index));
+        }
+
         private double GetPriceBasedOnQuantity(double quantity,
             double price, double price50, double price100)
         {
@@ -59,7 +93,7 @@ namespace CompleteDotNetCoreWeb.Areas.Customer.Controllers
             {
                 return price;
             }
-            else if (quantity < 100)
+            else if (quantity <= 100)
             {
                 return price50;
             }

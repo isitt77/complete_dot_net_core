@@ -41,17 +41,20 @@
                             </div>
                             <div class="col-6 col-sm-4 col-lg-6 pt-2">
                                 <div class="w-75 btn-group" role="group">
-                                    <a class="btn btn-outline-info">
+                                    <a asp-action="AddItem" asp-route-cartId="@item.Id"
+                                       class="btn btn-outline-info">
                                         <i class="bi bi-plus-square"></i>
                                     </a> &nbsp;
-                                    <a class="btn btn-outline-light">
+                                    <a asp-action="SubtractItem" asp-route-cartId="@item.Id"
+                                       class="btn btn-outline-light">
                                         <i class="bi bi-dash-square"></i>
                                     </a>
                                 </div>
 
                             </div>
                             <div class="col-2 col-sm-4 col-lg-2 text-right pt-2">
-                                <a class="btn btn-danger">
+                                <a asp-action="RemoveItem" asp-route-cartId="@item.Id"
+                                   class="btn btn-danger">
                                     <i class="bi bi-trash-fill"></i>
                                 </a>
                             </div>
