@@ -29,6 +29,12 @@ namespace CompleteDotNetCore.DataAccess
         // Creates the ShoppingCart table
         public DbSet<ShoppingCart> ShoppingCarts { get; set; }
 
+        // Creates OrderHeader table
+        public DbSet<OrderHeader> OrderHeaders { get; set; }
+
+        // Creates Order Detail table
+        public DbSet<OrderDetail> OrderDetails { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
