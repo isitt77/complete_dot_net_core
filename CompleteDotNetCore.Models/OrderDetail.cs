@@ -11,7 +11,7 @@ namespace CompleteDotNetCore.Models
 
         [Required]
         public int OrderId { get; set; }
-        [ForeignKey("OrderHeader")]
+        [ForeignKey("OrderId")]
         [ValidateNever]
         public OrderHeader OrderHeader { get; set; }
 
