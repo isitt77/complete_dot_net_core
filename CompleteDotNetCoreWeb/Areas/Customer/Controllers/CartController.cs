@@ -46,8 +46,8 @@ namespace CompleteDotNetCoreWeb.Areas.Customer.Controllers
                     cart.Product.Price, cart.Product.Price50,
                     cart.Product.Price100);
 
-                ShoppingCartViewModel.CartTotalPrice += (cart.Price *
-                    cart.Count);
+                ShoppingCartViewModel.OrderHeader.OrderTotal +=
+                    (cart.Price * cart.Count);
             }
             return View(ShoppingCartViewModel);
         }
