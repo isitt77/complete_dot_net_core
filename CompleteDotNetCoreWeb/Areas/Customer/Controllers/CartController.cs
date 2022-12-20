@@ -38,8 +38,51 @@ namespace CompleteDotNetCoreWeb.Areas.Customer.Controllers
             {
                 CartList = _unitOfWork.ShoppingCart.GetAll(
                     u => u.ApplicationUserId == claim.Value,
-                    includeProperties: "Product")
+                    includeProperties: "Product"),
+                OrderHeader = new()
             };
+            foreach (ShoppingCart cart in ShoppingCartViewModel.CartList)
+            {
+                cart.Price = GetPriceBasedOnQuantity(cart.Count,
+                    cart.Product.Price, cart.Product.Price50,
+                    cart.Product.Price100);
+
+                ShoppingCartViewModel.OrderHeader.OrderTotal +=
+                            (cart.Price * cart.Count);
+            }
+            return View(ShoppingCartViewModel);
+        }
+
+        // GET: Summary View
+        public IActionResult Summary()
+        {
+            ClaimsIdentity claimsIdentity = (ClaimsIdentity)User.Identity;
+            Claim claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
+
+            ShoppingCartViewModel = new ShoppingCartViewModel()
+            {
+                CartList = _unitOfWork.ShoppingCart.GetAll(
+                    u => u.ApplicationUserId == claim.Value,
+                    includeProperties: "Product"),
+                OrderHeader = new()
+            };
+
+            ShoppingCartViewModel.OrderHeader.ApplicationUser = _unitOfWork
+                .ApplicationUser.GetFirstOrDefault(u => u.Id == claim.Value);
+
+            ShoppingCartViewModel.OrderHeader.Name = ShoppingCartViewModel
+                .OrderHeader.ApplicationUser.Name;
+            ShoppingCartViewModel.OrderHeader.PhoneNumber = ShoppingCartViewModel
+                .OrderHeader.ApplicationUser.PhoneNumber;
+            ShoppingCartViewModel.OrderHeader.Address = ShoppingCartViewModel
+                .OrderHeader.ApplicationUser.Address;
+            ShoppingCartViewModel.OrderHeader.City = ShoppingCartViewModel
+                .OrderHeader.ApplicationUser.City;
+            ShoppingCartViewModel.OrderHeader.State = ShoppingCartViewModel
+                .OrderHeader.ApplicationUser.State;
+            ShoppingCartViewModel.OrderHeader.ZipCode = ShoppingCartViewModel
+                .OrderHeader.ApplicationUser.ZipCode;
+
             foreach (ShoppingCart cart in ShoppingCartViewModel.CartList)
             {
                 cart.Price = GetPriceBasedOnQuantity(cart.Count,
@@ -50,31 +93,7 @@ namespace CompleteDotNetCoreWeb.Areas.Customer.Controllers
                     (cart.Price * cart.Count);
             }
             return View(ShoppingCartViewModel);
-        }
-
-        // GET: Summary View
-        public IActionResult Summary()
-        {
-            //ClaimsIdentity claimsIdentity = (ClaimsIdentity)User.Identity;
-            //Claim claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
-
-            //ShoppingCartViewModel = new ShoppingCartViewModel()
-            //{
-            //    CartList = _unitOfWork.ShoppingCart.GetAll(
-            //        u => u.ApplicationUserId == claim.Value,
-            //        includeProperties: "Product")
-            //};
-            //foreach (ShoppingCart cart in ShoppingCartViewModel.CartList)
-            //{
-            //    cart.Price = GetPriceBasedOnQuantity(cart.Count,
-            //        cart.Product.Price, cart.Product.Price50,
-            //        cart.Product.Price100);
-
-            //    ShoppingCartViewModel.CartTotalPrice += (cart.Price *
-            //        cart.Count);
-            //}
-            //return View(ShoppingCartViewModel);
-            return View();
+            //return View();
         }
 
         public IActionResult AddItem(int cartId)
