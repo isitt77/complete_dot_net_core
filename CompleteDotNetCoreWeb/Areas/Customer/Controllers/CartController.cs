@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using CompleteDotNetCore.DataAccess.Repository.IRepository;
 using CompleteDotNetCore.Models;
 using CompleteDotNetCore.Models.ViewModels;
+using CompleteDotNetCore.Utility;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -93,8 +94,62 @@ namespace CompleteDotNetCoreWeb.Areas.Customer.Controllers
                     (cart.Price * cart.Count);
             }
             return View(ShoppingCartViewModel);
-            //return View();
         }
+
+
+        // Post: Order (from Summary View)
+        [HttpPost]
+        [ActionName("Summary")]
+        [ValidateAntiForgeryToken]
+        public IActionResult SummaryPOST()
+        {
+            ClaimsIdentity claimsIdentity = (ClaimsIdentity)User.Identity;
+            Claim claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
+
+            ShoppingCartViewModel.CartList = _unitOfWork.ShoppingCart.GetAll(
+                    u => u.ApplicationUserId == claim.Value,
+                    includeProperties: "Product");
+
+            ShoppingCartViewModel.OrderHeader.PaymentStatus =
+                SD.PaymentStatusPending;
+            ShoppingCartViewModel.OrderHeader.OrderStatus =
+                SD.StatusPending;
+            ShoppingCartViewModel.OrderHeader.OrderDate =
+                System.DateTime.Now;
+            ShoppingCartViewModel.OrderHeader.ApplicationUserId =
+                claim.Value;
+
+            foreach (ShoppingCart cart in ShoppingCartViewModel.CartList)
+            {
+                cart.Price = GetPriceBasedOnQuantity(cart.Count,
+                    cart.Product.Price, cart.Product.Price50,
+                    cart.Product.Price100);
+
+                ShoppingCartViewModel.OrderHeader.OrderTotal +=
+                    (cart.Price * cart.Count);
+            }
+
+            _unitOfWork.OrderHeader.Add(ShoppingCartViewModel.OrderHeader);
+            _unitOfWork.Save();
+
+            foreach (ShoppingCart cart in ShoppingCartViewModel.CartList)
+            {
+                OrderDetail orderDetail = new()
+                {
+                    ProductId = cart.ProductId,
+                    OrderId = ShoppingCartViewModel.OrderHeader.Id,
+                    Price = cart.Price,
+                    Count = cart.Count
+                };
+                _unitOfWork.OrderDetail.Add(orderDetail);
+                _unitOfWork.Save();
+            }
+
+            _unitOfWork.ShoppingCart.RemoveRange(ShoppingCartViewModel.CartList);
+            _unitOfWork.Save();
+            return RedirectToAction("Index", "Home");
+        }
+
 
         public IActionResult AddItem(int cartId)
         {
