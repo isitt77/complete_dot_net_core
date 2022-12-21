@@ -30,6 +30,7 @@
                                 </div>
                                 <div class="col-9">
                                     <input asp-for="OrderHeader.Name" class="form-control" />
+                                    <span asp-validation-for="OrderHeader.Name" class="text-warning"></span>
                                 </div>
                             </div>
                             <div class="row my-1">
@@ -38,6 +39,7 @@
                                 </div>
                                 <div class="col-9">
                                     <input asp-for="OrderHeader.PhoneNumber" class="form-control" />
+                                    <span asp-validation-for="OrderHeader.PhoneNumber" class="text-warning"></span>
                                 </div>
                             </div>
                             <div class="row my-1">
@@ -46,6 +48,7 @@
                                 </div>
                                 <div class="col-9">
                                     <input asp-for="OrderHeader.Address" class="form-control" />
+                                    <span asp-validation-for="OrderHeader.Address" class="text-warning"></span>
                                 </div>
                             </div>
                             <div class="row my-1">
@@ -54,6 +57,7 @@
                                 </div>
                                 <div class="col-9">
                                     <input asp-for="OrderHeader.City" class="form-control" />
+                                    <span asp-validation-for="OrderHeader.City" class="text-warning"></span>
                                 </div>
                             </div>
                             <div class="row my-1">
@@ -62,6 +66,7 @@
                                 </div>
                                 <div class="col-9">
                                     <input asp-for="OrderHeader.State" class="form-control" />
+                                    <span asp-validation-for="OrderHeader.State" class="text-warning"></span>
                                 </div>
                             </div>
                             <div class="row my-1">
@@ -70,6 +75,7 @@
                                 </div>
                                 <div class="col-9">
                                     <input asp-for="OrderHeader.ZipCode" class="form-control" />
+                                    <span asp-validation-for="OrderHeader.ZipCode" class="text-warning"></span>
                                 </div>
                             </div>
                         </div>
@@ -78,18 +84,21 @@
                                 <span class="text-info">Order Summary:</span>
                             </h4>
                             <ul class="list-group mb-3">
+                                @foreach (ShoppingCart cart in Model.CartList)
+                                {
+                                    <li class="list-group-item d-flex justify-content-between">
+                                        <div>
+                                            <h6 class="my-0">@cart.Product.Title</h6>
+                                            <small class="text-muted">Quantity: @cart.Count</small>
+                                        </div>
+                                        <span class="text-muted">@((cart.Price * cart.Count).ToString("c")) </span>
+                                    </li>
+                                }
+
 
                                 <li class="list-group-item d-flex justify-content-between">
-                                    <div>
-                                        <h6 class="my-0">Title</h6>
-                                        <small class="text-muted">Quantity: Count</small>
-                                    </div>
-                                    <span class="text-muted">$$$ </span>
-                                </li>
-
-                                <li class="list-group-item d-flex justify-content-between bg-light">
-                                    <small class="text-info">Total (USD)</small>
-                                    <strong class="text-info">$$$</strong>
+                                    <small>Total (USD)</small>
+                                    <strong>@Model.OrderHeader.OrderTotal.ToString("c")</strong>
                                 </li>
                             </ul>
                         </div>
@@ -99,7 +108,11 @@
             <div class="card-footer">
                 <div class="row">
                     <div class="col-12 col-md-8 pt-2">
-                        <p style="color:maroon; font-size:14px;">Estimate Arrival Date: </p>
+                        <p style="font-size:14px;">
+                            Estimate Arrival Date:
+                            @DateTime.Now.AddDays(7).ToShortDateString() -
+                            @DateTime.Now.AddDays(14).ToShortDateString()
+                        </p>
                     </div>
                     <div class="col-12 col-md-4">
                         <button type="submit" value="Place Order" class="btn btn-primary form-control">Place Order</button>
