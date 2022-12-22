@@ -99,9 +99,8 @@ namespace CompleteDotNetCoreWeb.Areas.Customer.Controllers
 
         // Post: Order (from Summary View)
         [HttpPost]
-        [ActionName("Summary")]
         [ValidateAntiForgeryToken]
-        public IActionResult SummaryPOST()
+        public IActionResult Summary(ShoppingCartViewModel ShoppingCartViewModel)
         {
             ClaimsIdentity claimsIdentity = (ClaimsIdentity)User.Identity;
             Claim claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
