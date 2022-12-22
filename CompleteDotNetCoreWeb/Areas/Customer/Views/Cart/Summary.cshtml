@@ -110,8 +110,8 @@
                     <div class="col-12 col-md-8 pt-2">
                         <p style="font-size:14px;">
                             Estimate Arrival Date:
-                            @DateTime.Now.AddDays(7).ToShortDateString() -
-                            @DateTime.Now.AddDays(14).ToShortDateString()
+                            @DateTime.UtcNow.AddDays(7).ToShortDateString() -
+                            @DateTime.UtcNow.AddDays(14).ToShortDateString()
                         </p>
                     </div>
                     <div class="col-12 col-md-4">
@@ -122,3 +122,10 @@
         </div>
     </div>
 </form>
+
+@section Scripts {
+    @{
+        // Runs client side validation so server isn't accessed.
+        <partial name="_ValidationScriptsPartial" />
+    }
+}

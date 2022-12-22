@@ -16,9 +16,9 @@ namespace CompleteDotNetCore.Models
         public ApplicationUser ApplicationUser { get; set; }
 
         [Required]
-        public DateTime OrderDate { get; set; }
+        public DateTime OrderDate { get; set; } = DateTime.UtcNow;
 
-        public DateTime ShippingDate { get; set; }
+        public DateTime ShippingDate { get; set; } = DateTime.UtcNow;
 
         public double OrderTotal { get; set; }
 
@@ -30,9 +30,9 @@ namespace CompleteDotNetCore.Models
 
         public string? Carrier { get; set; }
 
-        public DateTime PaymentDate { get; set; }
+        public DateTime PaymentDate { get; set; } = DateTime.UtcNow;
 
-        public DateTime PaymentDueDate { get; set; }
+        public DateTime PaymentDueDate { get; set; } = DateTime.UtcNow;
 
         // Stripe Payment info...
         public string? SessionId { get; set; }

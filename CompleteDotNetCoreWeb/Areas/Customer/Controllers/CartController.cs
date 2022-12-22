@@ -116,7 +116,7 @@ namespace CompleteDotNetCoreWeb.Areas.Customer.Controllers
             ShoppingCartViewModel.OrderHeader.OrderStatus =
                 SD.StatusPending;
             ShoppingCartViewModel.OrderHeader.OrderDate =
-                System.DateTime.Now;
+                System.DateTime.UtcNow;
             ShoppingCartViewModel.OrderHeader.ApplicationUserId =
                 claim.Value;
 
