@@ -19,6 +19,7 @@ namespace CompleteDotNetCoreWeb.Areas.Customer.Controllers
     {
         private readonly IUnitOfWork _unitOfWork;
 
+        [BindProperty]
         public ShoppingCartViewModel ShoppingCartViewModel { get; set; }
 
         public int OrderTotal { get; set; }
@@ -99,8 +100,9 @@ namespace CompleteDotNetCoreWeb.Areas.Customer.Controllers
 
         // Post: Order (from Summary View)
         [HttpPost]
+        [ActionName("Summary")]
         [ValidateAntiForgeryToken]
-        public IActionResult Summary(ShoppingCartViewModel ShoppingCartViewModel)
+        public IActionResult SummaryPOST()
         {
             ClaimsIdentity claimsIdentity = (ClaimsIdentity)User.Identity;
             Claim claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
