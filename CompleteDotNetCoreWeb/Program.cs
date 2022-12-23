@@ -17,6 +17,9 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 options.UseNpgsql(builder.Configuration
 .GetConnectionString("PostgresConnection")));
 
+builder.Services.Configure<StripeSettingsUtility>(builder.Configuration
+    .GetSection("StripeSettings"));
+
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()
     .AddDefaultTokenProviders()
     .AddEntityFrameworkStores<ApplicationDbContext>();
