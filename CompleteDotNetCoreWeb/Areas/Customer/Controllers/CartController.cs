@@ -9,7 +9,7 @@ using CompleteDotNetCore.Models.ViewModels;
 using CompleteDotNetCore.Utility;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-
+using Stripe.Checkout;
 
 namespace CompleteDotNetCoreWeb.Areas.Customer.Controllers
 {
@@ -145,6 +145,39 @@ namespace CompleteDotNetCoreWeb.Areas.Customer.Controllers
                 _unitOfWork.OrderDetail.Add(orderDetail);
                 _unitOfWork.Save();
             }
+
+            // Stripe logic
+            string domain = "https://localhost:7103/";
+            SessionCreateOptions options = new()
+            {
+                LineItems = new List<SessionLineItemOptions>
+        {
+          new SessionLineItemOptions
+          {
+            PriceData = new SessionLineItemPriceDataOptions
+            {
+              UnitAmount = 2000,
+              Currency = "usd",
+              ProductData = new SessionLineItemPriceDataProductDataOptions
+              {
+                Name = "T-shirt",
+              },
+            },
+            Quantity = 1,
+          },
+        },
+                Mode = "payment",
+                SuccessUrl = "http://localhost:4242/success",
+                CancelUrl = "http://localhost:4242/cancel",
+            };
+
+            var service = new SessionService();
+            Session session = service.Create(options);
+
+            Response.Headers.Add("Location", session.Url);
+            return new StatusCodeResult(303);
+
+            // End Stripe logic
 
             _unitOfWork.ShoppingCart.RemoveRange(ShoppingCartViewModel.CartList);
             _unitOfWork.Save();
