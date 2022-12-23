@@ -1,4 +1,6 @@
 ﻿@model CompleteDotNetCore.Models.ViewModels.ShoppingCartViewModel
+@using Microsoft.Extensions.Options
+@inject IOptions<CompleteDotNetCore.Utility.StripeSettingsUtility> Stripe
 
 <form method="post">
     <br />
