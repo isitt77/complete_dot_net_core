@@ -17,6 +17,7 @@
 		<None Remove="Microsoft.AspNetCore.Identity.UI" />
 		<None Remove="Microsoft.EntityFrameworkCore.SqlServer" />
 		<None Remove="Microsoft.Extensions.Identity.Stores" />
+		<None Remove="Stripe.net" />
 	</ItemGroup>
 	<ItemGroup>
 		<Folder Include="Data\" />
@@ -35,6 +36,7 @@
 		<PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="7.0.1" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.1" />
 		<PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="7.0.1" />
+		<PackageReference Include="Stripe.net" Version="41.3.0" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\CompleteDotNetCore.Models\CompleteDotNetCore.Models.csproj" />

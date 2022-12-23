@@ -30,6 +30,7 @@
 		<None Remove="Microsoft.Extensions.Identity.Stores" />
 		<None Remove="Areas\Admin\Views\Company\" />
 		<None Remove="Areas\Customer\Views\Cart\" />
+		<None Remove="Stripe.net" />
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.1" />
@@ -43,6 +44,7 @@
 		<PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="7.0.1" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.1" />
 		<PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="7.0.1" />
+		<PackageReference Include="Stripe.net" Version="41.3.0" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\CompleteDotNetCore.DataAccess\CompleteDotNetCore.DataAccess.csproj">
