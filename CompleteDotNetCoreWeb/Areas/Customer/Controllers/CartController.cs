@@ -148,28 +148,38 @@ namespace CompleteDotNetCoreWeb.Areas.Customer.Controllers
 
             // Stripe logic
             string domain = "https://localhost:7103/";
-            SessionCreateOptions options = new()
+            SessionCreateOptions options = new SessionCreateOptions
             {
-                LineItems = new List<SessionLineItemOptions>
-        {
-          new SessionLineItemOptions
-          {
-            PriceData = new SessionLineItemPriceDataOptions
-            {
-              UnitAmount = 2000,
-              Currency = "usd",
-              ProductData = new SessionLineItemPriceDataProductDataOptions
-              {
-                Name = "T-shirt",
-              },
-            },
-            Quantity = 1,
-          },
-        },
+                PaymentMethodTypes = new List<string>
+                {
+                    "card"
+                },
+                LineItems = new List<SessionLineItemOptions>(),
+
                 Mode = "payment",
                 SuccessUrl = "http://localhost:4242/success",
                 CancelUrl = "http://localhost:4242/cancel",
             };
+
+            foreach (ShoppingCart item in ShoppingCartViewModel.CartList)
+            {
+
+                SessionLineItemOptions sessionLineItem = new SessionLineItemOptions
+                {
+                    PriceData = new SessionLineItemPriceDataOptions
+                    {
+                        UnitAmount = (long)(item.Price * 100),
+                        Currency = "usd",
+                        ProductData = new SessionLineItemPriceDataProductDataOptions
+                        {
+                            Name = item.Product.Title,
+                        }
+                    },
+                    Quantity = item.Count,
+                };
+
+                options.LineItems.Add(sessionLineItem);
+            }
 
             var service = new SessionService();
             Session session = service.Create(options);
