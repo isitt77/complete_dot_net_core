@@ -157,8 +157,8 @@ namespace CompleteDotNetCoreWeb.Areas.Customer.Controllers
                 LineItems = new List<SessionLineItemOptions>(),
 
                 Mode = "payment",
-                SuccessUrl = "http://localhost:4242/success",
-                CancelUrl = "http://localhost:4242/cancel",
+                SuccessUrl = domain + $"Customer/Cart/OrderConfirmation?id={ShoppingCartViewModel.OrderHeader.Id}",
+                CancelUrl = domain + $"Customer/Cart/Index"
             };
 
             foreach (ShoppingCart item in ShoppingCartViewModel.CartList)
@@ -181,7 +181,7 @@ namespace CompleteDotNetCoreWeb.Areas.Customer.Controllers
                 options.LineItems.Add(sessionLineItem);
             }
 
-            var service = new SessionService();
+            SessionService service = new SessionService();
             Session session = service.Create(options);
 
             Response.Headers.Add("Location", session.Url);
@@ -189,9 +189,9 @@ namespace CompleteDotNetCoreWeb.Areas.Customer.Controllers
 
             // End Stripe logic
 
-            _unitOfWork.ShoppingCart.RemoveRange(ShoppingCartViewModel.CartList);
-            _unitOfWork.Save();
-            return RedirectToAction("Index", "Home");
+            //_unitOfWork.ShoppingCart.RemoveRange(ShoppingCartViewModel.CartList);
+            //_unitOfWork.Save();
+            //return RedirectToAction("Index", "Home");
         }
 
 
