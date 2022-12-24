@@ -20,7 +20,23 @@ namespace CompleteDotNetCore.DataAccess.Repository
         }
 
         public void UpdateStatus(int id, string orderStatus,
-            string paymentStatus)
+            string? paymentStatus = null)
+        {
+            OrderHeader orderFromDb = _db.OrderHeaders.FirstOrDefault(
+                u => u.Id == id);
+
+            if (orderFromDb != null)
+            {
+                orderFromDb.OrderStatus = orderStatus;
+                if (paymentStatus != null)
+                {
+                    orderFromDb.PaymentStatus = paymentStatus;
+                }
+            }
+        }
+
+        public void UpdateStatus(int id, string sessionId,
+    string paymentIntentId)
         {
             OrderHeader orderFromDb = _db.OrderHeaders.FirstOrDefault(
                 u => u.Id == id);
