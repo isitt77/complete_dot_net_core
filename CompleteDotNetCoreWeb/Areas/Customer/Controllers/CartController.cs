@@ -184,6 +184,11 @@ namespace CompleteDotNetCoreWeb.Areas.Customer.Controllers
             SessionService service = new SessionService();
             Session session = service.Create(options);
 
+            // Collect Stripe SessionId and PaymentIntentId
+            _unitOfWork.OrderHeader.UpdateStripePaymentId(ShoppingCartViewModel
+                .OrderHeader.Id, session.Id, session.PaymentIntentId);
+
+            _unitOfWork.Save();
             Response.Headers.Add("Location", session.Url);
             return new StatusCodeResult(303);
 
@@ -192,6 +197,13 @@ namespace CompleteDotNetCoreWeb.Areas.Customer.Controllers
             //_unitOfWork.ShoppingCart.RemoveRange(ShoppingCartViewModel.CartList);
             //_unitOfWork.Save();
             //return RedirectToAction("Index", "Home");
+        }
+
+
+        public IActionResult OrderConfirmation(int id)
+        {
+            OrderHeader orderHeader = _unitOfWork.OrderHeader
+                .GetFirstOrDefault(u => u.Id == id);
         }
 
 
