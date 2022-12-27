@@ -162,61 +162,59 @@ namespace CompleteDotNetCoreWeb.Areas.Customer.Controllers
             }
 
 
-
-            // Stripe logic
-            string domain = "https://localhost:7103/";
-            SessionCreateOptions options = new SessionCreateOptions
+            if (applicationUser.CompanyId.GetValueOrDefault() == 0)
             {
-                PaymentMethodTypes = new List<string>
+                // Stripe logic
+                string domain = "https://localhost:7103/";
+                SessionCreateOptions options = new SessionCreateOptions
+                {
+                    PaymentMethodTypes = new List<string>
                 {
                     "card"
                 },
-                LineItems = new List<SessionLineItemOptions>(),
+                    LineItems = new List<SessionLineItemOptions>(),
 
-                Mode = "payment",
-                SuccessUrl = domain + $"Customer/Cart/OrderConfirmation?id={ShoppingCartViewModel.OrderHeader.Id}",
-                CancelUrl = domain + $"Customer/Cart/Index"
-            };
-
-            foreach (ShoppingCart item in ShoppingCartViewModel.CartList)
-            {
-
-                SessionLineItemOptions sessionLineItem = new SessionLineItemOptions
-                {
-                    PriceData = new SessionLineItemPriceDataOptions
-                    {
-                        UnitAmount = (long)(item.Price * 100),
-                        Currency = "usd",
-                        ProductData = new SessionLineItemPriceDataProductDataOptions
-                        {
-                            Name = item.Product.Title,
-                        }
-                    },
-                    Quantity = item.Count,
+                    Mode = "payment",
+                    SuccessUrl = domain + $"Customer/Cart/OrderConfirmation?id={ShoppingCartViewModel.OrderHeader.Id}",
+                    CancelUrl = domain + $"Customer/Cart/Index"
                 };
 
-                options.LineItems.Add(sessionLineItem);
+                foreach (ShoppingCart item in ShoppingCartViewModel.CartList)
+                {
+
+                    SessionLineItemOptions sessionLineItem = new SessionLineItemOptions
+                    {
+                        PriceData = new SessionLineItemPriceDataOptions
+                        {
+                            UnitAmount = (long)(item.Price * 100),
+                            Currency = "usd",
+                            ProductData = new SessionLineItemPriceDataProductDataOptions
+                            {
+                                Name = item.Product.Title,
+                            }
+                        },
+                        Quantity = item.Count,
+                    };
+
+                    options.LineItems.Add(sessionLineItem);
+                }
+
+                SessionService service = new SessionService();
+                Session session = service.Create(options);
+
+                // Collect Stripe SessionId and PaymentIntentId
+                _unitOfWork.OrderHeader.UpdateStripePaymentId(ShoppingCartViewModel
+                    .OrderHeader.Id, session.Id, session.PaymentIntentId);
+
+                //Console.WriteLine("************ session Id: " + session.Id +
+                //    "************");
+
+                _unitOfWork.Save();
+                Response.Headers.Add("Location", session.Url);
+                return new StatusCodeResult(303);
+
+                // End Stripe logic
             }
-
-            SessionService service = new SessionService();
-            Session session = service.Create(options);
-
-            // Collect Stripe SessionId and PaymentIntentId
-            _unitOfWork.OrderHeader.UpdateStripePaymentId(ShoppingCartViewModel
-                .OrderHeader.Id, session.Id, session.PaymentIntentId);
-
-            //Console.WriteLine("************ session Id: " + session.Id +
-            //    "************");
-
-            _unitOfWork.Save();
-            Response.Headers.Add("Location", session.Url);
-            return new StatusCodeResult(303);
-
-            // End Stripe logic
-
-            //_unitOfWork.ShoppingCart.RemoveRange(ShoppingCartViewModel.CartList);
-            //_unitOfWork.Save();
-            //return RedirectToAction("Index", "Home");
         }
 
 
