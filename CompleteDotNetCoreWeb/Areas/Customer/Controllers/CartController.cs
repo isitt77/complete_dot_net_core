@@ -111,10 +111,7 @@ namespace CompleteDotNetCoreWeb.Areas.Customer.Controllers
                     u => u.ApplicationUserId == claim.Value,
                     includeProperties: "Product");
 
-            ShoppingCartViewModel.OrderHeader.PaymentStatus =
-                SD.PaymentStatusPending;
-            ShoppingCartViewModel.OrderHeader.OrderStatus =
-                SD.StatusPending;
+
             ShoppingCartViewModel.OrderHeader.OrderDate =
                 System.DateTime.UtcNow;
             ShoppingCartViewModel.OrderHeader.ApplicationUserId =
@@ -128,6 +125,24 @@ namespace CompleteDotNetCoreWeb.Areas.Customer.Controllers
 
                 ShoppingCartViewModel.OrderHeader.OrderTotal +=
                     (cart.Price * cart.Count);
+            }
+
+            // Company User logic
+            ApplicationUser applicationUser = _unitOfWork.ApplicationUser
+                .GetFirstOrDefault(u => u.Id == claim.Value);
+            if (applicationUser.CompanyId.GetValueOrDefault() == 0)
+            {
+                ShoppingCartViewModel.OrderHeader.PaymentStatus =
+                    SD.PaymentStatusPending;
+                ShoppingCartViewModel.OrderHeader.OrderStatus =
+                    SD.StatusPending;
+            }
+            else
+            {
+                ShoppingCartViewModel.OrderHeader.PaymentStatus =
+                    SD.PaymentStatusDelayedPayment;
+                ShoppingCartViewModel.OrderHeader.OrderStatus =
+                    SD.StatusApproved;
             }
 
             _unitOfWork.OrderHeader.Add(ShoppingCartViewModel.OrderHeader);
@@ -145,6 +160,8 @@ namespace CompleteDotNetCoreWeb.Areas.Customer.Controllers
                 _unitOfWork.OrderDetail.Add(orderDetail);
                 _unitOfWork.Save();
             }
+
+
 
             // Stripe logic
             string domain = "https://localhost:7103/";
