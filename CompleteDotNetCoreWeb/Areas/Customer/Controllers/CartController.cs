@@ -229,19 +229,22 @@ namespace CompleteDotNetCoreWeb.Areas.Customer.Controllers
             OrderHeader orderHeader = _unitOfWork.OrderHeader
                 .GetFirstOrDefault(u => u.Id == id);
 
-            SessionService service = new SessionService();
-            Session session = service.Get(orderHeader.SessionId);
-
-            if (session.PaymentStatus.ToLower() == "paid")
+            if (orderHeader.PaymentStatus != SD.PaymentStatusDelayedPayment)
             {
-                orderHeader.PaymentIntentId = session.PaymentIntentId;
+                SessionService service = new SessionService();
+                Session session = service.Get(orderHeader.SessionId);
 
-                //Console.WriteLine("************ PaymentIntentId: " +
-                //    session.PaymentIntentId + "************");
+                if (session.PaymentStatus.ToLower() == "paid")
+                {
+                    orderHeader.PaymentIntentId = session.PaymentIntentId;
 
-                _unitOfWork.OrderHeader.UpdateStatus(id, SD.StatusApproved,
-                    SD.PaymentStatusApproved);
-                _unitOfWork.Save();
+                    //Console.WriteLine("************ PaymentIntentId: " +
+                    //    session.PaymentIntentId + "************");
+
+                    _unitOfWork.OrderHeader.UpdateStatus(id, SD.StatusApproved,
+                        SD.PaymentStatusApproved);
+                    _unitOfWork.Save();
+                }
             }
 
             List<ShoppingCart> shoppingCarts = _unitOfWork.ShoppingCart
