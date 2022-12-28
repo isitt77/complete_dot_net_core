@@ -1,6 +1,31 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-info">Order List</h2>
+        </div>
+        <div class="col-6 text-end">
 
+        </div>
+    </div>
+    <br />
+    <table id="dataTable" class="table table-bordered table-striped" width="100%">
+        <thead>
+            <tr class="table-primary">
+                <th>Id</th>
+                <th>Name</th>
+                <th>Phone Number</th>
+                <th>Email</th>
+                <th>Order Status</th>
+                <th>Order Total</th>
+                <th width="24%"></th>
+            </tr>
+        </thead>
+    </table>
+</div>
+
+@section Scripts{
+
+    <script src="~/js/order.js"></script>
+
+}
