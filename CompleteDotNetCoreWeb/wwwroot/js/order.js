@@ -33,7 +33,7 @@ function loadDataTable() {
                            </a>
                         </td>
                         `
-                    }, "width": "24%"
+                    }, "width": "10%"
                 }
             ]
     });
