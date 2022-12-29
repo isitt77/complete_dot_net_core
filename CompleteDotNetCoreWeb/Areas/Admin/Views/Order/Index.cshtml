@@ -1,11 +1,18 @@
 ﻿
 <div class="p-3">
-    <div class="d-flex-column justify-content-between pt-4">
+    <div class="d-flex justify-content-between pt-4">
         <div class="p-2">
             <h2 class="text-info">Order List</h2>
         </div>
         <div class="p-2">
-
+            <ul class="list-group list-group-horizontal-sm">
+                <li class="list-group-item">
+                    <a style="text-decoration:none" asp-controller="Order"
+                       asp-action="Index" asp-route-status="inProcess">
+                        In Process
+                    </a>
+                </li>
+            </ul>
         </div>
     </div>
     <br />
