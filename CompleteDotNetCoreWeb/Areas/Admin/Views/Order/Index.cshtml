@@ -7,9 +7,27 @@
         <div class="p-2">
             <ul class="list-group list-group-horizontal-sm">
                 <li class="list-group-item">
-                    <a style="text-decoration:none" asp-controller="Order"
+                    <a style="text-decoration:none;" asp-controller="Order"
                        asp-action="Index" asp-route-status="inProcess">
                         In Process
+                    </a>
+                </li>
+                <li class="list-group-item">
+                    <a style="text-decoration:none" asp-controller="Order"
+                       asp-action="Index" asp-route-status="pending">
+                        Payment Pending
+                    </a>
+                </li>
+                <li class="list-group-item">
+                    <a style="text-decoration:none" asp-controller="Order"
+                       asp-action="Index" asp-route-status="completed">
+                        Completed
+                    </a>
+                </li>
+                <li class="list-group-item">
+                    <a style="text-decoration:none" asp-controller="Order"
+                       asp-action="Index" asp-route-status="all">
+                        All
                     </a>
                 </li>
             </ul>
