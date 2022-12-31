@@ -1,18 +1,29 @@
 ﻿@{
     var status = Context.Request.Query["status"];
-    string inProcess = "text-primary";
-    string pending = "text-primary";
-    string completed = "text-primary";
-    string all = "text-primary";
+    string inProcess = "text-light";
+    string pending = "text-light";
+    string completed = "text-light";
+    string all = "text-light";
 
     switch (status)
     {
         case "inProcess":
             inProcess = "active text-white";
             break;
+        case "pending":
+            pending = "active text-white";
+            break;
+        case "completed":
+            completed = "active text-white";
+            break;
+        case "all":
+            all = "active text-white";
+            break;
+
 
     }
 }
+
 <div class="p-3">
     <div class="d-flex justify-content-between pt-4">
         <div class="p-2">
@@ -21,26 +32,30 @@
         <div class="p-2">
             <ul class="list-group list-group-horizontal-sm">
                 <li class="list-group-item @inProcess">
-                    <a style="text-decoration:none;" asp-controller="Order"
-                       asp-action="Index" asp-route-status="inProcess">
+                    <a class="@inProcess" style="text-decoration:none;"
+                       asp-controller="Order" asp-action="Index"
+                       asp-route-status="inProcess">
                         In Process
                     </a>
                 </li>
                 <li class="list-group-item @pending">
-                    <a style="text-decoration:none" asp-controller="Order"
-                       asp-action="Index" asp-route-status="pending">
+                    <a class="@pending" style="text-decoration:none"
+                       asp-controller="Order" asp-action="Index"
+                       asp-route-status="pending">
                         Payment Pending
                     </a>
                 </li>
                 <li class="list-group-item @completed">
-                    <a style="text-decoration:none" asp-controller="Order"
-                       asp-action="Index" asp-route-status="completed">
+                    <a class="@completed" style="text-decoration:none"
+                       asp-controller="Order" asp-action="Index"
+                       asp-route-status="completed">
                         Completed
                     </a>
                 </li>
                 <li class="list-group-item @all">
-                    <a style="text-decoration:none" asp-controller="Order"
-                       asp-action="Index" asp-route-status="all">
+                    <a class="@all" style="text-decoration:none"
+                       asp-controller="Order" asp-action="Index"
+                       asp-route-status="all">
                         All
                     </a>
                 </li>
