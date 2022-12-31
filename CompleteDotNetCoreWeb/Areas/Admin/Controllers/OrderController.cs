@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using CompleteDotNetCore.DataAccess.Repository.IRepository;
 using CompleteDotNetCore.Models;
+using CompleteDotNetCore.Utility;
 using Microsoft.AspNetCore.Mvc;
 
 
@@ -29,12 +31,34 @@ namespace CompleteDotNetCoreWeb.Areas.Admin.Controllers
 
         #region API CALLS
         [HttpGet]
-        public IActionResult GetAll()
+        public IActionResult GetAll(string status)
         {
             IEnumerable<OrderHeader> orderHeaders;
 
             orderHeaders = _unitOfWork.OrderHeader.GetAll(includeProperties:
                 "ApplicationUser");
+
+            switch (status)
+            {
+                case "inProcess":
+                    orderHeaders = orderHeaders.Where(
+                        u => u.OrderStatus ==
+                        SD.StatusInProcess);
+                    break;
+                case "pending":
+                    orderHeaders = orderHeaders.Where(
+                        u => u.PaymentStatus ==
+                        SD.PaymentStatusDelayedPayment);
+                    break;
+                case "completed":
+                    orderHeaders = orderHeaders.Where(
+                        u => u.OrderStatus ==
+                        SD.StatusShipped);
+                    break;
+                default:
+                    break;
+            }
+
             return Json(new { data = orderHeaders });
         }
         #endregion
