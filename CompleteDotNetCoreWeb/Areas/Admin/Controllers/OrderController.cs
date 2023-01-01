@@ -40,20 +40,21 @@ namespace CompleteDotNetCoreWeb.Areas.Admin.Controllers
 
             switch (status)
             {
-                case "inProcess":
-                    orderHeaders = orderHeaders.Where(
-                        u => u.OrderStatus ==
-                        SD.StatusInProcess);
-                    break;
                 case "pending":
-                    orderHeaders = orderHeaders.Where(
-                        u => u.PaymentStatus ==
-                        SD.PaymentStatusDelayedPayment);
+                    orderHeaders = orderHeaders.Where(u =>
+                    u.PaymentStatus == SD.PaymentStatusDelayedPayment);
+                    break;
+                case "inprocess":
+                    orderHeaders = orderHeaders.Where(u =>
+                    u.OrderStatus == SD.StatusInProcess);
                     break;
                 case "completed":
-                    orderHeaders = orderHeaders.Where(
-                        u => u.OrderStatus ==
-                        SD.StatusShipped);
+                    orderHeaders = orderHeaders.Where(u =>
+                    u.OrderStatus == SD.StatusShipped);
+                    break;
+                case "approved":
+                    orderHeaders = orderHeaders.Where(u =>
+                    u.OrderStatus == SD.StatusApproved);
                     break;
                 default:
                     break;

@@ -3,6 +3,7 @@
     string inProcess = "text-light";
     string pending = "text-light";
     string completed = "text-light";
+    string approved = "text-light";
     string all = "text-light";
 
     switch (status)
@@ -15,6 +16,9 @@
             break;
         case "completed":
             completed = "active text-white";
+            break;
+        case "approved":
+            approved = "active text-white";
             break;
         default:
             all = "active text-white";
@@ -48,6 +52,13 @@
                        asp-controller="Order" asp-action="Index"
                        asp-route-status="completed">
                         Completed
+                    </a>
+                </li>
+                <li class="list-group-item @approved">
+                    <a class="@approved" style="text-decoration:none"
+                       asp-controller="Order" asp-action="Index"
+                       asp-route-status="approved">
+                        Approved
                     </a>
                 </li>
                 <li class="list-group-item @all">
