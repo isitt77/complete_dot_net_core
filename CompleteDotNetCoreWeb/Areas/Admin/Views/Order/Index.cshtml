@@ -9,19 +9,19 @@
     switch (status)
     {
         case "inProcess":
-            inProcess = "active text-white";
+            inProcess = "text-white";
             break;
         case "pending":
-            pending = "active text-white";
+            pending = "text-white";
             break;
         case "completed":
-            completed = "active text-white";
+            completed = "text-white";
             break;
         case "approved":
-            approved = "active text-white";
+            approved = "text-white";
             break;
         default:
-            all = "active text-white";
+            all = "text-white";
             break;
     }
 }
@@ -32,42 +32,73 @@
             <h2 class="text-info">Order List</h2>
         </div>
         <div class="p-2">
-            <ul class="list-group list-group-horizontal-sm">
-                <li class="list-group-item @inProcess">
-                    <a class="@inProcess" style="text-decoration:none;"
-                       asp-controller="Order" asp-action="Index"
-                       asp-route-status="inProcess">
-                        In Process
-                    </a>
+            <ul class="nav nav-pills">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#"
+                       role="button" aria-haspopup="true" aria-expanded="false">Filter Order Status</a>
+                    <div class="dropdown-menu" style="">
+                        <a class="dropdown-item @inProcess" style="text-decoration:none;"
+                           asp-controller="Order" asp-action="Index"
+                           asp-route-status="inProcess">
+                            In Process
+                        </a>
+                        <a class="dropdown-item @pending" style="text-decoration:none"
+                           asp-controller="Order" asp-action="Index"
+                           asp-route-status="pending">
+                            Payment Pending
+                        </a>
+                        <a class="dropdown-item @completed" style="text-decoration:none"
+                           asp-controller="Order" asp-action="Index"
+                           asp-route-status="completed">
+                            Completed
+                        </a>
+                        <a class="dropdown-item @approved" style="text-decoration:none"
+                           asp-controller="Order" asp-action="Index"
+                           asp-route-status="approved">
+                            Approved
+                        </a>
+                        <a class="dropdown-item @all" style="text-decoration:none"
+                           asp-controller="Order" asp-action="Index"
+                           asp-route-status="all">
+                            All
+                        </a>
+                    </div>
                 </li>
-                <li class="list-group-item @pending">
-                    <a class="@pending" style="text-decoration:none"
-                       asp-controller="Order" asp-action="Index"
-                       asp-route-status="pending">
-                        Payment Pending
-                    </a>
-                </li>
-                <li class="list-group-item @completed">
-                    <a class="@completed" style="text-decoration:none"
-                       asp-controller="Order" asp-action="Index"
-                       asp-route-status="completed">
-                        Completed
-                    </a>
-                </li>
-                <li class="list-group-item @approved">
-                    <a class="@approved" style="text-decoration:none"
-                       asp-controller="Order" asp-action="Index"
-                       asp-route-status="approved">
-                        Approved
-                    </a>
-                </li>
-                <li class="list-group-item @all">
-                    <a class="@all" style="text-decoration:none"
-                       asp-controller="Order" asp-action="Index"
-                       asp-route-status="all">
-                        All
-                    </a>
-                </li>
+                @*<li class="nav-item @inProcess">
+                        <a class="nav-link @inProcess" style="text-decoration:none;"
+                           asp-controller="Order" asp-action="Index"
+                           asp-route-status="inProcess">
+                            In Process
+                        </a>
+                    </li>
+                    <li class="nav-item @pending">
+                        <a class="nav-link @pending" style="text-decoration:none"
+                           asp-controller="Order" asp-action="Index"
+                           asp-route-status="pending">
+                            Payment Pending
+                        </a>
+                    </li>
+                    <li class="nav-item @completed">
+                        <a class="nav-link @completed" style="text-decoration:none"
+                           asp-controller="Order" asp-action="Index"
+                           asp-route-status="completed">
+                            Completed
+                        </a>
+                    </li>
+                    <li class="nav-item @approved">
+                        <a class="nav-link @approved" style="text-decoration:none"
+                           asp-controller="Order" asp-action="Index"
+                           asp-route-status="approved">
+                            Approved
+                        </a>
+                    </li>
+                    <li class="nav-item @all">
+                        <a class="nav-link @all" style="text-decoration:none"
+                           asp-controller="Order" asp-action="Index"
+                           asp-route-status="all">
+                            All
+                        </a>
+                    </li>*@
             </ul>
         </div>
     </div>

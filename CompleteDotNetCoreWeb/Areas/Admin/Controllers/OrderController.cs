@@ -44,7 +44,7 @@ namespace CompleteDotNetCoreWeb.Areas.Admin.Controllers
                     orderHeaders = orderHeaders.Where(u =>
                     u.PaymentStatus == SD.PaymentStatusDelayedPayment);
                     break;
-                case "inprocess":
+                case "inProcess":
                     orderHeaders = orderHeaders.Where(u =>
                     u.OrderStatus == SD.StatusInProcess);
                     break;
