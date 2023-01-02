@@ -52,9 +52,6 @@ namespace CompleteDotNetCoreWeb.Areas.Admin.Controllers
                 u.ApplicationUserId == claim.Value, includeProperties: "ApplicationUser");
             }
 
-            //orderHeaders = _unitOfWork.OrderHeader.GetAll(includeProperties:
-            //    "ApplicationUser");
-
             switch (status)
             {
                 case "pending":
