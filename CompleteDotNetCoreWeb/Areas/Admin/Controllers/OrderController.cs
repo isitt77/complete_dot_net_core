@@ -2,16 +2,19 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using CompleteDotNetCore.DataAccess.Repository.IRepository;
 using CompleteDotNetCore.Models;
 using CompleteDotNetCore.Utility;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 
 namespace CompleteDotNetCoreWeb.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize]
     public class OrderController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
@@ -35,8 +38,22 @@ namespace CompleteDotNetCoreWeb.Areas.Admin.Controllers
         {
             IEnumerable<OrderHeader> orderHeaders;
 
-            orderHeaders = _unitOfWork.OrderHeader.GetAll(includeProperties:
-                "ApplicationUser");
+            if (User.IsInRole(SD.RoleAdmin) || User.IsInRole(SD.RoleEmployee))
+            {
+                orderHeaders = _unitOfWork.OrderHeader.GetAll(includeProperties:
+                    "ApplicationUser");
+            }
+            else
+            {
+                ClaimsIdentity claimsIdentity = (ClaimsIdentity)User.Identity;
+                Claim claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
+
+                orderHeaders = _unitOfWork.OrderHeader.GetAll(u =>
+                u.ApplicationUserId == claim.Value, includeProperties: "ApplicationUser");
+            }
+
+            //orderHeaders = _unitOfWork.OrderHeader.GetAll(includeProperties:
+            //    "ApplicationUser");
 
             switch (status)
             {
