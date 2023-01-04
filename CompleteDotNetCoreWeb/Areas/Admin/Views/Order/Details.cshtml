@@ -171,24 +171,42 @@
                             <div class="row my-1">
                                 <div class="col-3">Shipping Date</div>
                                 <div class="col-9">
-                                    <input id="shippingDate" type="text" readonly class="form-control" />
+                                    <input value="@Model.OrderHeader.ShippingDate.ToShortDateString()"
+                                           type="text" readonly class="form-control" />
                                 </div>
                             </div>
+                            @if (User.IsInRole(SD.RoleAdmin) || User.IsInRole(SD.RoleEmployee))
+                            {
+                                <div class="row my-1">
+                                    <div class="col-3">Session ID</div>
+                                    <div class="col-9">
+                                        <input asp-for="OrderHeader.SessionId" type="text"
+                                               readonly class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="row my-1">
+                                    <div class="col-3">PaymentIntent ID</div>
+                                    <div class="col-9">
+                                        <input asp-for="OrderHeader.PaymentIntentId" type="text"
+                                               readonly class="form-control" />
+                                    </div>
+                                </div>
+                            }
                             <div class="row my-1">
-                                <div class="col-3">Transaction ID</div>
-                                <div class="col-9">
-                                    <input type="text" readonly class="form-control" />
-                                </div>
-                            </div>
-                            <div class="row my-1">
-                                <div class="col-3">Payment Due Date</div>
-                                <div class="col-9">
-                                    <input readonly class="form-control" />
-                                </div>
-                                <div class="col-3">Payment Date</div>
-                                <div class="col-9">
-                                    <input readonly class="form-control" />
-                                </div>
+                                @if (Model.OrderHeader.SessionId == null)
+                                {
+                                    <div class="col-3">Payment Due Date</div>
+                                    <div class="col-9">
+                                        <input readonly class="form-control" />
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="col-3">Payment Date</div>
+                                    <div class="col-9">
+                                        <input readonly class="form-control" />
+                                    </div>
+                                }
                             </div>
                             <div class="row my-1">
                                 <div class="col-3">Payment Status</div>
