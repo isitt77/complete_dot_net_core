@@ -40,7 +40,7 @@ namespace CompleteDotNetCore.DataAccess.Repository
         {
             OrderHeader orderFromDb = _db.OrderHeaders.FirstOrDefault(
                 u => u.Id == id);
-
+            orderFromDb.PaymentDate = DateTime.UtcNow;
             orderFromDb.SessionId = sessionId;
             orderFromDb.PaymentIntentId = paymentIntentId;
         }

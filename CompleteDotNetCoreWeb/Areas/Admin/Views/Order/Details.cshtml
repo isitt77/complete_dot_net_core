@@ -197,21 +197,24 @@
                                 {
                                     <div class="col-3">Payment Due Date</div>
                                     <div class="col-9">
-                                        <input readonly class="form-control" />
+                                        <input value="@Model.OrderHeader.PaymentDueDate.ToShortDateString()"
+                                               readonly class="form-control" />
                                     </div>
                                 }
                                 else
                                 {
                                     <div class="col-3">Payment Date</div>
                                     <div class="col-9">
-                                        <input readonly class="form-control" />
+                                        <input value="@Model.OrderHeader.PaymentDate.ToShortDateString()"
+                                               readonly class="form-control" />
                                     </div>
                                 }
                             </div>
                             <div class="row my-1">
                                 <div class="col-3">Payment Status</div>
                                 <div class="col-9">
-                                    <input type="text" readonly class="form-control" />
+                                    <input asp-for="OrderHeader.PaymentStatus"
+                                           type="text" readonly class="form-control" />
                                 </div>
                             </div>
                             <input type="submit" class="btn btn-warning form-control my-1" value="Update Order Details" />
