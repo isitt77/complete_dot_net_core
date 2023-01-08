@@ -7,7 +7,7 @@ namespace CompleteDotNetCore.DataAccess.Repository.IRepository
     {
         // Find()
         T? GetFirstOrDefault(Expression<Func<T, bool>> filter,
-            string? includeProperties = null);
+            string? includeProperties = null, bool tracked = true);
 
         // GET classes
         IEnumerable<T> GetAll(Expression<Func<T, bool>>? filter = null,

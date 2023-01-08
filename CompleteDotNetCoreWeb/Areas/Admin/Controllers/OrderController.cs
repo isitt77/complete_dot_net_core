@@ -55,6 +55,39 @@ namespace CompleteDotNetCoreWeb.Areas.Admin.Controllers
         }
 
 
+        // POST: Update Order Details
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult UpdateOrderDetails()
+        {
+            OrderHeader orderHeaderFromDb = _unitOfWork.OrderHeader
+                .GetFirstOrDefault(u => u.Id ==
+                OrderViewModel.OrderHeader.Id);
+
+            orderHeaderFromDb.Name = OrderViewModel.OrderHeader.Name;
+            orderHeaderFromDb.PhoneNumber = OrderViewModel.OrderHeader.PhoneNumber;
+            orderHeaderFromDb.Address = OrderViewModel.OrderHeader.Address;
+            orderHeaderFromDb.City = OrderViewModel.OrderHeader.City;
+            orderHeaderFromDb.ZipCode = OrderViewModel.OrderHeader.ZipCode;
+            if (OrderViewModel.OrderHeader.Carrier != null)
+            {
+                orderHeaderFromDb.Carrier = OrderViewModel.OrderHeader.Carrier;
+            }
+            if (OrderViewModel.OrderHeader.TrackingNumber != null)
+            {
+                orderHeaderFromDb.TrackingNumber = OrderViewModel.OrderHeader.TrackingNumber;
+            }
+
+            //_unitOfWork.OrderHeader.Update(orderHeaderFromDb);
+            _unitOfWork.Save();
+            Console.WriteLine("****Order Details Updated.****");
+            TempData["Success"] = "Successfully updated Order Details.";
+
+            return RedirectToAction("Details", "Order",
+                new { orderId = orderHeaderFromDb.Id });
+        }
+
+
 
         #region API CALLS
         [HttpGet]

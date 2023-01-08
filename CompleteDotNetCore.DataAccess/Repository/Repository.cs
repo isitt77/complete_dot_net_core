@@ -45,7 +45,7 @@ namespace CompleteDotNetCore.DataAccess.Repository
         }
 
         public T? GetFirstOrDefault(Expression<Func<T, bool>> filter,
-            string? includeProperties = null)
+            string? includeProperties = null, bool tracked = true)
         {
             IQueryable<T> query = dbSet;
             query = query.Where(filter);
