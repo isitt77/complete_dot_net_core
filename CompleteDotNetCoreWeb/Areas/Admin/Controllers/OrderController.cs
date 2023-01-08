@@ -78,9 +78,9 @@ namespace CompleteDotNetCoreWeb.Areas.Admin.Controllers
                 orderHeaderFromDb.TrackingNumber = OrderViewModel.OrderHeader.TrackingNumber;
             }
 
-            //_unitOfWork.OrderHeader.Update(orderHeaderFromDb);
+            _unitOfWork.OrderHeader.Update(orderHeaderFromDb);
             _unitOfWork.Save();
-            Console.WriteLine("****Order Details Updated.****");
+            //Console.WriteLine("****Order Details Updated.****");
             TempData["Success"] = "Successfully updated Order Details.";
 
             return RedirectToAction("Details", "Order",
