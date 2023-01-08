@@ -62,7 +62,7 @@ namespace CompleteDotNetCoreWeb.Areas.Admin.Controllers
         {
             OrderHeader orderHeaderFromDb = _unitOfWork.OrderHeader
                 .GetFirstOrDefault(u => u.Id ==
-                OrderViewModel.OrderHeader.Id);
+                OrderViewModel.OrderHeader.Id, tracked: false);
 
             orderHeaderFromDb.Name = OrderViewModel.OrderHeader.Name;
             orderHeaderFromDb.PhoneNumber = OrderViewModel.OrderHeader.PhoneNumber;

@@ -47,7 +47,20 @@ namespace CompleteDotNetCore.DataAccess.Repository
         public T? GetFirstOrDefault(Expression<Func<T, bool>> filter,
             string? includeProperties = null, bool tracked = true)
         {
-            IQueryable<T> query = dbSet;
+            IQueryable<T> query;
+
+            // Boolean, tracked, to determine whether EF Core tracks
+            // changes in database. (See OrderController
+            // UpdateOrderDetails(). )
+            if (tracked)
+            {
+                query = dbSet;
+            }
+            else
+            {
+                query = dbSet.AsNoTracking();
+            }
+
             query = query.Where(filter);
             if (includeProperties != null)
             {   // Lets us pass in as many Include properties as we need.
