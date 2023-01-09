@@ -10,7 +10,7 @@ using CompleteDotNetCore.Models.ViewModels;
 using CompleteDotNetCore.Utility;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-
+using Stripe;
 
 namespace CompleteDotNetCoreWeb.Areas.Admin.Controllers
 {
@@ -123,6 +123,12 @@ namespace CompleteDotNetCoreWeb.Areas.Admin.Controllers
             orderHeaderFromDb.Carrier = OrderViewModel.OrderHeader.Carrier;
             orderHeaderFromDb.OrderStatus = SD.StatusShipped;
             orderHeaderFromDb.ShippingDate = DateTime.UtcNow;
+            if (orderHeaderFromDb.PaymentStatus ==
+                SD.PaymentStatusDelayedPayment)
+            {
+                orderHeaderFromDb.PaymentDueDate = DateTime.UtcNow
+                    .AddDays(30);
+            }
 
             _unitOfWork.OrderHeader.Update(orderHeaderFromDb);
 
@@ -145,17 +151,28 @@ namespace CompleteDotNetCoreWeb.Areas.Admin.Controllers
                 .GetFirstOrDefault(u => u.Id ==
                 OrderViewModel.OrderHeader.Id, tracked: false);
 
-            orderHeaderFromDb.TrackingNumber =
-                OrderViewModel.OrderHeader.TrackingNumber;
-            orderHeaderFromDb.Carrier = OrderViewModel.OrderHeader.Carrier;
-            orderHeaderFromDb.OrderStatus = SD.StatusShipped;
-            orderHeaderFromDb.ShippingDate = DateTime.UtcNow;
+            if (orderHeaderFromDb.PaymentStatus == SD.PaymentStatusApproved)
+            {
+                RefundCreateOptions options = new()
+                {
+                    Reason = RefundReasons.RequestedByCustomer,
+                    PaymentIntent = orderHeaderFromDb.PaymentIntentId
+                };
+                RefundService service = new();
+                Refund refund = service.Create(options);
 
-            _unitOfWork.OrderHeader.Update(orderHeaderFromDb);
+                _unitOfWork.OrderHeader.UpdateStatus(
+                    orderHeaderFromDb.Id, SD.StatusCancelled, SD.StatusRefunded);
+            }
+            else
+            {
+                _unitOfWork.OrderHeader.UpdateStatus(
+                    orderHeaderFromDb.Id, SD.StatusCancelled, SD.StatusCancelled);
+            }
 
             _unitOfWork.Save();
-            //Console.WriteLine("****Order Shipped.****");
-            TempData["Success"] = "Successfully shipped order.";
+            //Console.WriteLine("****Order Cancelled.****");
+            TempData["Success"] = "Successfully cancelled order.";
 
             return RedirectToAction("Details", "Order",
                 new { orderId = OrderViewModel.OrderHeader.Id });
