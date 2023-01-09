@@ -75,7 +75,8 @@ namespace CompleteDotNetCoreWeb.Areas.Admin.Controllers
             }
             if (OrderViewModel.OrderHeader.TrackingNumber != null)
             {
-                orderHeaderFromDb.TrackingNumber = OrderViewModel.OrderHeader.TrackingNumber;
+                orderHeaderFromDb.TrackingNumber =
+                    OrderViewModel.OrderHeader.TrackingNumber;
             }
 
             _unitOfWork.OrderHeader.Update(orderHeaderFromDb);
@@ -87,6 +88,48 @@ namespace CompleteDotNetCoreWeb.Areas.Admin.Controllers
                 new { orderId = orderHeaderFromDb.Id });
         }
 
+
+        // POST: Start Processing Order
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult StartProcessing()
+        {
+            _unitOfWork.OrderHeader.UpdateStatus(
+                OrderViewModel.OrderHeader.Id, SD.StatusInProcess);
+
+            _unitOfWork.Save();
+            //Console.WriteLine("****Order Status Updated.****");
+            TempData["Success"] = "Successfully updated Order Status.";
+
+            return RedirectToAction("Details", "Order",
+                new { orderId = OrderViewModel.OrderHeader.Id });
+        }
+
+
+        // POST: Ship Order
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult ShipOrder()
+        {
+            OrderHeader orderHeaderFromDb = _unitOfWork.OrderHeader
+                .GetFirstOrDefault(u => u.Id ==
+                OrderViewModel.OrderHeader.Id, tracked: false);
+
+            orderHeaderFromDb.TrackingNumber =
+                OrderViewModel.OrderHeader.TrackingNumber;
+            orderHeaderFromDb.Carrier = OrderViewModel.OrderHeader.Carrier;
+            orderHeaderFromDb.OrderStatus = SD.StatusShipped;
+            orderHeaderFromDb.ShippingDate = DateTime.UtcNow;
+
+            _unitOfWork.OrderHeader.Update(orderHeaderFromDb);
+
+            _unitOfWork.Save();
+            //Console.WriteLine("****Order Shipped.****");
+            TempData["Success"] = "Successfully shipped order.";
+
+            return RedirectToAction("Details", "Order",
+                new { orderId = OrderViewModel.OrderHeader.Id });
+        }
 
 
         #region API CALLS
