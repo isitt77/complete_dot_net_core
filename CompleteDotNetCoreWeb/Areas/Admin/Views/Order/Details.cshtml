@@ -272,7 +272,9 @@
                                 }
                                 if (Model.OrderHeader.OrderStatus == SD.StatusInProcess)
                                 {
-                                    <input asp-action="ShipOrder" type="submit" onclick="return ValidateInput()" class="btn btn-success form-control my-1"
+                                    <input asp-action="ShipOrder" type="submit"
+                                           onclick="return ValidateShippingInfo()"
+                                           class="btn btn-success form-control my-1"
                                            value="Ship Order" />
                                 }
                                 if (Model.OrderHeader.PaymentStatus == SD.PaymentStatusDelayedPayment &&
@@ -302,7 +304,7 @@
         <partial name="_ValidationScriptsPartial" />
     }
 
-    <script>function ValidateInput() {
+    <script>function ValidateShippingInfo() {
             if (document.getElementById("trackingNumber").value == "") {
                 Swal.fire({
                     icon: 'error',
@@ -319,6 +321,8 @@
                 })
                 return false;
             }
-            return true;</script>
+            return true;
+
+        }</script>
 
 }
