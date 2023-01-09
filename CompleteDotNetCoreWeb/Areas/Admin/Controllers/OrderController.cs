@@ -57,6 +57,7 @@ namespace CompleteDotNetCoreWeb.Areas.Admin.Controllers
 
         // POST: Update Order Details
         [HttpPost]
+        [Authorize(Roles = SD.RoleAdmin + "," + SD.RoleEmployee)]
         [ValidateAntiForgeryToken]
         public IActionResult UpdateOrderDetails()
         {
@@ -91,6 +92,7 @@ namespace CompleteDotNetCoreWeb.Areas.Admin.Controllers
 
         // POST: Start Processing Order
         [HttpPost]
+        [Authorize(Roles = SD.RoleAdmin + "," + SD.RoleEmployee)]
         [ValidateAntiForgeryToken]
         public IActionResult StartProcessing()
         {
@@ -108,8 +110,36 @@ namespace CompleteDotNetCoreWeb.Areas.Admin.Controllers
 
         // POST: Ship Order
         [HttpPost]
+        [Authorize(Roles = SD.RoleAdmin + "," + SD.RoleEmployee)]
         [ValidateAntiForgeryToken]
         public IActionResult ShipOrder()
+        {
+            OrderHeader orderHeaderFromDb = _unitOfWork.OrderHeader
+                .GetFirstOrDefault(u => u.Id ==
+                OrderViewModel.OrderHeader.Id, tracked: false);
+
+            orderHeaderFromDb.TrackingNumber =
+                OrderViewModel.OrderHeader.TrackingNumber;
+            orderHeaderFromDb.Carrier = OrderViewModel.OrderHeader.Carrier;
+            orderHeaderFromDb.OrderStatus = SD.StatusShipped;
+            orderHeaderFromDb.ShippingDate = DateTime.UtcNow;
+
+            _unitOfWork.OrderHeader.Update(orderHeaderFromDb);
+
+            _unitOfWork.Save();
+            //Console.WriteLine("****Order Shipped.****");
+            TempData["Success"] = "Successfully shipped order.";
+
+            return RedirectToAction("Details", "Order",
+                new { orderId = OrderViewModel.OrderHeader.Id });
+        }
+
+
+        // POST: Cancel Order
+        [HttpPost]
+        [Authorize(Roles = SD.RoleAdmin + "," + SD.RoleEmployee)]
+        [ValidateAntiForgeryToken]
+        public IActionResult CancelOrder()
         {
             OrderHeader orderHeaderFromDb = _unitOfWork.OrderHeader
                 .GetFirstOrDefault(u => u.Id ==
