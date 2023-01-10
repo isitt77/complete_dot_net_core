@@ -236,7 +236,9 @@ namespace CompleteDotNetCoreWeb.Areas.Customer.Controllers
 
                 if (session.PaymentStatus.ToLower() == "paid")
                 {
-                    orderHeader.PaymentIntentId = session.PaymentIntentId;
+                    //orderHeader.PaymentIntentId = session.PaymentIntentId;
+                    _unitOfWork.OrderHeader.UpdateStripePaymentId(id, orderHeader.SessionId,
+                        session.PaymentIntentId);
 
                     //Console.WriteLine("************ PaymentIntentId: " +
                     //    session.PaymentIntentId + "************");
