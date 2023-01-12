@@ -12,6 +12,8 @@
 	  <None Remove="Microsoft.EntityFrameworkCore.SqlServer" />
 	  <None Remove="Microsoft.Extensions.Identity.Stores" />
 	  <None Remove="Stripe.net" />
+	  <None Remove="MimeKit" />
+	  <None Remove="MailKit" />
 	</ItemGroup>
 	<ItemGroup>
 	  <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.2" />
@@ -20,5 +22,7 @@
 	  <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.2" />
 	  <PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="7.0.2" />
 	  <PackageReference Include="Stripe.net" Version="41.4.0" />
+	  <PackageReference Include="MimeKit" Version="3.4.3" />
+	  <PackageReference Include="MailKit" Version="3.4.3" />
 	</ItemGroup>
 </Project>
