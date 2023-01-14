@@ -275,6 +275,11 @@ namespace CompleteDotNetCoreWeb.Areas.Customer.Controllers
             if (cart.Count <= 1)
             {
                 _unitOfWork.ShoppingCart.Remove(cart);
+
+                // Decrement session cart item count
+                Int32 cartItemCount = _unitOfWork.ShoppingCart.GetAll(u =>
+                u.ApplicationUserId == cart.ApplicationUserId).ToList().Count - 1;
+                HttpContext.Session.SetInt32(SD.SessionCart, cartItemCount);
             }
             else
             {
@@ -290,6 +295,12 @@ namespace CompleteDotNetCoreWeb.Areas.Customer.Controllers
                 u => u.Id == cartId);
             _unitOfWork.ShoppingCart.Remove(cart);
             _unitOfWork.Save();
+
+            // Decrement session cart item count
+            Int32 cartItemCount = _unitOfWork.ShoppingCart.GetAll(u =>
+            u.ApplicationUserId == cart.ApplicationUserId).ToList().Count;
+            HttpContext.Session.SetInt32(SD.SessionCart, cartItemCount);
+
             return RedirectToAction(nameof(Index));
         }
 
