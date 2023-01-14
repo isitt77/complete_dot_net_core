@@ -22,6 +22,9 @@ namespace CompleteDotNetCore.Utility
         public const string PaymentStatusApproved = "Approved";
         public const string PaymentStatusDelayedPayment = "ApprovedForDelayedPayment";
         public const string PaymentStatusRejected = "Rejected";
+
+        // Session Variable
+        public const string SessionCart = "SessionShoppingCart";
     }
 }
 
