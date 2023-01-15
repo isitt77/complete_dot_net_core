@@ -32,6 +32,7 @@
 		<None Remove="Areas\Customer\Views\Cart\" />
 		<None Remove="Stripe.net" />
 		<None Remove="Areas\Admin\Views\Order\" />
+		<None Remove="ViewComponents\" />
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.2" />
@@ -77,6 +78,7 @@
 	  <Folder Include="Areas\Admin\Views\Company\" />
 	  <Folder Include="Areas\Customer\Views\Cart\" />
 	  <Folder Include="Areas\Admin\Views\Order\" />
+	  <Folder Include="ViewComponents\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Content Remove="wwwroot\images\" />
