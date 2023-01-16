@@ -43,7 +43,7 @@ namespace CompleteDotNetCoreWeb.ViewComponents
             {
                 HttpContext.Session.Clear();
 
-                return View();
+                return View(0);
             }
         }
     }
