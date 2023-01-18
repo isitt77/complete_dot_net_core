@@ -28,7 +28,7 @@ namespace CompleteDotNetCore.Utility
             {
                 emailClient.Connect("smtp.gmail.com", 587, MailKit.Security
                     .SecureSocketOptions.StartTls);
-                emailClient.Authenticate("dotnetcore@gmail.com", "Dotnet@123");
+                //emailClient.Authenticate("dotnetcore@gmail.com", "Dotnet@123");
                 emailClient.Send(emailToSend);
                 emailClient.Disconnect(true);
             }
