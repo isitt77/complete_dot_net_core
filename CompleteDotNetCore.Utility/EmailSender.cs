@@ -16,7 +16,7 @@ namespace CompleteDotNetCore.Utility
         {
             MimeMessage emailToSend = new();
             emailToSend.From.Add(MailboxAddress.Parse(
-                "helllo@dotnetcore.com"));
+                "hello@dotnetcore.com"));
             emailToSend.To.Add(MailboxAddress.Parse(email));
             emailToSend.Subject = subject;
             emailToSend.Body = new TextPart(MimeKit.Text.TextFormat
