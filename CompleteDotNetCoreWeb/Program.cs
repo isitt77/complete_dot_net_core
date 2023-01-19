@@ -24,7 +24,8 @@ builder.Services.Configure<StripeSettingsUtility>(builder.Configuration
 
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()
     .AddDefaultTokenProviders()
-    .AddEntityFrameworkStores<ApplicationDbContext>();
+    .AddEntityFrameworkStores<ApplicationDbContext>()
+    .AddDefaultUI();
 
 builder.Services.AddSingleton<IEmailSender, EmailSender>();
 
