@@ -25,6 +25,6 @@
 	  <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="7.0.2" />
 	  <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.2" />
 	  <PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="7.0.2" />
-	  <PackageReference Include="Stripe.net" Version="41.4.0" />
+	  <PackageReference Include="Stripe.net" Version="41.5.0" />
 	</ItemGroup>
 </Project>
