@@ -253,6 +253,7 @@ namespace CompleteDotNetCoreWeb.Areas.Customer.Controllers
                 .GetAll(u => u.ApplicationUserId == orderHeader
                 .ApplicationUserId).ToList();
 
+            HttpContext.Session.Clear();
             _unitOfWork.ShoppingCart.RemoveRange(shoppingCarts);
             _unitOfWork.Save();
             return View(id);
