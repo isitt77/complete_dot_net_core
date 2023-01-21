@@ -136,13 +136,15 @@ namespace CompleteDotNetCoreWeb.Areas.Identity.Pages.Account
             // Instructor's alternative to await...
             //_roleManager.CreateAsync(new IdentityRole(SD.RoleAdmin))
             //    .GetAwaiter().GetResult();
-            if (!_roleManager.RoleExistsAsync(SD.RoleAdmin).GetAwaiter().GetResult())
-            {
-                await _roleManager.CreateAsync(new IdentityRole(SD.RoleAdmin));
-                await _roleManager.CreateAsync(new IdentityRole(SD.RoleEmployee));
-                await _roleManager.CreateAsync(new IdentityRole(SD.RoleUserComp));
-                await _roleManager.CreateAsync(new IdentityRole(SD.RoleUserIndv));
-            }
+
+            // Code I used instead of  instructor's... commented out for deployment.
+            //if (!_roleManager.RoleExistsAsync(SD.RoleAdmin).GetAwaiter().GetResult())
+            //{
+            //    await _roleManager.CreateAsync(new IdentityRole(SD.RoleAdmin));
+            //    await _roleManager.CreateAsync(new IdentityRole(SD.RoleEmployee));
+            //    await _roleManager.CreateAsync(new IdentityRole(SD.RoleUserComp));
+            //    await _roleManager.CreateAsync(new IdentityRole(SD.RoleUserIndv));
+            //}
             ReturnUrl = returnUrl;
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             Input = new InputModel()
