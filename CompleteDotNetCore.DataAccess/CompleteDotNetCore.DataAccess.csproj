@@ -18,11 +18,13 @@
 		<None Remove="Microsoft.EntityFrameworkCore.SqlServer" />
 		<None Remove="Microsoft.Extensions.Identity.Stores" />
 		<None Remove="Stripe.net" />
+		<None Remove="DbInitializer\" />
 	</ItemGroup>
 	<ItemGroup>
 		<Folder Include="Data\" />
 		<Folder Include="Repository\" />
 		<Folder Include="Repository\IRepository\" />
+		<Folder Include="DbInitializer\" />
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.2" />
