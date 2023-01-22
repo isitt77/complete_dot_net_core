@@ -42,5 +42,6 @@
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\CompleteDotNetCore.Models\CompleteDotNetCore.Models.csproj" />
+		<ProjectReference Include="..\CompleteDotNetCore.Utility\CompleteDotNetCore.Utility.csproj" />
 	</ItemGroup>
 </Project>
