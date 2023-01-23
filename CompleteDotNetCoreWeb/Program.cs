@@ -1,4 +1,5 @@
 using CompleteDotNetCore.DataAccess;
+using CompleteDotNetCore.DataAccess.DbInitializer;
 using CompleteDotNetCore.DataAccess.Repository;
 using CompleteDotNetCore.DataAccess.Repository.IRepository;
 using CompleteDotNetCore.Utility;
@@ -30,6 +31,9 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>()
 builder.Services.AddSingleton<IEmailSender, EmailSender>();
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+// for SeedDatabase() after app.Run()
+builder.Services.AddScoped<IDbInitializer, DbInitializer>();
 
 builder.Services.AddRazorPages();
 
@@ -76,6 +80,8 @@ app.UseRouting();
 StripeConfiguration.ApiKey = builder.Configuration.GetSection(
     "StripeSettings:SecretKey").Get<string>();
 
+await SeedDatabaseAsync();
+
 app.UseAuthentication();
 app.UseAuthorization();
 
@@ -88,3 +94,13 @@ app.MapControllerRoute(
 
 app.Run();
 
+async Task SeedDatabaseAsync()
+{
+    using (IServiceScope scope = app.Services.CreateAsyncScope())
+    {
+        IDbInitializer iDbInitializer = scope.ServiceProvider
+            .GetRequiredService<IDbInitializer>();
+        await iDbInitializer.InitializeAsync();
+    }
+    return;
+}

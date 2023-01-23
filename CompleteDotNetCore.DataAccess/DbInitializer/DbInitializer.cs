@@ -73,8 +73,7 @@ namespace CompleteDotNetCore.DataAccess.DbInitializer
 
                 await _userManager.AddToRoleAsync(user, SD.RoleAdmin);
             }
-
-            throw new NotImplementedException();
+            return;
         }
     }
 }
