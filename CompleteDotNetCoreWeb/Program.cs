@@ -32,7 +32,7 @@ builder.Services.AddSingleton<IEmailSender, EmailSender>();
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
-// for SeedDatabase() after app.Run()
+// for SeedDatabaseAsync() after app.Run()
 builder.Services.AddScoped<IDbInitializer, DbInitializer>();
 
 builder.Services.AddRazorPages();
