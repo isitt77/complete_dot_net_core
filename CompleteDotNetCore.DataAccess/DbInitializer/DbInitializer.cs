@@ -66,9 +66,13 @@ namespace CompleteDotNetCore.DataAccess.DbInitializer
                     State = "New Staton",
                     ZipCode = "99999"
                 }, "Admin@123");
+
+                // Assign Admin Role
+                ApplicationUser user = _db.ApplicationUsers.FirstOrDefault(
+                    u => u.Email == "isitts@hotmail.com");
+
+                await _userManager.AddToRoleAsync(user, SD.RoleAdmin);
             }
-
-
 
             throw new NotImplementedException();
         }
