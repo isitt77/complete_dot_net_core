@@ -30,7 +30,7 @@ namespace CompleteDotNetCore.DataAccess.DbInitializer
             _db = db;
         }
 
-        public async Task InitializeAsync()
+        public void Initialize()
         {
             // Apply migrations, if not applied...
             try
@@ -49,13 +49,13 @@ namespace CompleteDotNetCore.DataAccess.DbInitializer
             // Create Roles, if not created...
             if (!_roleManager.RoleExistsAsync(SD.RoleAdmin).GetAwaiter().GetResult())
             {
-                await _roleManager.CreateAsync(new IdentityRole(SD.RoleAdmin));
-                await _roleManager.CreateAsync(new IdentityRole(SD.RoleEmployee));
-                await _roleManager.CreateAsync(new IdentityRole(SD.RoleUserComp));
-                await _roleManager.CreateAsync(new IdentityRole(SD.RoleUserIndv));
+                _roleManager.CreateAsync(new IdentityRole(SD.RoleAdmin)).GetAwaiter().GetResult();
+                _roleManager.CreateAsync(new IdentityRole(SD.RoleEmployee)).GetAwaiter().GetResult();
+                _roleManager.CreateAsync(new IdentityRole(SD.RoleUserComp)).GetAwaiter().GetResult();
+                _roleManager.CreateAsync(new IdentityRole(SD.RoleUserIndv)).GetAwaiter().GetResult();
 
                 // If Roles not created, create Admin user as well.
-                await _userManager.CreateAsync(new ApplicationUser
+                _userManager.CreateAsync(new ApplicationUser
                 {
                     UserName = "isitts@hotmail.com",
                     Email = "isitts@hotmail.com",
@@ -65,13 +65,13 @@ namespace CompleteDotNetCore.DataAccess.DbInitializer
                     City = "Citytown",
                     State = "New Staton",
                     ZipCode = "99999"
-                }, "Admin@123");
+                }, "Admin@123*").GetAwaiter().GetResult();
 
                 // Assign Admin Role
                 ApplicationUser user = _db.ApplicationUsers.FirstOrDefault(
                     u => u.Email == "isitts@hotmail.com");
 
-                await _userManager.AddToRoleAsync(user, SD.RoleAdmin);
+                _userManager.AddToRoleAsync(user, SD.RoleAdmin).GetAwaiter().GetResult();
             }
             return;
         }

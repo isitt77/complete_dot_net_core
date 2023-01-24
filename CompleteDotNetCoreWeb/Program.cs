@@ -80,7 +80,7 @@ app.UseRouting();
 StripeConfiguration.ApiKey = builder.Configuration.GetSection(
     "StripeSettings:SecretKey").Get<string>();
 
-await SeedDatabaseAsync();
+SeedDatabase();
 
 app.UseAuthentication();
 app.UseAuthorization();
@@ -94,13 +94,12 @@ app.MapControllerRoute(
 
 app.Run();
 
-async Task SeedDatabaseAsync()
+void SeedDatabase()
 {
-    using (IServiceScope scope = app.Services.CreateAsyncScope())
+    using (IServiceScope scope = app.Services.CreateScope())
     {
         IDbInitializer iDbInitializer = scope.ServiceProvider
             .GetRequiredService<IDbInitializer>();
-        await iDbInitializer.InitializeAsync();
+        iDbInitializer.Initialize();
     }
-    return;
 }
