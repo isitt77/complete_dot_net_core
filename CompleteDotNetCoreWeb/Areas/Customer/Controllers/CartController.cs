@@ -321,6 +321,12 @@ namespace CompleteDotNetCoreWeb.Areas.Customer.Controllers
                 return price100;
             }
         }
+
+        // GET /Page/Error
+        public IActionResult Error()
+        {
+            return View();
+        }
     }
 }
 

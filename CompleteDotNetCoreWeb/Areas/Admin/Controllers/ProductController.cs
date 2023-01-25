@@ -131,6 +131,12 @@ namespace CompleteDotNetCoreWeb.Areas.Admin.Controllers
             return View(obj);
         }
 
+        // GET /Page/Error
+        public IActionResult Error()
+        {
+            return View();
+        }
+
         #region API CALLS
         [HttpGet]
         public IActionResult GetAll()

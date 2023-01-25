@@ -129,6 +129,12 @@ namespace CompleteDotNetCoreWeb.Controllers
             TempData["success"] = "You've successfully deleted a category.";
             return RedirectToAction("Index");
         }
+
+        // GET /Page/Error
+        public IActionResult Error()
+        {
+            return View();
+        }
     }
 }
 

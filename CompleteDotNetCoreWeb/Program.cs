@@ -81,14 +81,14 @@ app.Use(async (context, next) =>
     if (context.Response.StatusCode == (int)HttpStatusCode.NotFound)
     {
         Console.WriteLine(context.Response.StatusCode);
-        context.Request.Path = "/Home/Error";
+        context.Request.Path = "/Customer/Home/Error";
         await next();
     }
     // // unhandled error (500)
     if (context.Response.StatusCode == (int)HttpStatusCode.InternalServerError)
     {
         Console.WriteLine(context.Response.StatusCode);
-        context.Request.Path = "/Home/Error";
+        context.Request.Path = "/Customer/Home/Error";
         await next();
     }
 });

@@ -272,6 +272,12 @@ namespace CompleteDotNetCoreWeb.Areas.Admin.Controllers
                 new { orderId = OrderViewModel.OrderHeader.Id });
         }
 
+        // GET /Page/Error
+        public IActionResult Error()
+        {
+            return View();
+        }
+
 
         #region API CALLS
         [HttpGet]

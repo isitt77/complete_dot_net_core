@@ -126,5 +126,11 @@ namespace CompleteDotNetCoreWeb.Areas.Admin.Controllers
             TempData["success"] = "You've successfully deleted a cover type.";
             return RedirectToAction("Index");
         }
+
+        // GET /Page/Error
+        public IActionResult Error()
+        {
+            return View();
+        }
     }
 }
