@@ -1,3 +1,4 @@
+using System.Net;
 using CompleteDotNetCore.DataAccess;
 using CompleteDotNetCore.DataAccess.DbInitializer;
 using CompleteDotNetCore.DataAccess.Repository;
@@ -71,6 +72,26 @@ if (!app.Environment.IsDevelopment())
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
+
+app.Use(async (context, next) =>
+{
+    await next();
+
+    // not found error (404)
+    if (context.Response.StatusCode == (int)HttpStatusCode.NotFound)
+    {
+        Console.WriteLine(context.Response.StatusCode);
+        context.Request.Path = "/Home/Error";
+        await next();
+    }
+    // // unhandled error (500)
+    if (context.Response.StatusCode == (int)HttpStatusCode.InternalServerError)
+    {
+        Console.WriteLine(context.Response.StatusCode);
+        context.Request.Path = "/Home/Error";
+        await next();
+    }
+});
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
