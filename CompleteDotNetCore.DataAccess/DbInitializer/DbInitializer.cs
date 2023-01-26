@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.ComponentModel;
 using System.IO;
 using CompleteDotNetCore.DataAccess.Repository.IRepository;
@@ -30,13 +31,16 @@ namespace CompleteDotNetCore.DataAccess.DbInitializer
             _db = db;
         }
 
-        public void Initialize()
+        public async Task InitializeAsync()
         {
             // Apply migrations, if not applied...
             try
             {
                 // If there are migrations that have not been applied...
-                if (_db.Database.GetPendingMigrations().Count() > 0)
+                int pendingMigrations = _db.Database.GetPendingMigrationsAsync()
+                    .GetAwaiter().GetResult().Count();
+
+                if (pendingMigrations > 0)
                 {
                     _db.Database.Migrate();
                 }
@@ -49,13 +53,13 @@ namespace CompleteDotNetCore.DataAccess.DbInitializer
             // Create Roles, if not created...
             if (!_roleManager.RoleExistsAsync(SD.RoleAdmin).GetAwaiter().GetResult())
             {
-                _roleManager.CreateAsync(new IdentityRole(SD.RoleAdmin)).GetAwaiter().GetResult();
-                _roleManager.CreateAsync(new IdentityRole(SD.RoleEmployee)).GetAwaiter().GetResult();
-                _roleManager.CreateAsync(new IdentityRole(SD.RoleUserComp)).GetAwaiter().GetResult();
-                _roleManager.CreateAsync(new IdentityRole(SD.RoleUserIndv)).GetAwaiter().GetResult();
+                await _roleManager.CreateAsync(new IdentityRole(SD.RoleAdmin));
+                await _roleManager.CreateAsync(new IdentityRole(SD.RoleEmployee));
+                await _roleManager.CreateAsync(new IdentityRole(SD.RoleUserComp));
+                await _roleManager.CreateAsync(new IdentityRole(SD.RoleUserIndv));
 
                 // If Roles not created, create Admin user as well.
-                _userManager.CreateAsync(new ApplicationUser
+                await _userManager.CreateAsync(new ApplicationUser
                 {
                     UserName = "isitts@hotmail.com",
                     Email = "isitts@hotmail.com",
@@ -65,13 +69,13 @@ namespace CompleteDotNetCore.DataAccess.DbInitializer
                     City = "Citytown",
                     State = "New Staton",
                     ZipCode = "99999"
-                }, "Admin@123*").GetAwaiter().GetResult();
+                }, "Admin@123*");
 
                 // Assign Admin Role
-                ApplicationUser user = _db.ApplicationUsers.FirstOrDefault(
+                ApplicationUser? user = _db.ApplicationUsers.FirstOrDefault(
                     u => u.Email == "isitts@hotmail.com");
 
-                _userManager.AddToRoleAsync(user, SD.RoleAdmin).GetAwaiter().GetResult();
+                await _userManager.AddToRoleAsync(user, SD.RoleAdmin);
             }
             return;
         }
