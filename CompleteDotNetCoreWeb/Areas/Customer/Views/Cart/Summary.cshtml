@@ -135,6 +135,7 @@
     }
 
     <script>function StripeRedirectAlert() {
+            let redirect = false;
             Swal.fire({
                 title: 'Redirecting to Stripe',
                 icon: 'info',
@@ -144,8 +145,7 @@
                     'Use any (future) date for expiration and any three digit number for CVC. </br>',
                 showCloseButton: true,
                 focusConfirm: false
-
             })
-            return false;
+            return redirect;
         }</script>
 }
