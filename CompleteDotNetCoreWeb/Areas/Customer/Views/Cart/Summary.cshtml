@@ -136,12 +136,12 @@
 
     <script>function StripeRedirectAlert() {
             Swal.fire({
-                title: '<strong>HTML <u>example</u></strong>',
+                title: 'Redirecting to Stripe',
                 icon: 'info',
                 html:
-                    'You can use <b>bold text</b>, ' +
-                    '<a href="//sweetalert2.github.io">links</a> ' +
-                    'and other HTML tags',
+                    'Use the follwing credit card number when prompted. </br>' +
+                    '<input id="swal-input1" value="4242424242424242" class="swal2-input" readonly> </br>' +
+                    'Use any (future) date for expiration and any three digit number for CVC. </br>',
                 showCloseButton: true,
                 focusConfirm: false
 
