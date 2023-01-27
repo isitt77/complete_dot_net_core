@@ -145,6 +145,10 @@
                     'Use any (future) date for expiration and any three digit number for CVC. </br>',
                 showCloseButton: true,
                 focusConfirm: false
+            }).then((result) => {
+                let isConfirmed = result.isConfirmed;
+                redirect = isConfirmed;
+                return redirect;
             })
             return redirect;
         }</script>
