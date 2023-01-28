@@ -101,7 +101,7 @@ app.UseRouting();
 StripeConfiguration.ApiKey = builder.Configuration.GetSection(
     "StripeSettings:SecretKey").Get<string>();
 
-await SeedDatabaseAsync();
+//await SeedDatabaseAsync();
 
 app.UseAuthentication();
 app.UseAuthorization();

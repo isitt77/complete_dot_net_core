@@ -136,7 +136,7 @@
 
     <script>function StripeRedirectAlert() {
             let redirect = false;
-            Swal.fire({
+            let redirectValue = Swal.fire({
                 title: 'Redirecting to Stripe',
                 icon: 'info',
                 html:
@@ -146,10 +146,25 @@
                 showCloseButton: true,
                 focusConfirm: false
             }).then((result) => {
-                let isConfirmed = result.isConfirmed;
-                redirect = isConfirmed;
-                return redirect;
+                console.log(result.value);
+                return result.value;
             })
+            console.log(redirect);
+            redirect = redirectValue;
+            //if (redirectValue == true) {
+            //    redirect = true;
+            //}
+            //else {
+            //    redirect = false;
+            //}
             return redirect;
+
+            //if (redirect == false) {
+            //    await return false;
+            //}
+            //else {
+            //    await return true;
+            //}
+
         }</script>
 }
