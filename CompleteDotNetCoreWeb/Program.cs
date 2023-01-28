@@ -96,6 +96,15 @@ app.Use(async (context, next) =>
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
+//app.Use(async (context, next) =>
+//{
+//    //CSP prevents cross scripting
+//    context.Response.Headers.Add("Content-Security-Policy",
+//        "default-src 'self'; connect-src 'self' wss:; script-src 'self';" +
+//        "style-src 'self'; img-src 'self'; child-src 'self';");
+//    await next();
+//});
+
 app.UseRouting();
 
 StripeConfiguration.ApiKey = builder.Configuration.GetSection(
