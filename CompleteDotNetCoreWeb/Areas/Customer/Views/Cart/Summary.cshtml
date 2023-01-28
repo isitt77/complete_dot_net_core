@@ -136,6 +136,7 @@
 
     <script>document.getElementById("StripeRedirect")
             .addEventListener("click", function (event) {
+                event.preventDefault();
                 var form = document.getElementById("summaryForm");
                 Swal.fire({
                     title: 'Redirecting to Stripe',
@@ -152,6 +153,6 @@
                         form.submit();
                     }
                 })
-                event.preventDefault();
+                //event.preventDefault();
             });</script>
 }
