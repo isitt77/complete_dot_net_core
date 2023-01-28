@@ -117,7 +117,8 @@
                         </p>
                     </div>
                     <div class="col-12 col-md-4">
-                        <button type="submit" onclick="return StripeRedirectAlert()"
+                        <button type="submit" id="StripeRedirect"
+                                @*onclick="return StripeRedirectAlert()"*@
                                 value="Place Order" class="btn btn-primary form-control">
                             Place Order
                         </button>
@@ -134,7 +135,37 @@
         <partial name="_ValidationScriptsPartial" />
     }
 
-    <script>function StripeRedirectAlert() {
+    <script>document.getElementById("StripeRedirect")
+            .addEventListener("click", function (event) {
+                //let redirect = false;
+                let redirectValue = Swal.fire({
+                    title: 'Redirecting to Stripe',
+                    icon: 'info',
+                    html:
+                        'Use the follwing credit card number when prompted. </br>' +
+                        '<input id="swal-input1" value="4242424242424242" class="swal2-input" readonly> </br>' +
+                        'Use any (future) date for expiration and any three digit number for CVC. </br>',
+                    showCloseButton: true,
+                    focusConfirm: false
+                }).then((result) => {
+                    console.log(result.value);
+                    return result.value;
+                })
+                console.log(redirectValue);
+                //redirect = redirectValue;
+                if (redirectValue == true) {
+                    event.preventDefault()
+                    //redirect = true;
+                }
+                else {
+                    return true;
+                }
+
+                //event.preventDefault()
+            });
+
+
+        function StripeRedirectAlert() {
             let redirect = false;
             let redirectValue = Swal.fire({
                 title: 'Redirecting to Stripe',
