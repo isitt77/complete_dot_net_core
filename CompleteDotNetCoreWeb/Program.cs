@@ -100,8 +100,8 @@ app.UseStaticFiles();
 //{
 //    //CSP prevents cross scripting
 //    context.Response.Headers.Add("Content-Security-Policy",
-//        "default-src 'self'; connect-src 'self' wss:; script-src 'self';" +
-//        "style-src 'self'; img-src 'self'; child-src 'self';");
+//        "default-src 'self'; connect-src 'self' wss:; script-src https: 'self';" +
+//        "style-src 'self'; img-src 'self' data: https:; child-src 'self';");
 //    await next();
 //});
 
