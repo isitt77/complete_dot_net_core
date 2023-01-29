@@ -143,9 +143,10 @@
                     icon: 'info',
                     html:
                         'Use the follwing credit card number when prompted. </br>' +
-                        '<input id="swal-input1" value="4242424242424242" class="swal2-input" readonly> ' +
-                        ' <span id="copyCardNum"><i id="clipboardIcon" class="bi bi-clipboard"></i></span>' +
-                        '</br>' +
+                        '<div class="input-group my-3 row">' +
+                        '<input id="swal-input1" class="form-control col-10 text-center" value="4242424242424242" readonly width="50%"> ' +
+                        ' <button id="copyCardNum" class="btn btn-secondary col-2"><i id="clipboardIcon" class="bi bi-clipboard"></i></button>' +
+                        '</div>' +
                         'Use any future date for expiration and any three digit number for CVC. </br>',
                     showCloseButton: true,
                     focusConfirm: false
@@ -161,7 +162,9 @@
                     let input = document.getElementById("swal-input1");
                     let cardNum = input.value;
                     console.log(cardNum);
+
                     navigator.clipboard.writeText(`${cardNum}`);
+
                     let clipboard = document.getElementById("clipboardIcon");
                     clipboard.className = "bi bi-clipboard-check";
                     clipboard.style.color = "#20c997";
