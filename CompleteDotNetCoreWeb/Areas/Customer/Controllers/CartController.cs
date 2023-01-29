@@ -158,7 +158,7 @@ namespace CompleteDotNetCoreWeb.Areas.Customer.Controllers
                     Count = cart.Count
                 };
                 _unitOfWork.OrderDetail.Add(orderDetail);
-                _unitOfWork.Save();
+                //_unitOfWork.Save();
             }
 
 
