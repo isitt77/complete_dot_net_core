@@ -145,7 +145,7 @@
                         'Use the follwing credit card number when prompted. </br>' +
                         '<input id="swal-input1" value="4242424242424242" class="swal2-input" readonly> ' +
                         ' <span id="copyCardNum"><i id="clipboardIcon" class="bi bi-clipboard"></i></span>' +
-                        ' </br>' +
+                        '</br>' +
                         'Use any future date for expiration and any three digit number for CVC. </br>',
                     showCloseButton: true,
                     focusConfirm: false
@@ -164,6 +164,7 @@
                     navigator.clipboard.writeText(`${cardNum}`);
                     let clipboard = document.getElementById("clipboardIcon");
                     clipboard.className = "bi bi-clipboard-check";
+                    clipboard.style.color = "#20c997";
                 });
 
             });</script>
