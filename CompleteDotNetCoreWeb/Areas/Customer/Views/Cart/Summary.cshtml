@@ -135,7 +135,7 @@
     }
 
     <script>document.getElementById("StripeRedirect")
-            .addEventListener("click", function (event) {
+            .addEventListener("click", function () {
                 event.preventDefault();
                 var form = document.getElementById("summaryForm");
                 Swal.fire({
@@ -144,31 +144,57 @@
                     html:
                         'Use the follwing credit card number when prompted. </br>' +
                         '<div class="input-group my-3 row">' +
-                        '<input id="swal-input1" class="form-control col-10 text-center bg-dark text-white" value="4242424242424242" readonly width="50%"> ' +
-                        ' <button id="copyCardNum" class="btn btn-secondary col-2"><i id="clipboardIcon" class="bi bi-clipboard"></i></button>' +
+                        '<input id="swal-input1" class="form-control col-10 text-center bg-dark text-white" ' +
+                        ' value="4242424242424242" readonly width="50%"/> ' +
+                        ' <button id="copyCardNum" class="btn btn-secondary col-2"> ' +
+                        ' <i id="clipboardIcon" class="bi bi-clipboard"></i></button>' +
                         '</div>' +
                         'Use any future date for expiration and any three digit number for CVC. </br>',
                     showCloseButton: true,
                     focusConfirm: false
                 }).then((result) => {
-                    console.log(result.value);
+                    console.log(`Ok pressed: ${result.value}`);
                     if (result.value == true) {
                         form.submit();
                     }
                 })
 
-                let handleCopyClick = document.getElementById("copyCardNum");
-                handleCopyClick.addEventListener('click', () => {
-                    let input = document.getElementById("swal-input1");
-                    let cardNum = input.value;
-                    console.log(cardNum);
+                CopyCardNum();
+                //console.log(`Clipboard copied: ${isCopied}`);
+                //let handleCopyClick = document.getElementById("copyCardNum");
+                //handleCopyClick.addEventListener('click', () => {
+                //    let input = document.getElementById("swal-input1");
+                //    let cardNum = input.value;
+                //    console.log(cardNum);
 
-                    navigator.clipboard.writeText(`${cardNum}`);
+                //    navigator.clipboard.writeText(`${cardNum}`);
 
-                    let clipboard = document.getElementById("clipboardIcon");
-                    clipboard.className = "bi bi-clipboard-check";
-                    clipboard.style.color = "#20c997";
-                });
+                //    let clipboard = document.getElementById("clipboardIcon");
+                //    clipboard.className = "bi bi-clipboard-check";
+                //    clipboard.style.color = "#20c997";
+                //});
 
-            });</script>
+            }, { once: true });
+
+
+
+        function CopyCardNum() {
+            let handleCopyClick = document.getElementById("copyCardNum");
+
+            handleCopyClick.addEventListener('click', () => {
+                let input = document.getElementById("swal-input1");
+                let cardNum = input.value;
+                let clipboardIcon = document.getElementById("clipboardIcon");
+                console.log(cardNum);
+
+                navigator.clipboard.writeText(`${cardNum}`)
+                    .then(() => {
+                        clipboardIcon.className = "bi bi-clipboard-check";
+                        clipboardIcon.style.color = "#20c997";
+                    })
+                    .catch(() => {
+                        alert("Something went wrong. Try copying maunally.");
+                    });
+            }, { once: true });
+        }</script>
 }
