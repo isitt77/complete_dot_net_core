@@ -1,7 +1,0 @@
-﻿
-function toggleOn() {
-
-}
-function toggleOff() {
-
-}

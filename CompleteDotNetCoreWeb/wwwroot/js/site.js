@@ -3,3 +3,10 @@
 
 // Write your JavaScript code.
 
+function toggle() {
+    // get element by id
+    let darkSetting = document.getElementById("flexSwitchCheckDefault");
+    console.log(darkSetting.className);
+
+
+}
