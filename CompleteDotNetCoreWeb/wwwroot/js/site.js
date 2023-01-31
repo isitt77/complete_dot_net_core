@@ -3,10 +3,28 @@
 
 // Write your JavaScript code.
 
-function toggle() {
+function LightDarkToggle() {
     // get element by id
-    let darkSetting = document.getElementById("flexSwitchCheckDefault");
-    console.log(darkSetting.className);
+    let settingSwitch = document.getElementById("flexSwitchCheckDefault");
+    console.log(settingSwitch.className);
+
 
 
 }
+
+//$(".change").on("click", function () {
+//    if ($("body").hasClass("dark")) {
+//        $("body").removeClass("dark");
+//        $(".change").text("OFF");
+//    } else {
+//        $("body").addClass("dark");
+//        $(".change").text("ON");
+//    }
+//});
+
+
+//from W3 Scools (Notice the classlist)
+//function myFunction() {
+//    var element = document.body;
+//    element.classList.toggle("dark-mode");
+//}
