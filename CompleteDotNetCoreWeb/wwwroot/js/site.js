@@ -5,8 +5,13 @@
 
 function LightDarkToggle() {
     // get element by id
+
     let settingSwitch = document.getElementById("flexSwitchCheckDefault");
     console.log(settingSwitch.id);
+
+    let label = settingSwitch.nextElementSibling;
+    console.log(label.innerHTML);
+
 
     let isChecked = settingSwitch.hasAttribute("checked");
     console.log(isChecked);
@@ -14,10 +19,12 @@ function LightDarkToggle() {
     if (isChecked) {
         console.log("Light mode active.");
         settingSwitch.removeAttribute("checked");
+        label.innerHTML = "Light";
     }
     else {
         console.log("Dark mode active.");
         settingSwitch.setAttribute("checked", "");
+        label.innerHTML = "Dark";
     }
 
 
