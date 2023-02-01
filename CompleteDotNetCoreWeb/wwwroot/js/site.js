@@ -12,23 +12,27 @@ function LightDarkToggle() {
     let label = settingSwitch.nextElementSibling;
     console.log(label.innerHTML);
 
-
     let isChecked = settingSwitch.hasAttribute("checked");
     console.log(isChecked);
+
+    let styleLink = document.getElementById("dark-light-bootst-style").attributes[2];
+    console.log(styleLink.value);
 
     if (isChecked) {
         console.log("Light mode active.");
         settingSwitch.removeAttribute("checked");
         label.innerHTML = "Light";
+        styleLink.value = "/lib/bootstrap/dist/css/light/bootstrap.min.css";
     }
     else {
         console.log("Dark mode active.");
         settingSwitch.setAttribute("checked", "");
         label.innerHTML = "Dark";
+        styleLink.value = "/lib/bootstrap/dist/css/dark/bootstrap.min.css";
     }
-
-
 }
+
+
 
 //$(".change").on("click", function () {
 //    if ($("body").hasClass("dark")) {
