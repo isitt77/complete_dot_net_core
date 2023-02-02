@@ -5,13 +5,67 @@
 
 
 
-function MakeDark() {
+//function MakeDark() {
 
-}
+//}
 
-function MakeLight() {
+//function MakeLight() {
 
-}
+//}
+
+//let styleLink = document.getElementById("dark-light-bootst-style");
+
+//let styleLinkRefAttribute = document.getElementById("dark-light-bootst-style").attributes[2];
+//console.log(styleLinkRefAttribute.value);
+//console.log(`Key ${styleLinkRefAttribute.name}`);
+
+//styleLink.addEventListener("change" function (LightDarkToggle) {
+
+//});
+
+//var checkbox = document.querySelector("input[name=checkbox]");
+
+//checkbox.addEventListener('change', function () {
+//    if (this.checked) {
+//        console.log("Checkbox is checked..");
+//    } else {
+//        console.log("Checkbox is not checked..");
+//    }
+//});
+
+let styleLink = document.getElementById("dark-light-bootst-style");
+let styleLinkRefAttribute = document.getElementById("dark-light-bootst-style").attributes[2];
+let styleLinkRefAttributes = document.getElementById("dark-light-bootst-style").attributes;
+console.log(`Initial style Key: ${styleLinkRefAttribute.name}`);
+console.log(`Initial style Value: ${styleLinkRefAttribute.value}`);
+console.log(styleLinkRefAttributes);
+
+let lightDarkCheckbox = document.querySelector("input[name=lightDarkCheck]");
+
+lightDarkCheckbox.addEventListener('change', function () {
+    if (this.checked) {
+        console.log("Checkbox is checked..");
+        //window.localStorage.getItem(styleLinkRefAttribute.name);
+        styleLinkRefAttribute.value = "/lib/bootstrap/dist/css/dark/bootstrap.min.css";
+        let darkStyleValue = styleLinkRefAttribute.value;
+        window.localStorage.setItem(styleLinkRefAttribute.name, darkStyleValue);
+        let getDarkStyle = window.localStorage.getItem(styleLinkRefAttribute.name);
+        return getDarkStyle;
+    } else {
+        console.log("Checkbox is not checked..");
+        //window.localStorage.getItem(styleLinkRefAttribute.name);
+        styleLinkRefAttribute.value = "/lib/bootstrap/dist/css/light/bootstrap.min.css";
+        let lightStyleValue = styleLinkRefAttribute.value;
+        window.localStorage.setItem(styleLinkRefAttribute.name, lightStyleValue);
+        let getLightStyle = window.localStorage.getItem(styleLinkRefAttribute.name);
+        return getLightStyle;
+    }
+    console.log(`After style Key: ${styleLinkRefAttribute.name}`);
+    console.log(`After style Value: ${styleLinkRefAttribute.value}`);
+    //window.localStorage.getItem(styleLinkRefAttribute.name);
+
+});
+
 
 
 //function LightDarkToggle() {
@@ -26,27 +80,38 @@ function MakeLight() {
 //    let isChecked = settingSwitch.hasAttribute("checked");
 //    console.log(isChecked);
 
-//    let styleLink = document.getElementById("dark-light-bootst-style").attributes[2];
-//    console.log(styleLink.value);
-//    console.log(`Key ${styleLink.name}`);
+//    let styleLink = document.getElementById("dark-light-bootst-style");
+
+//    let styleLinkRefAttribute = document.getElementById("dark-light-bootst-style").attributes[2];
+//    console.log(styleLinkRefAttribute.value);
+//    console.log(`Key ${styleLinkRefAttribute.name}`);
+
+//    // Insert query selector
+//    //settingSwitch.querySelector("change", );
 
 
+//    //
 
 //    if (isChecked) {
 //        console.log("Light mode active.");
 //        settingSwitch.removeAttribute("checked");
 //        label.innerHTML = "Light";
-//        styleLink.value = "/lib/bootstrap/dist/css/light/bootstrap.min.css";
-//        localStorage.setItem(styleLink.name, styleLink.value);
+//        //let lightStyle = styleLinkRefAttribute.value = "/lib/bootstrap/dist/css/light/bootstrap.min.css";
+//        //let setLightStyle = localStorage.setItem(styleLinkRefAttribute.name, lightStyle);
+//        //return setLightStyle;
+
 //    }
 //    else {
 //        console.log("Dark mode active.");
 //        settingSwitch.setAttribute("checked", "");
 //        label.innerHTML = "Dark";
-//        styleLink.value = "/lib/bootstrap/dist/css/dark/bootstrap.min.css";
-//        localStorage.setItem(styleLink.name, styleLink.value);
-//    }
+//        //let darkStyle = styleLinkRefAttribute.value = "/lib/bootstrap/dist/css/dark/bootstrap.min.css";
+//        //let setDarkStyle = localStorage.setItem(styleLinkRefAttribute.name, darkStyle);
+//        //return setDarkStyle;
 
+//    }
+//    console.log(`isChecked value after if/else: ${isChecked}`);
+//    return isChecked;
 //}
 
 

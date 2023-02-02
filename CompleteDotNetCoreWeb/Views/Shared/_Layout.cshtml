@@ -74,15 +74,15 @@
                                href="#" role="button" aria-haspopup="true"
                                aria-expanded="false">Light/Dark Mode</a>
                             <div class="dropdown-menu">
-                                <a id="darkMode" class="dropdown-item text-center" onclick="MakeDark()">Dark Mode</a>
-                                <a id="lightMode" class="dropdown-item text-center" onclick="MakeLight()">Light Mode</a>
+                                @*<a id="darkMode" class="dropdown-item text-center" onclick="MakeDark()">Dark Mode</a>
+                                    <a id="lightMode" class="dropdown-item text-center" onclick="MakeLight()">Light Mode</a>*@
 
-                                @*<div class="form-check form-switch d-flex justify-content-around">
-                                        <input class="form-check-input" type="checkbox"
-                                               id="flexSwitchCheckDefault" onclick="LightDarkToggle()" checked>
-                                        <label class="form-check-label" id="switchCheckLabel"
-                                               for="flexSwitchCheckDefault">Dark</label>
-                                    </div>*@
+                                <div class="form-check form-switch d-flex justify-content-around">
+                                    <input class="form-check-input" type="checkbox"
+                                           id="flexSwitchCheckDefault" name="lightDarkCheck" checked>
+                                    <label class="form-check-label" id="switchCheckLabel"
+                                           for="flexSwitchCheckDefault">Dark</label>
+                                </div>
                             </div>
                         </li>
                     </ul>
