@@ -36,6 +36,8 @@
 let styleLink = document.getElementById("dark-light-bootst-style");
 let styleLinkRefAttribute = document.getElementById("dark-light-bootst-style").attributes[2];
 let styleLinkRefAttributes = document.getElementById("dark-light-bootst-style").attributes;
+
+console.log(styleLink);
 console.log(`Initial style Key: ${styleLinkRefAttribute.name}`);
 console.log(`Initial style Value: ${styleLinkRefAttribute.value}`);
 console.log(styleLinkRefAttributes);
@@ -70,6 +72,8 @@ lightDarkCheckbox.addEventListener('change', function () {
     //window.localStorage.getItem(styleLinkRefAttribute.name);
     console.log(`localStorage length: ${localStorage.length}`);
     console.log(`localStorage key: ${localStorage.key(0)}`);
+    console.log(styleLink);
+    console.log(styleLinkRefAttributes);
 
 });
 
