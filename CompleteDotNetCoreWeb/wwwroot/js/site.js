@@ -45,21 +45,26 @@ let lightDarkCheckbox = document.querySelector("input[name=lightDarkCheck]");
 lightDarkCheckbox.addEventListener('change', function () {
     if (this.checked) {
         console.log("Checkbox is checked..");
-        //window.localStorage.getItem(styleLinkRefAttribute.name);
+
         styleLinkRefAttribute.value = "/lib/bootstrap/dist/css/dark/bootstrap.min.css";
         let darkStyleValue = styleLinkRefAttribute.value;
+
+        window.localStorage.getItem(styleLinkRefAttribute.name);
         window.localStorage.setItem(styleLinkRefAttribute.name, darkStyleValue);
-        let getDarkStyle = window.localStorage.getItem(styleLinkRefAttribute.name);
-        return getDarkStyle;
+
+        //return getDarkStyle;
     } else {
         console.log("Checkbox is not checked..");
-        //window.localStorage.getItem(styleLinkRefAttribute.name);
+
         styleLinkRefAttribute.value = "/lib/bootstrap/dist/css/light/bootstrap.min.css";
         let lightStyleValue = styleLinkRefAttribute.value;
+
+        window.localStorage.getItem(styleLinkRefAttribute.name);
         window.localStorage.setItem(styleLinkRefAttribute.name, lightStyleValue);
-        let getLightStyle = window.localStorage.getItem(styleLinkRefAttribute.name);
-        return getLightStyle;
+
+        //return getLightStyle;
     }
+    console.log(`localStorage: ${window.localStorage.getItem(styleLinkRefAttribute.name)}`);
     console.log(`After style Key: ${styleLinkRefAttribute.name}`);
     console.log(`After style Value: ${styleLinkRefAttribute.value}`);
     //window.localStorage.getItem(styleLinkRefAttribute.name);

@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - CompleteDotNetCoreWeb</title>
-    <link id="dark-light-bootst-style" rel="stylesheet" href="~/lib/bootstrap/dist/css/dark/bootstrap.min.css" enablePersistence="true" />
+    <link id="dark-light-bootst-style" rel="stylesheet" href="~/lib/bootstrap/dist/css/dark/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/CompleteDotNetCoreWeb.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
@@ -79,7 +79,8 @@
 
                                 <div class="form-check form-switch d-flex justify-content-around">
                                     <input class="form-check-input" type="checkbox"
-                                           id="flexSwitchCheckDefault" name="lightDarkCheck" checked>
+                                           id="flexSwitchCheckDefault" name="lightDarkCheck" checked
+                                           enablePersistence="true" allowPaging="true">
                                     <label class="form-check-label" id="switchCheckLabel"
                                            for="flexSwitchCheckDefault">Dark</label>
                                 </div>
