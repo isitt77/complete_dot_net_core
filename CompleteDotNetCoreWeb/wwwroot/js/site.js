@@ -49,8 +49,8 @@ lightDarkCheckbox.addEventListener('change', function () {
         styleLinkRefAttribute.value = "/lib/bootstrap/dist/css/dark/bootstrap.min.css";
         let darkStyleValue = styleLinkRefAttribute.value;
 
-        window.localStorage.getItem(styleLinkRefAttribute.name);
-        window.localStorage.setItem(styleLinkRefAttribute.name, darkStyleValue);
+        localStorage.getItem(styleLinkRefAttribute.name);
+        localStorage.setItem(styleLinkRefAttribute.name, darkStyleValue);
 
         //return getDarkStyle;
     } else {
@@ -59,15 +59,17 @@ lightDarkCheckbox.addEventListener('change', function () {
         styleLinkRefAttribute.value = "/lib/bootstrap/dist/css/light/bootstrap.min.css";
         let lightStyleValue = styleLinkRefAttribute.value;
 
-        window.localStorage.getItem(styleLinkRefAttribute.name);
-        window.localStorage.setItem(styleLinkRefAttribute.name, lightStyleValue);
+        localStorage.getItem(styleLinkRefAttribute.name);
+        localStorage.setItem(styleLinkRefAttribute.name, lightStyleValue);
 
         //return getLightStyle;
     }
-    console.log(`localStorage: ${window.localStorage.getItem(styleLinkRefAttribute.name)}`);
+    console.log(`localStorage: ${localStorage.getItem(styleLinkRefAttribute.name)}`);
     console.log(`After style Key: ${styleLinkRefAttribute.name}`);
     console.log(`After style Value: ${styleLinkRefAttribute.value}`);
     //window.localStorage.getItem(styleLinkRefAttribute.name);
+    console.log(`localStorage length: ${localStorage.length}`);
+    console.log(`localStorage key: ${localStorage.key(0)}`);
 
 });
 
