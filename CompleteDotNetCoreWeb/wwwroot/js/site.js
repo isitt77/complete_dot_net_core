@@ -44,8 +44,15 @@ console.log(styleLinkRefAttributes);
 
 let lightDarkCheckbox = document.querySelector("input[name=lightDarkCheck]");
 
-lightDarkCheckbox.addEventListener('change', function () {
-    if (this.checked) {
+let isChecked = lightDarkCheckbox.checked;
+
+//lightDarkCheckbox.addEventListener('change', SetTheme);
+
+lightDarkCheckbox.addEventListener('change', LightDarkToggle);
+
+
+function SetTheme() {
+    if (isChecked) {
         console.log("Checkbox is checked..");
 
         styleLinkRefAttribute.value = "/lib/bootstrap/dist/css/dark/bootstrap.min.css";
@@ -66,6 +73,7 @@ lightDarkCheckbox.addEventListener('change', function () {
 
         //return getLightStyle;
     }
+    console.log(`isChecked: ${isChecked}`);
     console.log(`localStorage: ${localStorage.getItem(styleLinkRefAttribute.name)}`);
     console.log(`After style Key: ${styleLinkRefAttribute.name}`);
     console.log(`After style Value: ${styleLinkRefAttribute.value}`);
@@ -74,8 +82,14 @@ lightDarkCheckbox.addEventListener('change', function () {
     console.log(`localStorage key: ${localStorage.key(0)}`);
     console.log(styleLink);
     console.log(styleLinkRefAttributes);
+}
 
-});
+
+//isChecked = false;
+function LightDarkToggle() {
+    isChecked = !isChecked;
+    SetTheme();
+}
 
 
 
