@@ -48,6 +48,9 @@ let isChecked = lightDarkCheckbox.checked;
 
 //lightDarkCheckbox.addEventListener('change', SetTheme);
 
+//isChecked = localStorage.getItem(styleLinkRefAttribute.name) == "true" ? true : false;
+//SetTheme();
+
 lightDarkCheckbox.addEventListener('change', LightDarkToggle);
 
 
@@ -58,7 +61,7 @@ function SetTheme() {
         styleLinkRefAttribute.value = "/lib/bootstrap/dist/css/dark/bootstrap.min.css";
         let darkStyleValue = styleLinkRefAttribute.value;
 
-        localStorage.getItem(styleLinkRefAttribute.name);
+        //localStorage.getItem(styleLinkRefAttribute.name);
         localStorage.setItem(styleLinkRefAttribute.name, darkStyleValue);
 
         //return getDarkStyle;
@@ -68,7 +71,7 @@ function SetTheme() {
         styleLinkRefAttribute.value = "/lib/bootstrap/dist/css/light/bootstrap.min.css";
         let lightStyleValue = styleLinkRefAttribute.value;
 
-        localStorage.getItem(styleLinkRefAttribute.name);
+        //localStorage.getItem(styleLinkRefAttribute.name);
         localStorage.setItem(styleLinkRefAttribute.name, lightStyleValue);
 
         //return getLightStyle;
