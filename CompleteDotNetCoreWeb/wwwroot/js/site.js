@@ -37,25 +37,32 @@ let styleLink = document.getElementById("dark-light-bootst-style");
 let styleLinkRefAttribute = document.getElementById("dark-light-bootst-style").attributes[2];
 let styleLinkRefAttributes = document.getElementById("dark-light-bootst-style").attributes;
 
-console.log(styleLink);
+//console.log(styleLink);
 console.log(`Initial style Key: ${styleLinkRefAttribute.name}`);
-console.log(`Initial style Value: ${styleLinkRefAttribute.value}`);
-console.log(styleLinkRefAttributes);
+//console.log(`Initial style Value: ${styleLinkRefAttribute.value}`);
+//console.log(styleLinkRefAttributes);
 
 let lightDarkCheckbox = document.querySelector("input[name=lightDarkCheck]");
 
 let isChecked = lightDarkCheckbox.checked;
 
-//lightDarkCheckbox.addEventListener('change', SetTheme);
+let isDark = true;
 
-isChecked = localStorage.getItem(styleLinkRefAttribute.name) == "true" ? true : false;
-SetTheme();
+//lightDarkCheckbox.addEventListener('change', SetTheme);
+//console.log(`isDark: ${isDark}`);
+
+//isDark = localStorage.getItem(styleLinkRefAttribute.value) == darkStyleValue ? false : true;
+//SetTheme();
+
+//isDark = localStorage.getItem(styleLinkRefAttribute.name) == "false" ? false : true;
+//SetTheme();
+
 
 lightDarkCheckbox.addEventListener('change', LightDarkToggle);
 
 
 function SetTheme() {
-    //localStorage.setItem(styleLinkRefAttribute.name, isChecked ? "true" : "false");
+    //localStorage.setItem(styleLinkRefAttribute.name, isDark ? "false" : "true");
     if (isChecked) {
         console.log("Checkbox is checked..");
 
@@ -64,7 +71,8 @@ function SetTheme() {
 
         //localStorage.getItem(styleLinkRefAttribute.name);
         localStorage.setItem(styleLinkRefAttribute.name, darkStyleValue);
-        //let getDark = localStorage.getItem(styleLinkRefAttribute.name);
+        isDark = true;
+        //let getDarkStyle = localStorage.getItem(styleLinkRefAttribute.name);
         //return getDarkStyle;
     } else {
         console.log("Checkbox is not checked..");
@@ -74,25 +82,28 @@ function SetTheme() {
 
         //localStorage.getItem(styleLinkRefAttribute.name);
         localStorage.setItem(styleLinkRefAttribute.name, lightStyleValue);
-        //let getLight = localStorage.getItem(styleLinkRefAttribute.name);
+        isDark = false;
+        //let getLightStyle = localStorage.getItem(styleLinkRefAttribute.name);
 
         //return getLightStyle;
     }
     console.log(`isChecked: ${isChecked}`);
-    console.log(`localStorage: ${localStorage.getItem(styleLinkRefAttribute.name)}`);
+    //console.log(`isDark: ${isDark}`);
+    //console.log(`localStorage: ${localStorage.getItem(styleLinkRefAttribute.name)}`);
     console.log(`After style Key: ${styleLinkRefAttribute.name}`);
-    console.log(`After style Value: ${styleLinkRefAttribute.value}`);
-    //window.localStorage.getItem(styleLinkRefAttribute.name);
-    console.log(`localStorage length: ${localStorage.length}`);
-    console.log(`localStorage key: ${localStorage.key(0)}`);
-    console.log(styleLink);
-    console.log(styleLinkRefAttributes);
+    //console.log(`After style Value: ${styleLinkRefAttribute.value}`);
+    ////window.localStorage.getItem(styleLinkRefAttribute.name);
+    //console.log(`localStorage length: ${localStorage.length}`);
+    //console.log(`localStorage key: ${localStorage.key(0)}`);
+    //console.log(styleLink);
+    //console.log(styleLinkRefAttributes);
 }
 
 
-//isChecked = false;
+//isDark = false;
 function LightDarkToggle() {
     isChecked = !isChecked;
+    //isDark = !isDark;
     SetTheme();
 }
 
