@@ -39,14 +39,14 @@ let styleLinkRefAttributes = document.getElementById("dark-light-bootst-style").
 
 //console.log(styleLink);
 console.log(`Initial style Key: ${styleLinkRefAttribute.name}`);
-//console.log(`Initial style Value: ${styleLinkRefAttribute.value}`);
+console.log(`Initial style Value: ${styleLinkRefAttribute.value}`);
 //console.log(styleLinkRefAttributes);
 
 let lightDarkCheckbox = document.querySelector("input[name=lightDarkCheck]");
 
 let isChecked = lightDarkCheckbox.checked;
 
-let isDark = true;
+//let isDark = true;
 
 //lightDarkCheckbox.addEventListener('change', SetTheme);
 //console.log(`isDark: ${isDark}`);
@@ -64,6 +64,7 @@ lightDarkCheckbox.addEventListener('change', LightDarkToggle);
 function SetTheme() {
     //localStorage.setItem(styleLinkRefAttribute.name, isDark ? "false" : "true");
     if (isChecked) {
+        lightDarkCheckbox.setAttribute("checked", "");
         console.log("Checkbox is checked..");
 
         styleLinkRefAttribute.value = "/lib/bootstrap/dist/css/dark/bootstrap.min.css";
@@ -71,10 +72,11 @@ function SetTheme() {
 
         //localStorage.getItem(styleLinkRefAttribute.name);
         localStorage.setItem(styleLinkRefAttribute.name, darkStyleValue);
-        isDark = true;
+        //isDark = true;
         //let getDarkStyle = localStorage.getItem(styleLinkRefAttribute.name);
         //return getDarkStyle;
     } else {
+        lightDarkCheckbox.removeAttribute("checked");
         console.log("Checkbox is not checked..");
 
         styleLinkRefAttribute.value = "/lib/bootstrap/dist/css/light/bootstrap.min.css";
@@ -82,16 +84,17 @@ function SetTheme() {
 
         //localStorage.getItem(styleLinkRefAttribute.name);
         localStorage.setItem(styleLinkRefAttribute.name, lightStyleValue);
-        isDark = false;
+        //isDark = false;
         //let getLightStyle = localStorage.getItem(styleLinkRefAttribute.name);
 
         //return getLightStyle;
     }
+    localStorage.getItem(styleLinkRefAttribute.name);
     console.log(`isChecked: ${isChecked}`);
     //console.log(`isDark: ${isDark}`);
     //console.log(`localStorage: ${localStorage.getItem(styleLinkRefAttribute.name)}`);
     console.log(`After style Key: ${styleLinkRefAttribute.name}`);
-    //console.log(`After style Value: ${styleLinkRefAttribute.value}`);
+    console.log(`After style Value: ${styleLinkRefAttribute.value}`);
     ////window.localStorage.getItem(styleLinkRefAttribute.name);
     //console.log(`localStorage length: ${localStorage.length}`);
     //console.log(`localStorage key: ${localStorage.key(0)}`);
