@@ -1,27 +1,27 @@
 ﻿@{
     var status = Context.Request.Query["status"];
-    string inProcess = "text-light";
-    string pending = "text-light";
-    string completed = "text-light";
-    string approved = "text-light";
-    string all = "text-light";
+    string inProcess = "text";
+    string pending = "text";
+    string completed = "text";
+    string approved = "text";
+    string all = "text";
 
     switch (status)
     {
         case "inProcess":
-            inProcess = "text-white";
+            inProcess = "text";
             break;
         case "pending":
-            pending = "text-white";
+            pending = "text";
             break;
         case "completed":
-            completed = "text-white";
+            completed = "text";
             break;
         case "approved":
-            approved = "text-white";
+            approved = "text";
             break;
         default:
-            all = "text-white";
+            all = "text";
             break;
     }
 }
@@ -68,7 +68,7 @@
         </div>
     </div>
     <br />
-    <table id="dataTable" class="table table-bordered table-hover table-dark" width="100%">
+    <table id="dataTable" class="table table-bordered table-hover" width="100%">
         <thead>
             <tr class="table-primary">
                 <th>Id</th>
