@@ -158,7 +158,7 @@ namespace CompleteDotNetCoreWeb.Areas.Customer.Controllers
                     Count = cart.Count
                 };
                 _unitOfWork.OrderDetail.Add(orderDetail);
-                //_unitOfWork.Save();
+                _unitOfWork.Save();
             }
 
 
@@ -209,7 +209,7 @@ namespace CompleteDotNetCoreWeb.Areas.Customer.Controllers
                 //Console.WriteLine("************ session Id: " + session.Id +
                 //    "************");
 
-                //_unitOfWork.Save();
+                _unitOfWork.Save();
                 Response.Headers.Add("Location", session.Url);
                 return new StatusCodeResult(303);
 
