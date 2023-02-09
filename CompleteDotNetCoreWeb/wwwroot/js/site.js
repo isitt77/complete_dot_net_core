@@ -4,7 +4,7 @@
 // Write your JavaScript code.
 
 
-let styleLink = document.getElementById("dark-light-bootst-style");
+//let styleLink = document.getElementById("dark-light-bootst-style");
 let styleLinkRefAttribute = document.getElementById("dark-light-bootst-style").attributes[2];
 
 let darkStyleUrl = "/lib/bootstrap/dist/css/dark/bootstrap.min.css";
@@ -21,6 +21,15 @@ let lightDarkCheckbox = document.querySelector("input[name=lightDarkCheck]");
 let label = lightDarkCheckbox.nextElementSibling;
 //console.log(`label: ${label.innerHTML}`);
 
+
+// SweetAlert Dark/Light variables
+//let layoutHeadTag = document.getElementById("layoutHeadTag");
+
+//let sweetAlertStyle = document.getElementById("dark-light-swal2-style");
+//console.log(sweetAlertStyle);
+
+//let sweetAlertScript = document.getElementById("dark-light-swal2-script").src;
+//console.log(sweetAlertScript);
 
 SetTheme();
 
