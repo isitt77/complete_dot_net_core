@@ -28,8 +28,17 @@ let label = lightDarkCheckbox.nextElementSibling;
 //let sweetAlertStyle = document.getElementById("dark-light-swal2-style");
 //console.log(sweetAlertStyle);
 
-//let sweetAlertScript = document.getElementById("dark-light-swal2-script").src;
-//console.log(sweetAlertScript);
+let sweetAlertScript = document.getElementById("dark-light-swal2-script");
+console.log(sweetAlertScript);
+
+let sweetAlertScriptSrc = document.getElementById("dark-light-swal2-script").attributes[1];
+console.log(sweetAlertScriptSrc);
+
+let darkSweetAlertScriptSrc = "//cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js";
+let lightSweetAlertScriptSrc = "//cdn.jsdelivr.net/npm/sweetalert2@11";
+
+let getSweetAlertScript = localStorage.getItem(sweetAlertScriptSrc.name);
+let isDarkSweetAlert = getSweetAlertScript == darkSweetAlertScriptSrc;
 
 SetTheme();
 
@@ -37,14 +46,18 @@ lightDarkCheckbox.addEventListener('change', LightDarkToggle);
 
 
 function SetTheme() {
-    if (isDark) {
+    if (isDark && isDarkSweetAlert) {
         lightDarkCheckbox.setAttribute("checked", "");
         //console.log("Checkbox is checked..");
 
         styleLinkRefAttribute.value = darkStyleUrl;
         let darkStyleValue = styleLinkRefAttribute.value;
 
+        sweetAlertScriptSrc.value = darkSweetAlertScriptSrc;
+        let darkSweetAlertScriptValue = sweetAlertScriptSrc.value;
+
         localStorage.setItem(styleLinkRefAttribute.name, darkStyleValue);
+        localStorage.setItem(sweetAlertScriptSrc.name, darkSweetAlertScriptValue)
 
         label.innerHTML = "Dark";
 
@@ -56,7 +69,11 @@ function SetTheme() {
         styleLinkRefAttribute.value = lightStyleUrl;
         let lightStyleValue = styleLinkRefAttribute.value;
 
+        sweetAlertScriptSrc.value = lightSweetAlertScriptSrc;
+        let lightSweetAlertScriptValue = sweetAlertScriptSrc.value;
+
         localStorage.setItem(styleLinkRefAttribute.name, lightStyleValue);
+        localStorage.setItem(sweetAlertScriptSrc.name, lightSweetAlertScriptValue);
 
         label.innerHTML = "Light";
 
@@ -67,6 +84,7 @@ function SetTheme() {
 
 function LightDarkToggle() {
     isDark = !isDark;
+    isDarkSweetAlert = !isDarkSweetAlert;
     SetTheme();
 }
 
