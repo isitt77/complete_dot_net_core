@@ -115,8 +115,21 @@
 
         function ValidateInput() {
             if (document.getElementById("uploadBox").value == "") {
-                Swal.fire({
-                    icon: 'error',
+
+                const swalWithBootstrapTheme = Swal.mixin({
+                    customClass: {
+                        popup: 'bg-light',
+                        confirmButton: 'btn btn-success',
+                        cancelButton: 'btn btn-danger'
+                    },
+                    buttonsStyling: false
+                })
+
+                swalWithBootstrapTheme.fire({
+                    //icon: 'error',
+                    iconColor: '#df4759',
+                    //background: 'black',
+                    iconHtml: '<i class="bi bi-exclamation-lg"></i>',
                     title: 'Umm...',
                     text: 'Please upload an image!'
                 })

@@ -12,7 +12,7 @@ document.getElementById("StripeRedirect")
             html:
                 'Use the following credit card number when prompted. </br>' +
                 '<div class="input-group my-3 row">' +
-                '<input id="swal-input1" class="form-control col-10 text-center bg-dark text-white" ' +
+                '<input id="swal-input1" class="form-control col-10 text-center" ' +
                 ' value="4242424242424242" readonly width="50%"/> ' +
                 ' <button id="copyCardNum" class="btn btn-secondary col-2"> ' +
                 ' <i id="clipboardIcon" class="bi bi-clipboard"></i></button>' +
