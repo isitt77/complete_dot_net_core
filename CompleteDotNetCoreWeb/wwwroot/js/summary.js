@@ -19,10 +19,10 @@ document.getElementById("StripeRedirect")
             icon: 'info',
             html:
                 'Use the following credit card number when prompted. </br>' +
-                '<div class="input-group my-3 row">' +
-                '<input id="swal-input1" class="form-control col-10 text-center" ' +
-                ' value="4242424242424242" readonly width="50%"/> ' +
-                ' <button id="copyCardNum" class="btn btn-secondary col-2"> ' +
+                '<div class="input-group my-3">' +
+                '<input id="swal-input1" class="form-control text-center" ' +
+                ' value="4242424242424242" readonly"/> ' +
+                ' <button id="copyCardNum" class="btn btn-light"> ' +
                 ' <i id="clipboardIcon" class="bi bi-clipboard"></i></button>' +
                 '</div>' +
                 'Use any future date for expiration and any three digit number for CVC. </br>',
