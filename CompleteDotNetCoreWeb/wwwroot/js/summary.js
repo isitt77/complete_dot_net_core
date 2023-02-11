@@ -56,7 +56,7 @@ function CopyCardNum() {
 
         navigator.clipboard.writeText(`${cardNum}`)
             .then(() => {
-                clipboardIcon.className = "bi bi-clipboard-check";
+                clipboardIcon.className = "bi bi-check-circle-fill";
                 clipboardIcon.style.color = "#20c997";
                 Swal.enableButtons();
             })
