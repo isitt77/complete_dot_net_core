@@ -6,7 +6,15 @@ document.getElementById("StripeRedirect")
 
         var form = document.getElementById("summaryForm");
 
-        Swal.fire({
+        const swalCardNumAlert = Swal.mixin({
+            customClass: {
+                popup: 'bg-body text-body',
+                confirmButton: 'btn btn-success'
+            },
+            buttonsStyling: false
+        })
+
+        swalCardNumAlert.fire({
             title: 'Redirecting to Stripe',
             icon: 'info',
             html:
