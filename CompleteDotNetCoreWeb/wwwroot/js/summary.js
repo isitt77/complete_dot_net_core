@@ -17,6 +17,7 @@ document.getElementById("StripeRedirect")
         swalCardNumAlert.fire({
             title: 'Redirecting to Stripe',
             icon: 'info',
+            iconColor: '#0a94c2',
             html:
                 'Use the following credit card number when prompted. </br>' +
                 '<div class="input-group my-3">' +
