@@ -23,8 +23,9 @@ document.getElementById("StripeRedirect")
                 '<div class="input-group my-3">' +
                 '<input id="swal-input1" class="form-control text-center" ' +
                 ' value="4242424242424242" readonly"/> ' +
-                ' <button id="copyCardNum" class="btn btn-light"> ' +
-                ' <span class="h5"><i id="clipboardIcon" class="bi bi-clipboard"></i></span></button>' +
+                ' <button id="copyCardNum" class="btn"> ' +
+                ' <span class="h4"><i id="clipboardIcon" class="bi bi-clipboard">' +
+                '</i></span></button>' +
                 '</div>' +
                 'Use any future date for expiration and any three digit number for CVC. </br>',
             showCloseButton: true,
