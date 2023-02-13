@@ -96,14 +96,15 @@ app.Use(async (context, next) =>
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
-//app.Use(async (context, next) =>
-//{
-//    //CSP prevents cross scripting
-//    context.Response.Headers.Add("Content-Security-Policy",
-//        "default-src 'self'; connect-src https: 'self' wss:; script-src https: 'self';" +
-//        "style-src 'self'; img-src 'self' data: https:; child-src 'self';");
-//    await next();
-//});
+app.Use(async (context, next) =>
+{
+    //CSP prevents cross scripting
+    context.Response.Headers.Add("Content-Security-Policy",
+        "default-src 'self'; connect-src https://* 'self' wss:; script-src https://* 'self';" +
+        " font-src https://* 'self'; style-src https://* 'unsafe-inline' 'self'; img-src https://* 'self' http://www.w3.org/2000/svg data:;" +
+        " child-src https://* 'self';");
+    await next();
+});
 
 app.UseRouting();
 
