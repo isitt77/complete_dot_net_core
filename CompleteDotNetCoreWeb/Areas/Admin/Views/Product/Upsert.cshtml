@@ -12,7 +12,6 @@
                         <h2 class="text-info">@(Model.Product.Id!=0?"Update":"Create") Product</h2>
                         <hr />
                     </div>
-                    @*<div asp-validation-summary="All" class="text-warning"></div>*@
                     <div class="mb-3">
                         <label asp-for="Product.Title" class="form-label"></label>
                         <input asp-for="Product.Title" class="form-control" />
