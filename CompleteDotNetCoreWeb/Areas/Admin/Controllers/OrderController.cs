@@ -336,6 +336,8 @@ namespace CompleteDotNetCoreWeb.Areas.Admin.Controllers
             OrderHeader order = _unitOfWork.OrderHeader.GetFirstOrDefault(
                 u => u.Id == id);
 
+            Console.WriteLine("Order: " + order.Id);
+
             if (order == null)
             {
                 return Json(new
@@ -344,7 +346,6 @@ namespace CompleteDotNetCoreWeb.Areas.Admin.Controllers
                     message = "Object not found."
                 });
             }
-            Console.WriteLine("Order: " + order.Name);
 
             _unitOfWork.OrderHeader.Remove(order);
             _unitOfWork.Save();
