@@ -44,18 +44,20 @@ function loadDataTable() {
 }
 
 function Delete(url) {
-    const swalWithBootstrapButtons = Swal.mixin({
+    const swalDeleteWithBootstrapButtons = Swal.mixin({
         customClass: {
+            popup: 'bg-body text-body',
             confirmButton: 'btn btn-success',
             cancelButton: 'btn btn-danger'
         },
         buttonsStyling: false
     })
 
-    swalWithBootstrapButtons.fire({
+    swalDeleteWithBootstrapButtons.fire({
         title: 'Are you sure?',
         text: "You won't be able to revert this!",
         icon: 'warning',
+        iconColor: '#f0ad4e',
         showCancelButton: true,
         confirmButtonText: 'Yes, delete it!',
         cancelButtonText: 'No, cancel!',
@@ -79,10 +81,10 @@ function Delete(url) {
             /* Read more about handling dismissals below */
             result.dismiss === Swal.DismissReason.cancel
         ) {
-            swalWithBootstrapButtons.fire(
+            swalDeleteWithBootstrapButtons.fire(
                 'Cancelled',
-                'Your file was not deleted. :)',
-                'error'
+                'Your file was not deleted.',
+                'info'
             )
         }
     })
