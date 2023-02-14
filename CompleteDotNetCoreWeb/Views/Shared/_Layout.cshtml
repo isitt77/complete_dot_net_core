@@ -49,9 +49,6 @@
                                     <a class="dropdown-item" asp-area="Admin" asp-controller="Company" asp-action="Index">Company</a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" asp-area="Identity" asp-page="/Account/Register">Create User</a>
-                                    @*<a class="dropdown-item" href="#">Something else here</a>*@
-                                    @*<div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="#">Separated link</a>*@
                                 </div>
                             </li>
                         }
@@ -65,7 +62,6 @@
                                 @await Component.InvokeAsync("ShoppingCart")
                             </a>
                         </li>
-
                     </ul>
                     <ul class="navbar-nav me-right">
                         <li class="nav-item dropdown">
@@ -73,9 +69,6 @@
                                href="#" role="button" aria-haspopup="true"
                                aria-expanded="false">Light/Dark Mode</a>
                             <div class="dropdown-menu">
-                                @*<a id="darkMode" class="dropdown-item text-center" onclick="MakeDark()">Dark Mode</a>
-                                    <a id="lightMode" class="dropdown-item text-center" onclick="MakeLight()">Light Mode</a>*@
-
                                 <div class="form-check form-switch d-flex justify-content-around">
                                     <input class="form-check-input" type="checkbox"
                                            id="flexSwitchCheckDefault" name="lightDarkCheck"
@@ -88,10 +81,6 @@
                         </li>
                     </ul>
                     <partial name="_LoginPartial" />
-                    @*<form class="d-flex">
-                            <input class="form-control me-sm-2" type="text" placeholder="Search">
-                            <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-                        </form>*@
                 </div>
             </div>
         </nav>
