@@ -78,7 +78,6 @@ function Delete(url) {
                 }
             })
         } else if (
-            /* Read more about handling dismissals below */
             result.dismiss === Swal.DismissReason.cancel
         ) {
             swalDeleteWithBootstrapButtons.fire(
