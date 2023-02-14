@@ -9,6 +9,7 @@ using CompleteDotNetCore.Models;
 using CompleteDotNetCore.Models.ViewModels;
 using CompleteDotNetCore.Utility;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Stripe;
 using Stripe.Checkout;
@@ -272,6 +273,8 @@ namespace CompleteDotNetCoreWeb.Areas.Admin.Controllers
                 new { orderId = OrderViewModel.OrderHeader.Id });
         }
 
+
+
         // GET /Page/Error
         public IActionResult Error()
         {
@@ -324,6 +327,34 @@ namespace CompleteDotNetCoreWeb.Areas.Admin.Controllers
 
             return Json(new { data = orderHeaders });
         }
+
+
+        // POST DELETE Order
+        [HttpDelete]
+        public IActionResult Delete(int id)
+        {
+            OrderHeader order = _unitOfWork.OrderHeader.GetFirstOrDefault(
+                u => u.Id == id);
+
+            if (order == null)
+            {
+                return Json(new
+                {
+                    success = false,
+                    message = "Object not found."
+                });
+            }
+            Console.WriteLine("Order: " + order.Name);
+
+            _unitOfWork.OrderHeader.Remove(order);
+            _unitOfWork.Save();
+            return Json(new
+            {
+                success = true,
+                message = "You've successfully deleted an order."
+            });
+        }
+
         #endregion
     }
 }

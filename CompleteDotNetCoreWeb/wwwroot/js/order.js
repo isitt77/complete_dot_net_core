@@ -54,11 +54,61 @@ function loadDataTable(status) {
                                href="/Admin/Order/Details?orderId=${data}">
                                     Details
                            </a>
+                            <a onClick=Delete('/Admin/Order/Delete/${data}')
+                                class="btn btn-danger mx-2">
+                             <i class="bi bi-trash"></i> <span class="d-none
+                                d-xl-inline">&nbsp; Delete</span></a>
                         </td>
                         `
-                    }, "width": "10%"
+                    }, "width": "20%"
                 }
             ]
     });
 }
 
+
+function Delete(url) {
+    const swalDeleteOrder = Swal.mixin({
+        customClass: {
+            popup: 'bg-body text-body',
+            confirmButton: 'btn btn-success',
+            cancelButton: 'btn btn-danger'
+        },
+        buttonsStyling: false
+    })
+
+    swalDeleteOrder.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        iconColor: '#f0ad4e',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete it!',
+        cancelButtonText: 'No, cancel!',
+        reverseButtons: true
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $.ajax({
+                url: url,
+                type: 'DELETE',
+                success: function (data) {
+                    if (data.success) {
+                        dataTable.ajax.reload()
+                        toastr.success(data.message)
+                    }
+                    else {
+                        toastr.error(data.message)
+                    }
+                }
+            })
+        } else if (
+            result.dismiss === Swal.DismissReason.cancel
+        ) {
+            swalDeleteOrder.fire(
+                'Cancelled',
+                'Your file was not deleted.',
+                'info'
+            )
+        }
+    })
+}
