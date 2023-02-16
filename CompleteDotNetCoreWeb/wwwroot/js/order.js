@@ -52,7 +52,9 @@ function loadDataTable(status) {
                         <td>
                            <a class="btn btn-info mx-2"
                                href="/Admin/Order/Details?orderId=${data}">
-                                    Details
+                                    <i class="bi bi-list-check"></i>
+                               <span class="d-none
+                                d-xl-inline">&nbsp; Details</span>
                            </a>
                             <a onClick=Delete('/Admin/Order/Delete/${data}')
                                 class="btn btn-danger mx-2">
@@ -60,7 +62,7 @@ function loadDataTable(status) {
                                 d-xl-inline">&nbsp; Delete</span></a>
                         </td>
                         `
-                    }, "width": "20%"
+                    }, "width": "24%"
                 }
             ]
     });
