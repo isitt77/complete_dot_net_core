@@ -331,6 +331,7 @@ namespace CompleteDotNetCoreWeb.Areas.Admin.Controllers
 
         // POST DELETE Order
         [HttpDelete]
+        [Authorize(Roles = SD.RoleAdmin + "," + SD.RoleEmployee)]
         public IActionResult Delete(int id)
         {
             OrderHeader order = _unitOfWork.OrderHeader.GetFirstOrDefault(
