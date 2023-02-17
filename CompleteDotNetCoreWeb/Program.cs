@@ -19,7 +19,7 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 options.UseNpgsql(builder.Configuration
-.GetConnectionString("AzureConnection")));
+.GetConnectionString("PostgresConnection")));
 
 builder.Services.Configure<StripeSettingsUtility>(builder.Configuration
     .GetSection("StripeSettings"));
