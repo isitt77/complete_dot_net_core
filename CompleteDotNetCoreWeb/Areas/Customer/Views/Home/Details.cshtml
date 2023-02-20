@@ -26,30 +26,33 @@
                     <h5 class="text-dark pb-2">List Price: <strike>@Model.Product.ListPrice.ToString("c")</strike></h5>
                 </div>
                 <div class="row text-center pl-2">
-                    <div class="p-1 col-2 bg-secondary border-bottom">
-                        <div>Quantity</div>
+                    <div class="p-1 col-3 bg-secondary border-bottom">
+                        <div>
+                            <span class="d-inline d-sm-none">Qty.</span>
+                            <span class="d-none d-sm-inline">Quantity</span>
+                        </div>
                     </div>
-                    <div class="p-1 col-2 bg-secondary border-bottom">
+                    <div class="p-1 col-3 bg-secondary border-bottom">
                         <div>1-50</div>
                     </div>
-                    <div class="p-1 col-2 bg-secondary border-bottom">
+                    <div class="p-1 col-3 bg-secondary border-bottom">
                         <div>51-100</div>
                     </div>
-                    <div class="p-1 col-2 bg-secondary border-bottom">
+                    <div class="p-1 col-3 bg-secondary border-bottom">
                         <div>100+</div>
                     </div>
                 </div>
                 <div class="row text-center pl-2" font-weight:bold">
-                    <div class="p-1 col-2 bg-secondary">
+                    <div class="p-1 col-3 bg-secondary">
                         <div>Price</div>
                     </div>
-                    <div class="p-1 col-2 bg-secondary">
+                    <div class="p-1 col-3 bg-secondary">
                         <div>@Model.Product.Price.ToString("c")</div>
                     </div>
-                    <div class="p-1 col-2 bg-secondary">
+                    <div class="p-1 col-3 bg-secondary">
                         <div>@Model.Product.Price50.ToString("c")</div>
                     </div>
-                    <div class="p-1 col-2 bg-secondary">
+                    <div class="p-1 col-3 bg-secondary">
                         <div>@Model.Product.Price100.ToString("c")</div>
                     </div>
                 </div>
