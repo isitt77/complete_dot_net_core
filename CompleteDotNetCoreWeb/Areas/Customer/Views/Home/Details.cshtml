@@ -18,8 +18,6 @@
             </div>
         </div>
         <div class="card-body row bg-light">
-            @*<div class="container rounded">*@
-            @*<div class="row">*@
             <div class="col">
                 <div class="row pl-2">
                     <h5 class="text-dark">ISBN : @Model.Product.ISBN</h5>
@@ -69,18 +67,14 @@
             <div class="col-4 col-md-3 text-center">
                 <img src="@Model.Product.IamgeUrl" width="100%" class="rounded" />
             </div>
-            @*</div>*@
-            @*</div>*@
         </div>
         <div class="card-footer bg-light row">
-            @*<div class="row">*@
             <div class="col-12 col-md-3 m-2">
                 <button type="submit" value="Add to Cart" class="btn btn-success form-control">Add to Cart</button>
             </div>
             <div class="col-12 col-md-3 m-2">
                 <a asp-controller="Home" asp-action="Index" class="btn btn-secondary form-control ">Back to Home Page</a>
             </div>
-            @*</div>*@
         </div>
     </div>
 </form>
