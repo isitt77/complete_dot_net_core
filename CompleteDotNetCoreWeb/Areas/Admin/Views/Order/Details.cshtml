@@ -297,10 +297,13 @@ Model.OrderHeader.OrderStatus == SD.StatusShipped)
                     </div>
                 </div>
             </div>
-            @if (User.IsInRole(SD.RoleAdmin) || User.IsInRole(SD.RoleEmployee))
+            @if (User.IsInRole(SD.RoleAdmin))
             {
                 <div class="d-flex justify-content-end m-2">
-                    <button asp-action="Delete" type="submit" class="btn btn-secondary">Delete Order</button>
+                    <button asp-action="Delete" type="submit"
+                            class="btn btn-secondary">
+                        Delete Order
+                    </button>
                 </div>
             }
         </div>
