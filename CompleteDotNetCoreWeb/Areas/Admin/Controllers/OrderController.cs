@@ -276,7 +276,7 @@ namespace CompleteDotNetCoreWeb.Areas.Admin.Controllers
 
         // POST DELETE Order
         [HttpPost]
-        [Authorize(Roles = SD.RoleAdmin + "," + SD.RoleEmployee)]
+        [Authorize(Roles = SD.RoleAdmin)]
         public IActionResult Delete()
         {
             OrderHeader order = _unitOfWork.OrderHeader.GetFirstOrDefault(
@@ -298,7 +298,7 @@ namespace CompleteDotNetCoreWeb.Areas.Admin.Controllers
 
         // POST DELETE ALL Order
         [HttpPost]
-        [Authorize(Roles = SD.RoleAdmin + "," + SD.RoleEmployee)]
+        [Authorize(Roles = SD.RoleAdmin)]
         public IActionResult DeleteALL()
         {
             IEnumerable<OrderHeader> orderHeaders =
