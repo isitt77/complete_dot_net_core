@@ -81,9 +81,14 @@
             </tr>
         </thead>
     </table>
-    @*<div class="d-flex">
-            <button class="btn btn-danger">Delete All Orders</button>
-        </div>*@
+    <form method="post">
+        <div class="d-flex">
+            <button asp-action="DeleteALL" type="submit"
+                    class="btn btn-danger">
+                Delete All Orders
+            </button>
+        </div>
+    </form>
 </div>
 
 @section Scripts{

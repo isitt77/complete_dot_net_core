@@ -293,13 +293,27 @@ namespace CompleteDotNetCoreWeb.Areas.Admin.Controllers
             _unitOfWork.Save();
             TempData["Success"] = "Successfully deleted order.";
             return RedirectToAction("Index");
-
-            //return Json(new
-            //{
-            //    success = true,
-            //    message = "You've successfully deleted an order."
-            //});
         }
+
+
+        // POST DELETE ALL Order
+        [HttpPost]
+        [Authorize(Roles = SD.RoleAdmin + "," + SD.RoleEmployee)]
+        public IActionResult DeleteALL()
+        {
+            IEnumerable<OrderHeader> orderHeaders =
+                _unitOfWork.OrderHeader.GetAll();
+
+            Console.WriteLine("*** Order: " + orderHeaders.ToList()
+                + "***");
+
+
+            _unitOfWork.OrderHeader.RemoveRange(orderHeaders);
+            _unitOfWork.Save();
+            TempData["Success"] = "Successfully deleted all orders.";
+            return RedirectToAction("Index");
+        }
+
 
 
 
