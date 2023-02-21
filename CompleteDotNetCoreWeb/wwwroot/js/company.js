@@ -46,6 +46,7 @@ function loadDataTable() {
 function Delete(url) {
     const swalWithBootstrapButtons = Swal.mixin({
         customClass: {
+            popup: 'bg-body text-body',
             confirmButton: 'btn btn-success',
             cancelButton: 'btn btn-danger'
         },

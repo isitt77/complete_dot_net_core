@@ -274,6 +274,34 @@ namespace CompleteDotNetCoreWeb.Areas.Admin.Controllers
         }
 
 
+        // POST DELETE Order
+        [HttpPost]
+        [Authorize(Roles = SD.RoleAdmin + "," + SD.RoleEmployee)]
+        public IActionResult Delete()
+        {
+            OrderHeader order = _unitOfWork.OrderHeader.GetFirstOrDefault(
+                u => u.Id == OrderViewModel.OrderHeader.Id);
+
+            Console.WriteLine("Order: " + order.Id);
+
+            if (order == null)
+            {
+                return NotFound();
+            }
+
+            _unitOfWork.OrderHeader.Remove(order);
+            _unitOfWork.Save();
+            TempData["Success"] = "Successfully deleted order.";
+            return RedirectToAction("Index");
+
+            //return Json(new
+            //{
+            //    success = true,
+            //    message = "You've successfully deleted an order."
+            //});
+        }
+
+
 
         // GET /Page/Error
         public IActionResult Error()
@@ -329,33 +357,7 @@ namespace CompleteDotNetCoreWeb.Areas.Admin.Controllers
         }
 
 
-        // POST DELETE Order
-        [HttpDelete]
-        [Authorize(Roles = SD.RoleAdmin + "," + SD.RoleEmployee)]
-        public IActionResult Delete(int id)
-        {
-            OrderHeader order = _unitOfWork.OrderHeader.GetFirstOrDefault(
-                u => u.Id == id);
 
-            Console.WriteLine("Order: " + order.Id);
-
-            if (order == null)
-            {
-                return Json(new
-                {
-                    success = false,
-                    message = "Object not found."
-                });
-            }
-
-            _unitOfWork.OrderHeader.Remove(order);
-            _unitOfWork.Save();
-            return Json(new
-            {
-                success = true,
-                message = "You've successfully deleted an order."
-            });
-        }
 
         #endregion
     }
