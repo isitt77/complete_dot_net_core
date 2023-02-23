@@ -62,6 +62,12 @@ function LightDarkToggle() {
     SetTheme();
 }
 
+// Click outside of navbr to close...
+$(document).click(function (e) {
+    if ($('.collapse').hasClass('show') && !$('nav').is(e.target) && $('nav').has(e.target).length === 0) {
+        $('.navbar-toggler').click()
+    }
+})
 
 
 //var checkbox = document.querySelector("input[name=checkbox]");
