@@ -4,12 +4,14 @@ using CompleteDotNetCore.DataAccess.DbInitializer;
 using CompleteDotNetCore.DataAccess.Repository;
 using CompleteDotNetCore.DataAccess.Repository.IRepository;
 using CompleteDotNetCore.Utility;
+using Microsoft.AspNetCore.Authentication.OAuth;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 using Stripe;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
@@ -43,6 +45,23 @@ builder.Services.AddAuthentication().AddFacebook(options =>
 {
     options.AppId = builder.Configuration["Authentication:Facebook:AppId"];
     options.AppSecret = builder.Configuration["Authentication:Facebook:AppSecret"];
+});
+
+// LinkedIn Login
+builder.Services.AddAuthentication().AddLinkedIn(options =>
+{
+    options.ClientId = builder.Configuration["Authentication:LinkedIn:ClientId"];
+    options.ClientSecret = builder.Configuration["Authentication:LinkedIn:ClientSecret"];
+    options.Events = new OAuthEvents()
+    {
+        OnRemoteFailure = loginFailureHandler =>
+        {
+            var authProperties = options.StateDataFormat
+            .Unprotect(loginFailureHandler.Request.Query["state"]);
+            loginFailureHandler.Response.Redirect("/Identity/Account/login");
+            loginFailureHandler.HandleResponse(); return Task.FromResult(0);
+        }
+    };
 });
 
 // Redirect to Login Page
