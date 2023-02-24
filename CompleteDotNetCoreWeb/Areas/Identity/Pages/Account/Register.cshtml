@@ -93,7 +93,7 @@ else
 
     @if (!User.IsInRole(SD.RoleAdmin))
     {
-        <div class="col-md-6">
+        <div class="col-md-6 mt-4 mt-md-0">
             <section>
                 <h3>Use another service to register.</h3>
                 <hr />
@@ -116,7 +116,9 @@ else
                                 <p>
                                     @foreach (var provider in Model.ExternalLogins!)
                                     {
-                                        <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
+                                        <div class="d-inline-block d-md-block me-3 m-md-3">
+                                            <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
+                                        </div>
                                     }
                                 </p>
                             </div>
