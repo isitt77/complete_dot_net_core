@@ -10,7 +10,39 @@
     <div class="col-md-4">
         <section>
             <form id="account" method="post">
-                <h2>Use a local account to log in.</h2>
+                <h2 class="d-inline-block">Use a local account to log in.</h2>
+                <i class="h4 bi bi-info-circle
+                   text-info ms-3" data-bs-toggle="offcanvas"
+                   href="#offcanvasExample" role="button"
+                   aria-controls="offcanvasExample"></i>
+
+                <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+                    <div class="offcanvas-header">
+                        <h3 class="offcanvas-title" id="offcanvasExampleLabel">
+                            Register / Login
+                        </h3>
+                        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body h4">
+                        <div>
+                            <p>
+                                Only name, email, and password are required.
+                            </p>
+                            <p>
+                                This is just a demo site. You don’t need to use your real name or email,
+                                but you must use correct email format.
+                            </p>
+                            <p>
+                                If you register using Facebook or LinkedIn,
+                                required info is auto-filled.
+                            </p>
+                            <p>
+                                If you haven’t registered, you must do that first.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
                 <hr />
                 <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
                 <div class="form-floating mb-3">
@@ -46,7 +78,7 @@
             </form>
         </section>
     </div>
-    <div class="col-md-6 col-md-offset-2">
+    <div class="col-md-4">
         <section>
             <h3>Use another service to log in.</h3>
             <hr />
