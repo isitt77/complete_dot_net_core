@@ -20,4 +20,4 @@ Hosted on Azure with PostgreSQL as the database.
 Link is in the About section. 
 
 
-(Note: Site takes about 20 seconds to load.)
+(Note: Initial load takes about 20 seconds.)
