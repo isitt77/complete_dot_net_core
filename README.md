@@ -17,4 +17,4 @@ Features Added
 
 Hosted on Azure with PostgreSQL as the database.
 
-URL is in the About section.
+Link is in the About section. (Note: Site takes about 20 seconds to load.)
