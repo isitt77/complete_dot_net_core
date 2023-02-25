@@ -17,7 +17,34 @@ else
 <div class="row">
     <div class="col-md-6">
         <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
-            <h2>Create a new account.</h2>
+            <h2 class="d-inline-block">Create a new account.</h2>
+            <i class="h4 bi bi-info-circle text-info ms-3"
+               data-bs-toggle="offcanvas" href="#offcanvasExample"
+               role="button" aria-controls="offcanvasExample"></i>
+
+            <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+                <div class="offcanvas-header">
+                    <h3 class="offcanvas-title" id="offcanvasExampleLabel">
+                        Register / Login
+                    </h3>
+                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body h4">
+                    <div>
+                        <p>
+                            Only name, email, and password are required.
+                        </p>
+                        <p>
+                            This is just a demo site. You don’t need to use your real name or email,
+                            but you must use correct email format.
+                        </p>
+                        <p>
+                            If you register using Facebook or LinkedIn,
+                            required info is auto-filled.
+                        </p>
+                    </div>
+                </div>
+            </div>
             <hr />
             <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
             <div class="form-floating mb-3">
