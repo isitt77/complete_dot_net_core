@@ -1,11 +1,10 @@
-﻿document.getElementById("ValidateShippingInfo")
-    .addEventListener("click", ValidateShippingInfo);
+﻿var shipOrderBtn = document.getElementById("ValidateShippingInfo")
+
+if (shipOrderBtn != null) {
+    shipOrderBtn.addEventListener("click", ValidateShippingInfo);
+}
 
 function ValidateShippingInfo(e) {
-
-    //e.preventDefault();
-
-    var form = document.getElementById("orderDetailsForm");
 
     const swalShippingAlert = Swal.mixin({
         customClass: {
@@ -22,7 +21,6 @@ function ValidateShippingInfo(e) {
             title: 'Umm...',
             text: 'Please enter tracking number!'
         })
-        //return false;
         e.preventDefault();
     }
     if (document.getElementById("carrier").value == "") {
@@ -31,16 +29,6 @@ function ValidateShippingInfo(e) {
             title: 'Umm...',
             text: 'Please enter carrier!'
         })
-        //return false;
         e.preventDefault();
     }
-    //if (document.getElementById("trackingNumber").value != ""
-    //    && document.getElementById("carrier").value != "") {
-    //    form.submit();
-    //}
-    //else {
-    //    form.submit();
-    //}
-    //return true;
-    //form.submit();
 }
