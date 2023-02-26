@@ -119,7 +119,7 @@ app.Use(async (context, next) =>
 {
     //CSP prevents cross scripting
     context.Response.Headers.Add("Content-Security-Policy",
-        "default-src 'self'; connect-src https://* 'self' wss:; script-src https://* 'self';" +
+        "default-src 'self'; connect-src https://* 'self' wss:; script-src https://* 'self' 'sha256-3UJsHCk1YmAJspwCwG4neAjeLExfr710pu9Zjbz9KgU=' 'sha256-cTcMpeHa2WZJdUMg1RHdAWHmmCku/AM/iULswrWoFcg=' 'sha256-yQRfGADQWeKgvF0YIzNf6WAyhBkd6VCpXXDLC3LEw3o=';" +
         " font-src https://* 'self'; style-src https://* 'self' " +
         " 'sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=' " +
         " 'sha256-9DoVum3m8JKsIY3DTlnlYUaZmF0qX8+iPcNp2w20t90='; " +

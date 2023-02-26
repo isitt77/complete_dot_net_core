@@ -1,7 +1,7 @@
 ﻿@model CompleteDotNetCore.Models.ViewModels.OrderViewModel
 @using CompleteDotNetCore.Utility
 
-<form method="post">
+<form method="post" id="orderDetailsForm">
     <input asp-for="OrderHeader.Id" hidden />
     <br />
     <div class="container">
@@ -279,7 +279,7 @@ Model.OrderHeader.OrderStatus == SD.StatusShipped)
                                 if (Model.OrderHeader.OrderStatus == SD.StatusInProcess)
                                 {
                                     <input asp-action="ShipOrder" type="submit"
-                                           onclick="return ValidateShippingInfo()"
+                                           id="ValidateShippingInfo"
                                            class="btn btn-success form-control my-1"
                                            value="Ship Order" />
                                 }
@@ -316,5 +316,5 @@ Model.OrderHeader.OrderStatus == SD.StatusShipped)
         // Runs client side validation so server isn't accessed.
         <partial name="_ValidationScriptsPartial" />
     }
-    <script src="~/js/order.js"></script>
+    <script src="~/js/orderDetailsInfo.js"></script>
 }
