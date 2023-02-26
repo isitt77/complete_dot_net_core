@@ -37,28 +37,28 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#"
                        role="button" aria-haspopup="true" aria-expanded="false">Filter Order Status</a>
-                    <div class="dropdown-menu" style="">
-                        <a class="dropdown-item @inProcess" style="text-decoration:none;"
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item @inProcess text-decoration-none"
                            asp-controller="Order" asp-action="Index"
                            asp-route-status="inProcess">
                             In Process
                         </a>
-                        <a class="dropdown-item @pending" style="text-decoration:none"
+                        <a class="dropdown-item @pending text-decoration-none"
                            asp-controller="Order" asp-action="Index"
                            asp-route-status="pending">
                             Payment Pending
                         </a>
-                        <a class="dropdown-item @completed" style="text-decoration:none"
+                        <a class="dropdown-item @completed text-decoration-none"
                            asp-controller="Order" asp-action="Index"
                            asp-route-status="completed">
                             Completed
                         </a>
-                        <a class="dropdown-item @approved" style="text-decoration:none"
+                        <a class="dropdown-item @approved text-decoration-none"
                            asp-controller="Order" asp-action="Index"
                            asp-route-status="approved">
                             Approved
                         </a>
-                        <a class="dropdown-item @all" style="text-decoration:none"
+                        <a class="dropdown-item @all text-decoration-none"
                            asp-controller="Order" asp-action="Index"
                            asp-route-status="all">
                             All
