@@ -31,7 +31,7 @@ function loadDataTable() {
                                href="/Admin/Product/Upsert?id=${data}">
                            <i class="bi bi-pencil"></i> <span class="d-none
                                 d-xl-inline">&nbsp; Edit</span></a>
-                            <a onClick=Delete('/Admin/Product/Delete/${data}')
+                            <a id="deleteBtn" href="/Admin/Product/Delete/${data}"
                                 class="btn btn-danger mx-2">
                              <i class="bi bi-trash"></i> <span class="d-none
                                 d-xl-inline">&nbsp; Delete</span></a>
@@ -42,6 +42,8 @@ function loadDataTable() {
             ]
     });
 }
+
+document.getElementById("deleteBtn").addEventListener("click", Delete);
 
 function Delete(url) {
     const swalDeleteWithBootstrapButtons = Swal.mixin({
