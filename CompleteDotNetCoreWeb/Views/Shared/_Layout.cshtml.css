@@ -47,3 +47,7 @@ button.accept-policy {
     white-space: nowrap;
     line-height: 60px;
 }
+
+.light-dark-toggle-size {
+    transform: scale(1.8);
+}

@@ -20,3 +20,9 @@ body {
 a {
     text-decoration: none;
 }
+
+.home-index-image {
+    width: 50%;
+    aspect-ratio: 1/1.5;
+    overflow: hidden;
+}
