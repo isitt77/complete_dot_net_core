@@ -64,35 +64,3 @@ function loadDataTable(status) {
     });
 }
 
-
-// Order Details
-//function ValidateShippingInfo() {
-
-//    const swalShippingAlert = Swal.mixin({
-//        customClass: {
-//            popup: 'bg-body text-body',
-//            confirmButton: 'btn btn-success',
-//            cancelButton: 'btn btn-danger'
-//        },
-//        buttonsStyling: false
-//    })
-
-//    if (document.getElementById("trackingNumber").value == "") {
-//        swalShippingAlert.fire({
-//            icon: 'error',
-//            title: 'Umm...',
-//            text: 'Please enter tracking number!'
-//        })
-//        return false;
-//    }
-//    if (document.getElementById("carrier").value == "") {
-//        swalShippingAlert.fire({
-//            icon: 'error',
-//            title: 'Umm...',
-//            text: 'Please enter carrier!'
-//        })
-//        return false;
-//    }
-//    return true;
-
-//}
