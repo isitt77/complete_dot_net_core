@@ -72,9 +72,9 @@ namespace CompleteDotNetCoreWeb.Areas.Admin.Controllers
             includeProperties: "Product");
 
             // Stripe logic
-            string domain = "https://localhost:7103/";
+            //string domain = "https://localhost:7103/";
 
-            //string domain = "https://completedotnetcoreweb.azurewebsites.net/";
+            string domain = "https://completedotnetcoreweb.azurewebsites.net/";
             SessionCreateOptions options = new SessionCreateOptions
             {
                 PaymentMethodTypes = new List<string>
