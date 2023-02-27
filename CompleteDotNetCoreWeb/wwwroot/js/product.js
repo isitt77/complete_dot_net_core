@@ -6,6 +6,7 @@ $(document).ready(function () {
     //console.log(dataTable);
     dataTable.on("click", ".deleteBtn", function () {
         console.log("You clicked delete button");
+
         Delete();
     })
 
@@ -39,7 +40,7 @@ function loadDataTable() {
                                href="/Admin/Product/Upsert?id=${data}">
                            <i class="bi bi-pencil"></i> <span class="d-none
                                 d-xl-inline">&nbsp; Edit</span></a>
-                            <a 
+                            <a href=# data-url="/Admin/Product/Delete/${data}"
                                 class="btn btn-danger mx-2 deleteBtn">
                              <i class="bi bi-trash"></i> <span class="d-none
                                 d-xl-inline">&nbsp; Delete</span></a>
