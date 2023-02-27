@@ -2,6 +2,14 @@
 
 $(document).ready(function () {
     loadDataTable();
+
+    //console.log(dataTable);
+    dataTable.on("click", ".deleteBtn", function () {
+        console.log("You clicked delete button");
+        Delete();
+    })
+
+    //console.log(data)
 });
 
 function loadDataTable() {
@@ -31,7 +39,7 @@ function loadDataTable() {
                                href="/Admin/Product/Upsert?id=${data}">
                            <i class="bi bi-pencil"></i> <span class="d-none
                                 d-xl-inline">&nbsp; Edit</span></a>
-                            <a href="/Admin/Product/Delete/${data}"
+                            <a 
                                 class="btn btn-danger mx-2 deleteBtn">
                              <i class="bi bi-trash"></i> <span class="d-none
                                 d-xl-inline">&nbsp; Delete</span></a>
@@ -43,17 +51,23 @@ function loadDataTable() {
     });
 }
 
-let table = document.getElementById("dataTable");
 
-let deleteButton = table.getElementsByClassName("deleteBtn");
 
-deleteButton.length
+//let table = document.getElementById("dataTable");
 
-console.log(table);
+//let deleteButton = dataTable.getElementsByClassName("deleteBtn");
+
+//console.log(deleteButton)
+
+//console.log(table);
 
 //document.getElementById("dataTable").addEventListener("click", Delete);
 
-function Delete(url) {
+// Delete method
+
+//Delete(url)
+
+function Delete() {
     const swalDeleteWithBootstrapButtons = Swal.mixin({
         customClass: {
             popup: 'bg-body text-body',

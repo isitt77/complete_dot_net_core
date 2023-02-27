@@ -172,8 +172,8 @@ namespace CompleteDotNetCoreWeb.Areas.Admin.Controllers
                 System.IO.File.Delete(imagePathToDelete);
             }
 
-            _unitOfWork.Product.Remove(obj);
-            _unitOfWork.Save();
+            //_unitOfWork.Product.Remove(obj);
+            //_unitOfWork.Save();
             return Json(new
             {
                 success = true,
