@@ -172,6 +172,7 @@ namespace CompleteDotNetCoreWeb.Areas.Admin.Controllers
 
             _unitOfWork.Product.Remove(obj);
             _unitOfWork.Save();
+            TempData["success"] = "You've successfully deleted product.";
             return RedirectToAction("Index");
         }
 

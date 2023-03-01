@@ -101,6 +101,7 @@ namespace CompleteDotNetCoreWeb.Areas.Admin.Controllers
             }
             _unitOfWork.Company.Remove(obj);
             _unitOfWork.Save();
+            TempData["success"] = "You've successfully deleted company.";
             return RedirectToAction("Index");
         }
 
