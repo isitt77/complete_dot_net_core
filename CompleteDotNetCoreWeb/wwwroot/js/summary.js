@@ -3,13 +3,13 @@ let redirectButton = document.getElementById("StripeRedirect");
 
 redirectButton.addEventListener("click", function StripeRedirectAlert(event) {
 
-    var form = document.getElementById("summaryForm");
-
-    if (form.valid() === false) {
+    if ($('#summaryForm').valid() === false) {
         return;
     }
 
     event.preventDefault();
+
+    var form = document.getElementById("summaryForm");
 
     const swalCardNumAlert = Swal.mixin({
         customClass: {
