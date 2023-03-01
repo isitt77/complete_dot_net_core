@@ -1,7 +1,7 @@
 ﻿@*@model Product*@
 @model CompleteDotNetCore.Models.ViewModels.ProductViewModel
 
-<form method="post" class="form-group" asp-action="Upsert" enctype="multipart/form-data">
+<form method="post" id="productUpsertForm" class="form-group" asp-action="Upsert" enctype="multipart/form-data">
     <input asp-for="Product.Id" hidden />
     <input asp-for="Product.IamgeUrl" hidden />
     <div class="border p-3 mt-5">
@@ -88,7 +88,7 @@
         }
         else
         {
-            <button type="submit" onclick="return ValidateInput()" class="btn btn-warning mt-3 me-3">Create</button>
+            <button id="productUpsert" type="submit" class="btn btn-warning mt-3 me-3">Create</button>
             <a asp-controller="Product" asp-action="Index" class="btn btn-secondary mt-3">Back to Product List</a>
         }
 

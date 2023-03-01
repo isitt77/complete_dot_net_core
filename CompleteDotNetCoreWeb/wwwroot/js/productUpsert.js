@@ -11,25 +11,39 @@ tinymce.init({
     ]
 });
 
-function ValidateInput() {
-    if (document.getElementById("uploadBox").value == "") {
 
-        const swalWithBootstrapTheme = Swal.mixin({
-            customClass: {
-                popup: 'bg-body text-body',
-                confirmButton: 'btn btn-success',
-                cancelButton: 'btn btn-danger'
-            },
-            buttonsStyling: false
-        })
+var productUppsertButton = document.getElementById("productUpsert");
 
-        swalWithBootstrapTheme.fire({
-            iconColor: '#df4759',
-            iconHtml: '<i class="bi bi-exclamation-lg"></i>',
-            title: 'Umm...',
-            text: 'Please upload an image!'
-        })
-        return false;
-    }
-    return true;
+if (productUppsertButton != null) {
+
+    productUppsertButton.addEventListener("click", function ValidateInput(e) {
+
+        if ($('#productUpsertForm').valid() === false) {
+            return;
+        }
+
+        var form = document.getElementById("productUpsertForm");
+
+        if (document.getElementById("uploadBox").value == "") {
+
+            e.preventDefault();
+
+            const swalWithBootstrapTheme = Swal.mixin({
+                customClass: {
+                    popup: 'bg-body text-body',
+                    confirmButton: 'btn btn-success',
+                    cancelButton: 'btn btn-danger'
+                },
+                buttonsStyling: false
+            })
+
+            swalWithBootstrapTheme.fire({
+                iconColor: '#df4759',
+                iconHtml: '<i class="bi bi-exclamation-lg"></i>',
+                title: 'Umm...',
+                text: 'Please upload an image!'
+            })
+        }
+    });
+
 }
