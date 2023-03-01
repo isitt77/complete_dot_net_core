@@ -68,6 +68,43 @@ namespace CompleteDotNetCoreWeb.Areas.Admin.Controllers
             return View(obj);
         }
 
+
+        // Get  Delete
+        public IActionResult Delete(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+            //var categoryFromDb = _db.Categories.Find(id);
+            Company? CompanyFromDb = _unitOfWork.Company.GetFirstOrDefault(u => u.Id == id);
+
+            if (CompanyFromDb == null)
+            {
+                return NotFound();
+            }
+            return View(CompanyFromDb);
+        }
+
+
+        //Post Delete
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Delete(int id)
+        {
+            Company obj = _unitOfWork.Company.GetFirstOrDefault(
+                u => u.Id == id);
+
+            if (obj == null)
+            {
+                return NotFound();
+            }
+            _unitOfWork.Company.Remove(obj);
+            _unitOfWork.Save();
+            return RedirectToAction("Index");
+        }
+
+
         // GET /Page/Error
         public IActionResult Error()
         {
@@ -85,29 +122,6 @@ namespace CompleteDotNetCoreWeb.Areas.Admin.Controllers
             return Json(new { data = companyList });
         }
 
-        // Post: Delete Company
-        [HttpDelete]
-        public IActionResult Delete(int id)
-        {
-            Company obj = _unitOfWork.Company.GetFirstOrDefault(
-                u => u.Id == id);
-
-            if (obj == null)
-            {
-                return Json(new
-                {
-                    success = false,
-                    message = "Object not found."
-                });
-            }
-            _unitOfWork.Company.Remove(obj);
-            _unitOfWork.Save();
-            return Json(new
-            {
-                success = true,
-                message = "You've successfully deleted a company."
-            });
-        }
 
         #endregion
     }

@@ -1,0 +1,25 @@
+﻿@model Company
+
+
+<form method="post" class="form-group" asp-action="Delete">
+    <input asp-for="Id" hidden />
+    <div class="border p-3 mt-5">
+        <div class="row pb-2">
+            <h2 class="text-info">Delete Company</h2>
+            <hr />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Name" class="form-label"></label>
+            <input asp-for="Name" class="form-control" disabled />
+        </div>
+        <button type="submit" class="btn btn-danger mt-3 me-3">Delete</button>
+        <a asp-controller="Company" asp-action="Index" class="btn btn-secondary mt-3">Back to Company List</a>
+    </div>
+</form>
+
+@section Scripts {
+    @{
+        // Runs client side validation so server isn't accessed.
+        <partial name="_ValidationScriptsPartial" />
+    }
+}
