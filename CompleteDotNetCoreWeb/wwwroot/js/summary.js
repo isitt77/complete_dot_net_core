@@ -3,6 +3,10 @@ let redirectButton = document.getElementById("StripeRedirect");
 
 redirectButton.addEventListener("click", function StripeRedirectAlert(event) {
 
+    if ($('#summaryForm').valid() === false) {
+        return;
+    }
+
     event.preventDefault();
 
     var form = document.getElementById("summaryForm");
@@ -67,3 +71,5 @@ function CopyCardNum() {
             });
     }, { once: true });
 }
+
+
