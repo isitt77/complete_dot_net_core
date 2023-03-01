@@ -192,39 +192,6 @@ namespace CompleteDotNetCoreWeb.Areas.Admin.Controllers
             return Json(new { data = productList });
         }
 
-        //// Post: Delete
-        //[HttpDelete]
-        //public IActionResult Delete(int id)
-        //{
-        //    Product obj = _unitOfWork.Product.GetFirstOrDefault(
-        //        u => u.Id == id);
-
-        //    if (obj == null)
-        //    {
-        //        return Json(new
-        //        {
-        //            success = false,
-        //            message = "Object not found."
-        //        });
-        //    }
-
-        //    string imagePathToDelete = Path.Combine(_webHostEnvironment.WebRootPath,
-        //                    obj.IamgeUrl.TrimStart('/'));
-
-        //    if (System.IO.File.Exists(imagePathToDelete))
-        //    {
-        //        Console.WriteLine("Deleting image: " + imagePathToDelete);
-        //        System.IO.File.Delete(imagePathToDelete);
-        //    }
-
-        //    _unitOfWork.Product.Remove(obj);
-        //    _unitOfWork.Save();
-        //    return Json(new
-        //    {
-        //        success = true,
-        //        message = "You've successfully deleted a product."
-        //    });
-        //}
 
         #endregion
     }
