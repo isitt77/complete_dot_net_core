@@ -1,0 +1,1 @@
+﻿toastr.success('@TempData["success"]');
