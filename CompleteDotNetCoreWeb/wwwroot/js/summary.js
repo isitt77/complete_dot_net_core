@@ -1,45 +1,46 @@
 ﻿
-document.getElementById("StripeRedirect")
-    .addEventListener("click", function StripeRedirectAlert(event) {
+let redirectButton = document.getElementById("StripeRedirect");
 
-        event.preventDefault();
+redirectButton.addEventListener("click", function StripeRedirectAlert(event) {
 
-        var form = document.getElementById("summaryForm");
+    event.preventDefault();
 
-        const swalCardNumAlert = Swal.mixin({
-            customClass: {
-                popup: 'bg-body text-body',
-                confirmButton: 'btn btn-success'
-            },
-            buttonsStyling: false
-        })
+    var form = document.getElementById("summaryForm");
 
-        swalCardNumAlert.fire({
-            title: 'Redirecting to Stripe',
-            icon: 'info',
-            iconColor: '#0a94c2',
-            html:
-                'Use the following credit card number when prompted. </br>' +
-                '<div class="input-group my-3">' +
-                '<input id="swal-input1" class="form-control text-center" ' +
-                ' value="4242424242424242" readonly"/> ' +
-                ' <button id="copyCardNum" class="btn"> ' +
-                ' <span class="h4"><i id="clipboardIcon" class="bi bi-clipboard">' +
-                '</i></span></button>' +
-                '</div>' +
-                'Use any future date for expiration and any three digit number for CVC. </br>',
-            showCloseButton: true,
-            focusConfirm: false
-        }).then((result) => {
-            console.log(`Ok pressed: ${result.value}`);
-            if (result.value == true) {
-                form.submit();
-            }
-        });
+    const swalCardNumAlert = Swal.mixin({
+        customClass: {
+            popup: 'bg-body text-body',
+            confirmButton: 'btn btn-success'
+        },
+        buttonsStyling: false
+    })
 
-        CopyCardNum();
-
+    swalCardNumAlert.fire({
+        title: 'Redirecting to Stripe',
+        icon: 'info',
+        iconColor: '#0a94c2',
+        html:
+            'Use the following credit card number when prompted. </br>' +
+            '<div class="input-group my-3">' +
+            '<input id="swal-input1" class="form-control text-center" ' +
+            ' value="4242424242424242" readonly"/> ' +
+            ' <button id="copyCardNum" class="btn"> ' +
+            ' <span class="h4"><i id="clipboardIcon" class="bi bi-clipboard">' +
+            '</i></span></button>' +
+            '</div>' +
+            'Use any future date for expiration and any three digit number for CVC. </br>',
+        showCloseButton: true,
+        focusConfirm: false
+    }).then((result) => {
+        console.log(`Ok pressed: ${result.value}`);
+        if (result.value == true) {
+            form.submit();
+        }
     }, { once: true });
+
+    CopyCardNum();
+
+});
 
 
 
