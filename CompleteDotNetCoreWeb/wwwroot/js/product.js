@@ -40,7 +40,7 @@ function loadDataTable() {
                                href="/Admin/Product/Upsert?id=${data}">
                            <i class="bi bi-pencil"></i> <span class="d-none
                                 d-xl-inline">&nbsp; Edit</span></a>
-                            <a onclick="Delete('/Admin/Product/Delete/${data}')"
+                            <a href="/Admin/Product/Delete/${data}"
                                 class="btn btn-danger mx-2 deleteBtn">
                              <i class="bi bi-trash"></i> <span class="d-none
                                 d-xl-inline">&nbsp; Delete</span></a>
@@ -68,48 +68,48 @@ function loadDataTable() {
 
 //Delete(url)
 
-function Delete(url) {
-    const swalDeleteWithBootstrapButtons = Swal.mixin({
-        customClass: {
-            popup: 'bg-body text-body',
-            confirmButton: 'btn btn-success',
-            cancelButton: 'btn btn-danger'
-        },
-        buttonsStyling: false
-    })
+//function Delete(url) {
+//    const swalDeleteWithBootstrapButtons = Swal.mixin({
+//        customClass: {
+//            popup: 'bg-body text-body',
+//            confirmButton: 'btn btn-success',
+//            cancelButton: 'btn btn-danger'
+//        },
+//        buttonsStyling: false
+//    })
 
-    swalDeleteWithBootstrapButtons.fire({
-        title: 'Are you sure?',
-        text: "You won't be able to revert this!",
-        icon: 'warning',
-        iconColor: '#f0ad4e',
-        showCancelButton: true,
-        confirmButtonText: 'Yes, delete it!',
-        cancelButtonText: 'No, cancel!',
-        reverseButtons: true
-    }).then((result) => {
-        if (result.isConfirmed) {
-            $.ajax({
-                url: url,
-                type: 'DELETE',
-                success: function (data) {
-                    if (data.success) {
-                        dataTable.ajax.reload()
-                        toastr.success(data.message)
-                    }
-                    else {
-                        toastr.error(data.message)
-                    }
-                }
-            })
-        } else if (
-            result.dismiss === Swal.DismissReason.cancel
-        ) {
-            swalDeleteWithBootstrapButtons.fire(
-                'Cancelled',
-                'Your file was not deleted.',
-                'info'
-            )
-        }
-    })
-}
+//    swalDeleteWithBootstrapButtons.fire({
+//        title: 'Are you sure?',
+//        text: "You won't be able to revert this!",
+//        icon: 'warning',
+//        iconColor: '#f0ad4e',
+//        showCancelButton: true,
+//        confirmButtonText: 'Yes, delete it!',
+//        cancelButtonText: 'No, cancel!',
+//        reverseButtons: true
+//    }).then((result) => {
+//        if (result.isConfirmed) {
+//            $.ajax({
+//                url: url,
+//                type: 'DELETE',
+//                success: function (data) {
+//                    if (data.success) {
+//                        dataTable.ajax.reload()
+//                        toastr.success(data.message)
+//                    }
+//                    else {
+//                        toastr.error(data.message)
+//                    }
+//                }
+//            })
+//        } else if (
+//            result.dismiss === Swal.DismissReason.cancel
+//        ) {
+//            swalDeleteWithBootstrapButtons.fire(
+//                'Cancelled',
+//                'Your file was not deleted.',
+//                'info'
+//            )
+//        }
+//    })
+//}

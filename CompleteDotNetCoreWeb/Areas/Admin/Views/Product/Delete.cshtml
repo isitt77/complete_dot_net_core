@@ -1,19 +1,19 @@
-﻿@model CoverType
+﻿@model Product
 
 
 <form method="post" class="form-group" asp-action="Delete">
     <input asp-for="Id" hidden />
     <div class="border p-3 mt-5">
         <div class="row pb-2">
-            <h2 class="text-info">Delete Cover Type</h2>
+            <h2 class="text-info">Delete Product</h2>
             <hr />
         </div>
         <div class="mb-3">
-            <label asp-for="Name" class="form-label"></label>
-            <input asp-for="Name" class="form-control" disabled />
+            <label asp-for="Title" class="form-label"></label>
+            <input asp-for="Title" class="form-control" disabled />
         </div>
         <button type="submit" class="btn btn-danger mt-3 me-3">Delete</button>
-        <a asp-controller="Product" asp-action="Index" class="btn btn-secondary mt-3">Back to Cover Type List</a>
+        <a asp-controller="CoverType" asp-action="Index" class="btn btn-secondary mt-3">Back to Product Index</a>
     </div>
 </form>
 
