@@ -218,8 +218,11 @@
                                            type="text" readonly class="form-control" />
                                 </div>
                             </div>
-                            <input asp-action="UpdateOrderDetails" type="submit" class="btn btn-warning form-control my-1"
-                                   value="Update Order Details" />
+                            @if (User.IsInRole(SD.RoleAdmin) || User.IsInRole(SD.RoleEmployee))
+                            {
+                                <input asp-action="UpdateOrderDetails" type="submit" class="btn btn-warning form-control my-1"
+                                       value="Update Order Details" />
+                            }
 
 
                         </div>
