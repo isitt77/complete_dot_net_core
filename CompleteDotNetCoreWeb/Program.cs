@@ -64,6 +64,13 @@ builder.Services.AddAuthentication().AddLinkedIn(options =>
     };
 });
 
+// Google Login
+builder.Services.AddAuthentication().AddGoogle(options =>
+{
+    options.ClientId = builder.Configuration["Authentication:Google:ClientId"];
+    options.ClientSecret = builder.Configuration["Authentication:Google:ClientSecret"];
+});
+
 // Redirect to Login Page
 builder.Services.ConfigureApplicationCookie(options =>
 {
