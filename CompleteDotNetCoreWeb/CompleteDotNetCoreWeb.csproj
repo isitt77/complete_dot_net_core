@@ -36,6 +36,7 @@
 		<None Remove="Views\Shared\Components\" />
 		<None Remove="Views\Shared\Components\ShoppingCart\" />
 		<None Remove="Microsoft.AspNetCore.Authentication.Facebook" />
+		<None Remove="ServiceExtensions\" />
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.4" />
@@ -87,6 +88,7 @@
 	  <Folder Include="ViewComponents\" />
 	  <Folder Include="Views\Shared\Components\" />
 	  <Folder Include="Views\Shared\Components\ShoppingCart\" />
+	  <Folder Include="ServiceExtensions\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Content Remove="wwwroot\images\" />

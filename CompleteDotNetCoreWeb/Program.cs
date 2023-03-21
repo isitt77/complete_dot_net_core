@@ -4,6 +4,7 @@ using CompleteDotNetCore.DataAccess.DbInitializer;
 using CompleteDotNetCore.DataAccess.Repository;
 using CompleteDotNetCore.DataAccess.Repository.IRepository;
 using CompleteDotNetCore.Utility;
+using CompleteDotNetCoreWeb.ServiceExtensions;
 using Microsoft.AspNetCore.Authentication.OAuth;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
@@ -40,36 +41,8 @@ builder.Services.AddScoped<IDbInitializer, DbInitializer>();
 
 builder.Services.AddRazorPages();
 
-// Facebook Login
-builder.Services.AddAuthentication().AddFacebook(options =>
-{
-    options.AppId = builder.Configuration["Authentication:Facebook:AppId"];
-    options.AppSecret = builder.Configuration["Authentication:Facebook:AppSecret"];
-});
-
-// LinkedIn Login
-builder.Services.AddAuthentication().AddLinkedIn(options =>
-{
-    options.ClientId = builder.Configuration["Authentication:LinkedIn:ClientId"];
-    options.ClientSecret = builder.Configuration["Authentication:LinkedIn:ClientSecret"];
-    options.Events = new OAuthEvents()
-    {
-        OnRemoteFailure = loginFailureHandler =>
-        {
-            var authProperties = options.StateDataFormat
-            .Unprotect(loginFailureHandler.Request.Query["state"]);
-            loginFailureHandler.Response.Redirect("/Identity/Account/login");
-            loginFailureHandler.HandleResponse(); return Task.FromResult(0);
-        }
-    };
-});
-
-// Google Login
-builder.Services.AddAuthentication().AddGoogle(options =>
-{
-    options.ClientId = builder.Configuration["Authentication:Google:ClientId"];
-    options.ClientSecret = builder.Configuration["Authentication:Google:ClientSecret"];
-});
+//External Logins (Facebook, LinkedIn, Google)
+builder.Services.AddExternalLogin(builder.Configuration);
 
 // Redirect to Login Page
 builder.Services.ConfigureApplicationCookie(options =>
