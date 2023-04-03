@@ -13,6 +13,7 @@ using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
+using Microsoft.Net.Http.Headers;
 using Stripe;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
@@ -93,7 +94,16 @@ app.Use(async (context, next) =>
 });
 
 app.UseHttpsRedirection();
-app.UseStaticFiles();
+app.UseStaticFiles(
+    new StaticFileOptions
+    {
+        OnPrepareResponse = ctx =>
+        {
+            const int durationInSeconds = 60 * 60 * 24 * 30 * 6;
+            ctx.Context.Response.Headers[HeaderNames.CacheControl] =
+                "public,max-age=" + durationInSeconds;
+        }
+    });
 
 app.Use(async (context, next) =>
 {
