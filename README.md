@@ -15,9 +15,4 @@ Features Added
 - Light Mode / Dark Mode theme in the navbar. This will toggle between two Bootstrap themes and will also be applied to third party pop-up alerts.
 
 
-Hosted on Azure with PostgreSQL as the database.
-
-Link is in the About section. 
-
-
-(Note: Initial load takes about 15 seconds.)
+Update: This site is no longer live.
