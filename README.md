@@ -15,4 +15,4 @@ Features Added
 - Light Mode / Dark Mode theme in the navbar. This will toggle between two Bootstrap themes and will also be applied to third party pop-up alerts.
 
 
-Update: This site is no longer live.
+Update: This web app is no longer live.
